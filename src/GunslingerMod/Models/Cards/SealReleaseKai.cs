@@ -55,7 +55,7 @@ public sealed class SealReleaseKai() : CardModel(3, CardType.Attack, CardRarity.
         // Fire the consumed Seal bullet twice.
         for (var i = 0; i < 2; i++)
         {
-            if (combatState?.GetOpponentsOf(Owner.Creature).Any(c => c.IsAlive) != true)
+            if (!BulletResolver.HasAliveOpponents(Owner.Creature))
                 return;
 
             target = GetNextAliveTarget(combatState, Owner.Creature, target);
@@ -66,11 +66,11 @@ public sealed class SealReleaseKai() : CardModel(3, CardType.Attack, CardRarity.
             await BulletResolver.FireAtTarget(choiceContext, Owner.Creature, target, this, ammoType, sealLevel, baseDamage);
             shotsFired++;
 
-            if (combatState?.GetOpponentsOf(Owner.Creature).Any(c => c.IsAlive) != true)
+            if (!BulletResolver.HasAliveOpponents(Owner.Creature))
                 return;
         }
 
-        if (shotsFired > 0 && combatState?.GetOpponentsOf(Owner.Creature).Any(c => c.IsAlive) == true)
+        if (shotsFired > 0 && BulletResolver.HasAliveOpponents(Owner.Creature))
             await PowerCmd.Apply<ImprintPower>(Owner.Creature, Math.Min(3, shotsFired), Owner.Creature, this);
     }
 
@@ -90,7 +90,7 @@ public sealed class SealReleaseKai() : CardModel(3, CardType.Attack, CardRarity.
 
     private static Creature? GetNextAliveTarget(CombatState? combatState, Creature owner, Creature? currentTarget)
     {
-        if (currentTarget != null && !currentTarget.IsDead)
+        if (currentTarget?.IsAlive == true)
             return currentTarget;
 
         var enemies = combatState?.GetOpponentsOf(owner);
@@ -99,7 +99,7 @@ public sealed class SealReleaseKai() : CardModel(3, CardType.Attack, CardRarity.
 
         foreach (var enemy in enemies)
         {
-            if (!enemy.IsDead)
+            if (enemy.IsAlive)
                 return enemy;
         }
         return null;

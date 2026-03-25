@@ -1,0 +1,1 @@
+Localization style normalized to Excel v2 and STS2-style conditional tokens.\n

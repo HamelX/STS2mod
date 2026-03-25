@@ -13,7 +13,11 @@ public sealed class ExecutionShot() : CardModel(2, CardType.Attack, CardRarity.R
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
         var cylinder = Owner.Creature.GetPower<CylinderPower>();
-        if (cylinder == null)
+        if (cylinder == null || !BulletResolver.HasAliveOpponents(Owner.Creature))
+            return;
+
+        var target = BulletResolver.ResolveAliveTarget(Owner.Creature, cardPlay.Target);
+        if (target == null)
             return;
 
         var didFire = cylinder.TryConsumeCurrent(out var ammoType, out var sealLevel);
@@ -27,9 +31,9 @@ public sealed class ExecutionShot() : CardModel(2, CardType.Attack, CardRarity.R
 
         var baseDamage = BulletResolver.GetBaseDamage(ammoType, sealLevel);
 
-        if (cardPlay.Target.CurrentHp * 2 <= cardPlay.Target.MaxHp)
+        if (target.CurrentHp * 2 <= target.MaxHp)
             baseDamage *= IsUpgraded ? 3m : 2m;
 
-        await BulletResolver.FireAtTarget(choiceContext, Owner.Creature, cardPlay.Target, this, ammoType, sealLevel, baseDamage);
+        await BulletResolver.FireAtTarget(choiceContext, Owner.Creature, target, this, ammoType, sealLevel, baseDamage);
     }
 }

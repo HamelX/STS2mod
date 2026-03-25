@@ -3,13 +3,11 @@
   "CHAMBER.desc_empty": "비어 있음.",
   "CHAMBER.firing_note": "발사 약실(12시).",
   "CHAMBER.damage": "피해: {d}",
-
   "AMMO.normal": "탄환: 기본탄",
   "AMMO.enhanced": "탄환: 강화탄",
   "AMMO.penetrator": "탄환: 관통탄",
   "AMMO.seal": "탄환: 봉인탄",
   "AMMO.unknown": "탄환: ?",
-
   "AMMO.penetrator_note": "효과: 방어도/블록 무시",
   "AMMO.seal_level": "봉인 레벨: {l}",
   "AMMO.seal_t4": "레벨 5+: 추가타 1회",

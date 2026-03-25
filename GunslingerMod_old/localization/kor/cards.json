@@ -9,7 +9,6 @@
   "IMPRINT_BARRAGE.description": "모든 [gold]각인[/gold]을 소모합니다. 각인마다 무작위 적에게 피해 {IfUpgraded:show:2|1}을 줍니다.",
   "PANNING.title": "패닝",
   "PANNING.description": "장전된 탄환을 모두 소모합니다. 약실마다 피해 {Damage:diff()}을 줍니다.",
-
   "SEAL_LOAD.title": "봉인탄 장전",
   "SEAL_LOAD.description": "봉인탄을 2발 장전합니다(최대 2발).",
   "SEAL_LOAD_SINGLE.title": "봉인탄 단발 장전",
@@ -26,7 +25,6 @@
   "SEAL_RITE.description": "[gold]지속[/gold]: 턴 종료 시 봉인탄 1발의 레벨이 추가로 1 증가합니다.",
   "SEAL_OPEN.title": "봉인 개방",
   "SEAL_OPEN.description": "가장 높은 레벨의 봉인탄을 발사 약실로 이동시킵니다.",
-
   "PRECISION_SHOT.title": "정밀 사격",
   "PRECISION_SHOT.description": "탄환 1발을 발사합니다(빈 약실이면 회전만). 각인 2를 얻습니다.",
   "EXECUTION_SHOT.title": "처형 사격",

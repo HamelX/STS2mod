@@ -66,14 +66,11 @@ public sealed class Panning() : CardModel(3, CardType.Attack, CardRarity.Common,
         }
 
         bool HasAliveOpponents()
-            => Owner.Creature.CombatState?.GetOpponentsOf(Owner.Creature).Any(c => !c.IsDead) == true;
+            => BulletResolver.HasAliveOpponents(Owner.Creature);
 
         MegaCrit.Sts2.Core.Entities.Creatures.Creature? ResolveAliveTarget(MegaCrit.Sts2.Core.Entities.Creatures.Creature? preferred)
         {
-            if (preferred is { IsDead: false } && preferred.Side != Owner.Creature.Side)
-                return preferred;
-
-            return Owner.Creature.CombatState?.GetOpponentsOf(Owner.Creature).FirstOrDefault(c => !c.IsDead);
+            return BulletResolver.ResolveAliveTarget(Owner.Creature, preferred);
         }
     }
 

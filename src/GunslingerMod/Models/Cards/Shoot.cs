@@ -27,12 +27,10 @@ public sealed class Shoot() : CardModel(1, CardType.Attack, CardRarity.Basic, Ta
         if (cylinder == null)
             return;
 
-        if (Owner.Creature.CombatState?.GetOpponentsOf(Owner.Creature).Any(c => c.IsAlive) != true)
+        if (!BulletResolver.HasAliveOpponents(Owner.Creature))
             return;
 
-        var shotTarget = preferredTarget.IsAlive
-            ? preferredTarget
-            : Owner.Creature.CombatState?.HittableEnemies.FirstOrDefault(e => e.IsAlive);
+        var shotTarget = BulletResolver.ResolveAliveTarget(Owner.Creature, preferredTarget);
         if (shotTarget == null)
             return;
 
