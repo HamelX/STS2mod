@@ -1,4 +1,4 @@
-using Godot;
+﻿using Godot;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Unlocks;
@@ -14,15 +14,17 @@ public sealed class GunslingerRelicPool : RelicPoolModel
 
     protected override IEnumerable<RelicModel> GenerateAllRelics()
     {
+        // Keep the starter relic registered so character initialization and model lookup remain valid.
         return
         [
-            // Starter relics should not appear in random relic pools.
+            ModelDb.Relic<CylinderRelic>(),
             ModelDb.Relic<HotEjectorRelic>()
         ];
     }
 
     public override IEnumerable<RelicModel> GetUnlockedRelics(UnlockState unlockState)
     {
-        return AllRelics.ToList();
+        // Starter relics should not appear in random relic rewards / pools.
+        return AllRelics.Where(r => r is not CylinderRelic).ToList();
     }
 }
