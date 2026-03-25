@@ -14,12 +14,27 @@ namespace GunslingerMod.Models.Characters;
 public sealed class Gunslinger : CharacterModel
 {
     public const string energyColorName = "gunslinger";
+    private const string CharacterSelectIconPath = "res://images/packed/character_select/char_select_gunslinger.png";
+    private const string CharacterSelectLockedIconPath = "res://images/packed/character_select/char_select_gunslinger_locked.png";
+    private const string TopPanelIconPath = "res://images/ui/top_panel/character_icon_gunslinger.png";
+    private const string TopPanelIconOutlinePath = "res://images/ui/top_panel/character_icon_gunslinger_outline.png";
+    private const string MapMarkerPath = "res://images/packed/map/icons/map_marker_gunslinger.png";
 
     public override CharacterGender Gender => CharacterGender.Masculine;
 
     protected override CharacterModel? UnlocksAfterRunAs => null;
 
     public override Color NameColor => new("4D4D4D");
+
+    public override CompressedTexture2D CharacterSelectIcon => GD.Load<CompressedTexture2D>(CharacterSelectIconPath);
+
+    public override CompressedTexture2D CharacterSelectLockedIcon => GD.Load<CompressedTexture2D>(CharacterSelectLockedIconPath);
+
+    public override Texture2D IconTexture => GD.Load<Texture2D>(TopPanelIconPath);
+
+    public override Texture2D IconOutlineTexture => GD.Load<Texture2D>(TopPanelIconOutlinePath);
+
+    public override CompressedTexture2D MapMarker => GD.Load<CompressedTexture2D>(MapMarkerPath);
 
     public override int StartingHp => 77;
 
