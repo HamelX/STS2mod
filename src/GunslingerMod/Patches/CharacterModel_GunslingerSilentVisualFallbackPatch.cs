@@ -23,11 +23,6 @@ public static class CharacterModel_GunslingerSilentVisualFallbackPatch
 
     private static bool IsTarget(CharacterModel model) => model is Gunslinger;
 
-    private static void LoadIfMissing<T>(ref T result, string path) where T : Resource
-    {
-        result ??= GD.Load<T>(path);
-    }
-
     private static Silent? TryGetSilentModel()
     {
         try
@@ -121,7 +116,7 @@ public static class CharacterModel_GunslingerSilentVisualFallbackPatch
     {
         if (!IsTarget(__instance))
             return;
-        LoadIfMissing(ref __result, GunslingerCharacterSelectIconPath);
+        __result ??= GD.Load<CompressedTexture2D>(GunslingerCharacterSelectIconPath);
         if (__result != null)
             return;
 
@@ -136,7 +131,7 @@ public static class CharacterModel_GunslingerSilentVisualFallbackPatch
     {
         if (!IsTarget(__instance))
             return;
-        LoadIfMissing(ref __result, GunslingerCharacterSelectLockedIconPath);
+        __result ??= GD.Load<CompressedTexture2D>(GunslingerCharacterSelectLockedIconPath);
         if (__result != null)
             return;
 
@@ -151,7 +146,7 @@ public static class CharacterModel_GunslingerSilentVisualFallbackPatch
     {
         if (!IsTarget(__instance))
             return;
-        LoadIfMissing(ref __result, GunslingerIconTexturePath);
+        __result ??= GD.Load<Texture2D>(GunslingerIconTexturePath);
         if (__result != null)
             return;
 
@@ -166,7 +161,7 @@ public static class CharacterModel_GunslingerSilentVisualFallbackPatch
     {
         if (!IsTarget(__instance))
             return;
-        LoadIfMissing(ref __result, GunslingerIconOutlineTexturePath);
+        __result ??= GD.Load<Texture2D>(GunslingerIconOutlineTexturePath);
         if (__result != null)
             return;
 
@@ -181,7 +176,7 @@ public static class CharacterModel_GunslingerSilentVisualFallbackPatch
     {
         if (!IsTarget(__instance))
             return;
-        LoadIfMissing(ref __result, GunslingerMapMarkerPath);
+        __result ??= GD.Load<CompressedTexture2D>(GunslingerMapMarkerPath);
         if (__result != null)
             return;
 
