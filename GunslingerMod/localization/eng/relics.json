@@ -24,7 +24,7 @@
   "MELANGE.flavor": "Mysterious sands from an unknown origin. Smells of cinnamon.",
   "MELANGE.title": "Melange",
   "CYLINDER_RELIC.title": "Six-Shot Cylinder",
-  "CYLINDER_RELIC.description": "At the start of each turn, add a temporary Reload to your hand. (Ethereal, Exhaust.) Block you gain is halved.",
+  "CYLINDER_RELIC.description": "At combat start, load 1 Normal round. At the start of your turn, if your cylinder is empty, load 1 Normal round.",
   "CYLINDER_RELIC.flavor": "Hand-fitted chambers, ready for a wish.",
   "HOT_EJECTOR_RELIC.title": "Hot Ejector",
   "HOT_EJECTOR_RELIC.description": "The first time you fire a real bullet each turn, gain [gold]1 Energy[/gold].",

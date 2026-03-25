@@ -11,7 +11,13 @@ public sealed class SealRite() : CardModel(1, CardType.Power, CardRarity.Rare, T
 {
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        // Always +1 Seal level per turn.
+        var cylinder = Owner.Creature.GetPower<CylinderPower>();
+        if (cylinder != null && cylinder.CountSealLoaded() == 0)
+        {
+            cylinder.TryLoadNext(CylinderPower.AmmoType.Seal);
+            await PowerCmd.SetAmount<CylinderPower>(Owner.Creature, cylinder.CountLoaded(), Owner.Creature, this);
+        }
+
         await PowerCmd.Apply<SealRitePower>(Owner.Creature, 1, Owner.Creature, this);
     }
 
