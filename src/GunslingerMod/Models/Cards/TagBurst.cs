@@ -24,7 +24,11 @@ public sealed class TagBurst() : CardModel(1, CardType.Attack, CardRarity.Uncomm
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
 
         var cylinder = Owner.Creature.GetPower<CylinderPower>();
-        if (cylinder == null)
+        if (cylinder == null || !BulletResolver.HasAliveOpponents(Owner.Creature))
+            return;
+
+        var target = BulletResolver.ResolveAliveTarget(Owner.Creature, cardPlay.Target);
+        if (target == null)
             return;
 
         // Trigger-pull path: always rotate, only resolve effects if a live round fired.
@@ -36,13 +40,13 @@ public sealed class TagBurst() : CardModel(1, CardType.Attack, CardRarity.Uncomm
             return;
 
         var bulletDamage = Math.Max(0m, BulletResolver.GetBaseDamage(ammoType, sealLevel));
-        await BulletResolver.FireAtTarget(choiceContext, Owner.Creature, cardPlay.Target, this, ammoType, sealLevel, bulletDamage);
+        await BulletResolver.FireAtTarget(choiceContext, Owner.Creature, target, this, ammoType, sealLevel, bulletDamage);
         await PowerCmd.Apply<ImprintPower>(Owner.Creature, 1, Owner.Creature, this);
 
-        if (Owner.Creature.CombatState?.GetOpponentsOf(Owner.Creature).Any(c => c.IsAlive) != true)
+        if (!BulletResolver.HasAliveOpponents(Owner.Creature))
             return;
 
-        if (!cardPlay.Target.IsAlive)
+        if (!target.IsAlive)
             return;
 
         var imprint = Owner.Creature.GetPower<ImprintPower>()?.Amount ?? 0;
@@ -51,7 +55,7 @@ public sealed class TagBurst() : CardModel(1, CardType.Attack, CardRarity.Uncomm
         if (burstDamage > 0)
             // Non-bullet follow-up hit: use null cardSource so bullet-source fallback checks
             // never misclassify this burst as a bullet when async-local context is unavailable.
-            await CreatureCmd.Damage(choiceContext, cardPlay.Target, burstDamage, ValueProp.Move, Owner.Creature, null);
+            await CreatureCmd.Damage(choiceContext, target, burstDamage, ValueProp.Move, Owner.Creature, null);
 
         await PowerCmd.Apply<RicochetPower>(Owner.Creature, IsUpgraded ? 2 : 1, Owner.Creature, this);
     }

@@ -38,12 +38,10 @@ public sealed class BlankFire() : CardModel(0, CardType.Skill, CardRarity.Uncomm
         if (cylinder == null)
             return;
 
-        if (Owner.Creature.CombatState?.GetOpponentsOf(Owner.Creature).Any(c => c.IsAlive) != true)
+        if (!BulletResolver.HasAliveOpponents(Owner.Creature))
             return;
 
-        var target = cardPlay.Target?.IsAlive == true
-            ? cardPlay.Target
-            : Owner.Creature.CombatState?.HittableEnemies.FirstOrDefault(e => e.IsAlive);
+        var target = BulletResolver.ResolveAliveTarget(Owner.Creature, cardPlay.Target);
         if (target == null)
             return;
 

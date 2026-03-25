@@ -1,4 +1,4 @@
-﻿{
+{
   "SHOOT.title": "Shoot",
   "SHOOT.description": "If you have ammo in your cylinder, spend 1 ammo, gain [gold]Imprint[/gold], and deal {Damage:diff()} damage.",
   "RELOAD.title": "Reload",

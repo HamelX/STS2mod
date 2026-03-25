@@ -119,9 +119,7 @@ internal static class BulletResolver
         if (cylinder == null)
             return;
 
-        var target = preferredTarget.IsAlive
-            ? preferredTarget
-            : source.CombatState?.HittableEnemies.FirstOrDefault(e => e.IsAlive);
+        var target = ResolveAliveTarget(source, preferredTarget);
         if (target == null)
             return;
 
@@ -137,6 +135,14 @@ internal static class BulletResolver
         await FireAtTarget(choiceContext, source, target, cardSource, ammoType, sealLevel, damage, suppressTracerTriggers: true);
     }
 
-    private static bool HasAliveOpponents(Creature source)
-        => source.CombatState?.GetOpponentsOf(source).Any(c => !c.IsDead) == true;
+    public static bool HasAliveOpponents(Creature source)
+        => source.CombatState?.GetOpponentsOf(source).Any(c => c.IsAlive) == true;
+
+    public static Creature? ResolveAliveTarget(Creature source, Creature? preferredTarget)
+    {
+        if (preferredTarget is { IsAlive: true } && preferredTarget.Side != source.Side)
+            return preferredTarget;
+
+        return source.CombatState?.GetOpponentsOf(source).FirstOrDefault(c => c.IsAlive);
+    }
 }
