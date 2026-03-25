@@ -1,4 +1,4 @@
-﻿using Godot;
+using Godot;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Unlocks;
@@ -16,7 +16,7 @@ public sealed class GunslingerRelicPool : RelicPoolModel
     {
         return
         [
-            ModelDb.Relic<CylinderRelic>(),
+            // Starter relics should not appear in random relic pools.
             ModelDb.Relic<HotEjectorRelic>()
         ];
     }
