@@ -24,12 +24,10 @@ public sealed class WalkingFire() : CardModel(1, CardType.Attack, CardRarity.Unc
         await PowerCmd.Apply<ImprintPower>(Owner.Creature, -3, Owner.Creature, this);
 
         var pulls = IsUpgraded ? 3 : 2;
-        var lastShotSucceeded = false;
+        var anyShotSucceeded = false;
 
         for (var i = 0; i < pulls; i++)
         {
-            lastShotSucceeded = false;
-
             if (!BulletResolver.HasAliveOpponents(Owner.Creature))
                 break;
 
@@ -44,12 +42,12 @@ public sealed class WalkingFire() : CardModel(1, CardType.Attack, CardRarity.Unc
             if (!didFire)
                 continue;
 
-            lastShotSucceeded = true;
+            anyShotSucceeded = true;
             var damage = Math.Max(0m, BulletResolver.GetBaseDamage(ammoType, sealLevel));
             await BulletResolver.FireAtTarget(choiceContext, Owner.Creature, target, this, ammoType, sealLevel, damage);
         }
 
-        if (lastShotSucceeded)
+        if (anyShotSucceeded)
         {
             cylinder.TryLoadNext(CylinderPower.AmmoType.Tracer);
             await PowerCmd.SetAmount<CylinderPower>(Owner.Creature, cylinder.CountLoaded(), Owner.Creature, this);

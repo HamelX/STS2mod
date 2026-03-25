@@ -33,9 +33,8 @@ public sealed class Gunslinger : CharacterModel
 
     public override IEnumerable<CardModel> StartingDeck =>
     [
-        // 10-card starter deck by user direction:
-        // Shoot x5, Defend x4, Reload x1.
-        ModelDb.Card<Shoot>(),
+        // 10-card starter deck:
+        // Shoot x4, Defend x4, Reload x2.
         ModelDb.Card<Shoot>(),
         ModelDb.Card<Shoot>(),
         ModelDb.Card<Shoot>(),
@@ -44,7 +43,7 @@ public sealed class Gunslinger : CharacterModel
         ModelDb.Card<DefendGunslinger>(),
         ModelDb.Card<DefendGunslinger>(),
         ModelDb.Card<DefendGunslinger>(),
-        ModelDb.Card<DefendGunslinger>(),
+        ModelDb.Card<Reload>(),
         ModelDb.Card<Reload>()
     ];
 
