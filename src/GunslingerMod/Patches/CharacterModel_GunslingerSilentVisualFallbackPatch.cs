@@ -23,6 +23,11 @@ public static class CharacterModel_GunslingerSilentVisualFallbackPatch
 
     private static bool IsTarget(CharacterModel model) => model is Gunslinger;
 
+    private static void LoadIfMissing<T>(ref T result, string path) where T : Resource
+    {
+        result ??= GD.Load<T>(path);
+    }
+
     private static Silent? TryGetSilentModel()
     {
         try
@@ -116,7 +121,7 @@ public static class CharacterModel_GunslingerSilentVisualFallbackPatch
     {
         if (!IsTarget(__instance))
             return;
-        __result ??= GD.Load<CompressedTexture2D>(GunslingerCharacterSelectIconPath);
+        LoadIfMissing(ref __result, GunslingerCharacterSelectIconPath);
         if (__result != null)
             return;
 
@@ -131,7 +136,7 @@ public static class CharacterModel_GunslingerSilentVisualFallbackPatch
     {
         if (!IsTarget(__instance))
             return;
-        __result ??= GD.Load<CompressedTexture2D>(GunslingerCharacterSelectLockedIconPath);
+        LoadIfMissing(ref __result, GunslingerCharacterSelectLockedIconPath);
         if (__result != null)
             return;
 
@@ -146,7 +151,7 @@ public static class CharacterModel_GunslingerSilentVisualFallbackPatch
     {
         if (!IsTarget(__instance))
             return;
-        __result ??= GD.Load<Texture2D>(GunslingerIconTexturePath);
+        LoadIfMissing(ref __result, GunslingerIconTexturePath);
         if (__result != null)
             return;
 
@@ -161,7 +166,7 @@ public static class CharacterModel_GunslingerSilentVisualFallbackPatch
     {
         if (!IsTarget(__instance))
             return;
-        __result ??= GD.Load<Texture2D>(GunslingerIconOutlineTexturePath);
+        LoadIfMissing(ref __result, GunslingerIconOutlineTexturePath);
         if (__result != null)
             return;
 
@@ -176,7 +181,7 @@ public static class CharacterModel_GunslingerSilentVisualFallbackPatch
     {
         if (!IsTarget(__instance))
             return;
-        __result ??= GD.Load<CompressedTexture2D>(GunslingerMapMarkerPath);
+        LoadIfMissing(ref __result, GunslingerMapMarkerPath);
         if (__result != null)
             return;
 
