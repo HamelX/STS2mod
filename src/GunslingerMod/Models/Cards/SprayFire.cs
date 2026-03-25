@@ -68,11 +68,11 @@ public sealed class SprayFire() : CardModel(2, CardType.Attack, CardRarity.Commo
         }
 
         bool HasAliveOpponents()
-            => Owner.Creature.CombatState?.GetOpponentsOf(Owner.Creature).Any(c => !c.IsDead) == true;
+            => BulletResolver.HasAliveOpponents(Owner.Creature);
 
         Creature? GetDeterministicOpponent(int seed)
         {
-            var alive = Owner.Creature.CombatState?.GetOpponentsOf(Owner.Creature).Where(c => !c.IsDead).ToList();
+            var alive = Owner.Creature.CombatState?.GetOpponentsOf(Owner.Creature).Where(c => c.IsAlive).ToList();
             if (alive == null || alive.Count == 0)
                 return null;
 

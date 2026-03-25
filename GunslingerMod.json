@@ -1,11 +1,12 @@
 {
   "id": "GunslingerMod",
-  "pck_name": "GunslingerMod",
   "name": "Gunslinger Mod",
   "author": "Hamel",
   "version": "1.0.0",
-  "has_pck": true,
+  "description": "Adds the Gunslinger character.",
   "has_dll": true,
-  "dependencies": ["BaseLib"],
-  "affects_gameplay": true
+  "has_pck": true,
+  "dependencies": [
+    "BaseLib"
+  ]
 }
