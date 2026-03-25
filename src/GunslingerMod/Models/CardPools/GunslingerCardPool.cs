@@ -22,21 +22,18 @@ public sealed class GunslingerCardPool : CardPoolModel
 
     protected override CardModel[] GenerateAllCards()
     {
-                return
+        return
         [
-            // Excel v2-aligned active card pool (38 cards)
             ModelDb.Card<Shoot>(),
             ModelDb.Card<DefendGunslinger>(),
             ModelDb.Card<Reload>(),
             ModelDb.Card<TakeCover>(),
             ModelDb.Card<Evasion>(),
-
             ModelDb.Card<EchoNote>(),
             ModelDb.Card<QuickRack>(),
             ModelDb.Card<HotChamber>(),
             ModelDb.Card<Panning>(),
             ModelDb.Card<SprayFire>(),
-
             ModelDb.Card<SealLoad>(),
             ModelDb.Card<SigilGuard>(),
             ModelDb.Card<EtchedTracer>(),
@@ -47,7 +44,6 @@ public sealed class GunslingerCardPool : CardPoolModel
             ModelDb.Card<ReboundNet>(),
             ModelDb.Card<ImprintManifestRicochet>(),
             ModelDb.Card<TracerConversion>(),
-
             ModelDb.Card<BallisticCompiler>(),
             ModelDb.Card<ChainBurst>(),
             ModelDb.Card<WalkingFire>(),
@@ -58,7 +54,6 @@ public sealed class GunslingerCardPool : CardPoolModel
             ModelDb.Card<EmptyTheMagazine>(),
             ModelDb.Card<OverclockDrum>(),
             ModelDb.Card<OverclockCharge>(),
-
             ModelDb.Card<ExecutionShot>(),
             ModelDb.Card<ImprintIgnition>(),
             ModelDb.Card<SealRite>(),
