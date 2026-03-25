@@ -4,7 +4,12 @@ set -euo pipefail
 repo_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$repo_root"
 
-if rg -n '^(<<<<<<<|=======|>>>>>>>)' --glob '!.git' .; then
+if rg -n '^[[:space:]]*(<<<<<<<|=======|>>>>>>>)' --hidden \
+  --glob '!.git/**' \
+  --glob '!**/*.png' \
+  --glob '!**/*.jpg' \
+  --glob '!**/*.ttf' \
+  .; then
   echo
   echo "[FAIL] Merge conflict markers detected."
   exit 1
