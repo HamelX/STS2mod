@@ -109,6 +109,8 @@ public static class CharacterModel_GunslingerSilentVisualFallbackPatch
     {
         if (!IsTarget(__instance))
             return;
+        if (__result != null)
+            return;
 
         var silent = TryGetSilentModel();
         if (silent?.CharacterSelectIcon != null)
@@ -120,6 +122,8 @@ public static class CharacterModel_GunslingerSilentVisualFallbackPatch
     private static void CharacterSelectLockedIcon_Postfix(CharacterModel __instance, ref Godot.CompressedTexture2D __result)
     {
         if (!IsTarget(__instance))
+            return;
+        if (__result != null)
             return;
 
         var silent = TryGetSilentModel();
@@ -133,6 +137,8 @@ public static class CharacterModel_GunslingerSilentVisualFallbackPatch
     {
         if (!IsTarget(__instance))
             return;
+        if (__result != null)
+            return;
 
         var silent = TryGetSilentModel();
         if (silent?.IconTexture != null)
@@ -145,6 +151,8 @@ public static class CharacterModel_GunslingerSilentVisualFallbackPatch
     {
         if (!IsTarget(__instance))
             return;
+        if (__result != null)
+            return;
 
         var silent = TryGetSilentModel();
         if (silent?.IconOutlineTexture != null)
@@ -156,6 +164,8 @@ public static class CharacterModel_GunslingerSilentVisualFallbackPatch
     private static void MapMarker_Postfix(CharacterModel __instance, ref Godot.CompressedTexture2D __result)
     {
         if (!IsTarget(__instance))
+            return;
+        if (__result != null)
             return;
 
         var silent = TryGetSilentModel();
