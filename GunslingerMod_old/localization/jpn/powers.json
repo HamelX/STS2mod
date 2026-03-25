@@ -1,0 +1,15 @@
+{
+  "CYLINDER_POWER.title": "シリンダー",
+  "CYLINDER_POWER.description": "シリンダーに装填された弾薬。",
+  "CYLINDER_POWER.smartDescription": "装填弾数：{Amount}.",
+
+  "IMPRINT_POWER.title": "刻印",
+  "IMPRINT_POWER.description": "射撃で蓄積された集中。",
+  "IMPRINT_POWER.smartDescription": "刻印：{Amount}.",
+
+  "EVASION_POWER.title": "回避",
+  "EVASION_POWER.description": "このターン、受けるダメージが半分になる。",
+
+  "EVASION_PLUS_POWER.title": "回避+",
+  "EVASION_PLUS_POWER.description": "このターン、受けるダメージが半分になり、さらに1減少する。"
+}

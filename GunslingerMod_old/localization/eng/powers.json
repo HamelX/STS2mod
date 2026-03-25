@@ -1,0 +1,15 @@
+﻿{
+  "CYLINDER_POWER.title": "Cylinder",
+  "CYLINDER_POWER.description": "Ammo loaded in your cylinder.",
+  "CYLINDER_POWER.smartDescription": "Ammo loaded: {Amount}.",
+
+  "IMPRINT_POWER.title": "Imprint",
+  "IMPRINT_POWER.description": "Built-up focus from firing.",
+  "IMPRINT_POWER.smartDescription": "Imprint stacks: {Amount}.",
+
+  "EVASION_POWER.title": "Evasion",
+  "EVASION_POWER.description": "This turn, damage you take is halved.",
+
+  "EVASION_PLUS_POWER.title": "Evasion+",
+  "EVASION_PLUS_POWER.description": "This turn, damage you take is halved and reduced by 1."
+}
