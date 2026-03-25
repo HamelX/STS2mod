@@ -14,7 +14,11 @@ public sealed class RicochetSeal() : CardModel(1, CardType.Attack, CardRarity.Un
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
 
         var cylinder = Owner.Creature.GetPower<CylinderPower>();
-        if (cylinder == null)
+        if (cylinder == null || !BulletResolver.HasAliveOpponents(Owner.Creature))
+            return;
+
+        var target = BulletResolver.ResolveAliveTarget(Owner.Creature, cardPlay.Target);
+        if (target == null)
             return;
 
         var didFire = cylinder.TryConsumeCurrent(out var ammoType, out var sealLevel);
@@ -25,7 +29,7 @@ public sealed class RicochetSeal() : CardModel(1, CardType.Attack, CardRarity.Un
             return;
 
         var damage = Math.Max(0m, BulletResolver.GetBaseDamage(ammoType, sealLevel));
-        await BulletResolver.FireAtTarget(choiceContext, Owner.Creature, cardPlay.Target, this, ammoType, sealLevel, damage);
+        await BulletResolver.FireAtTarget(choiceContext, Owner.Creature, target, this, ammoType, sealLevel, damage);
         await PowerCmd.Apply<ImprintPower>(Owner.Creature, 1, Owner.Creature, this);
 
         if (ammoType == CylinderPower.AmmoType.Seal)

@@ -1,4 +1,4 @@
-﻿{
+{
   "Gunslinger.aromaPrinciple": "[sine][purple]Through discipline, I find clarity...[/purple][/sine]",
   "Gunslinger.banter.alive.endTurnPing": "[sine]The moment passes.[/sine]",
   "Gunslinger.banter.dead.endTurnPing": "...",
@@ -13,7 +13,6 @@
   "Gunslinger.pronounSubject": "she",
   "Gunslinger.title": "The Gunslinger",
   "Gunslinger.titleObject": "The Gunslinger",
-
   "GUNSLINGER.title": "The Gunslinger",
   "GUNSLINGER.titleObject": "The Gunslinger",
   "GUNSLINGER.description": "A modern gunslinger climbing the Spire to fulfill a personal wish.\nBlock gained is halved.",

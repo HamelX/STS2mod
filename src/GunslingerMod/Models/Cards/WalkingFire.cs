@@ -30,12 +30,10 @@ public sealed class WalkingFire() : CardModel(1, CardType.Attack, CardRarity.Unc
         {
             lastShotSucceeded = false;
 
-            if (Owner.Creature.CombatState?.GetOpponentsOf(Owner.Creature).Any(c => c.IsAlive) != true)
+            if (!BulletResolver.HasAliveOpponents(Owner.Creature))
                 break;
 
-            var target = cardPlay.Target.IsAlive
-                ? cardPlay.Target
-                : Owner.Creature.CombatState?.HittableEnemies.FirstOrDefault(e => e.IsAlive);
+            var target = BulletResolver.ResolveAliveTarget(Owner.Creature, cardPlay.Target);
             if (target == null)
                 break;
 

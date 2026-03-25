@@ -2,8 +2,8 @@
   <PropertyGroup>
     <!-- Paths -->
     <STS2GamePath>C:\\Program Files (x86)\\Steam\\steamapps\\common\\Slay the Spire 2</STS2GamePath>
-    <ModsOutputDir>C:\\Users\\Hamel\\Desktop\\GunslingerMod_build</ModsOutputDir>
-    <GodotExePath>C:\\Users\\Hamel\\Downloads\\Godot_v4.5.1-stable_mono_win64 (2)\\Godot_v4.5.1-stable_mono_win64\\Godot_v4.5.1-stable_mono_win64.exe</GodotExePath>
+    <ModsOutputDir>C:\\work\\Build</ModsOutputDir>
+    <GodotExePath>C:\\work\\Godot_v4.5.1-stable_mono_win64\\Godot_v4.5.1-stable_mono_win64.exe</GodotExePath>
     
     <!-- Mod Metadata -->
     <ModName>GunslingerMod</ModName>

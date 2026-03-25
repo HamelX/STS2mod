@@ -23,11 +23,9 @@
   "MELANGE.description": "山札をシャッフルするたび、[gold]占術[/gold]3を行う。",
   "MELANGE.flavor": "由来不明の、神秘的な砂。シナモンの香りがする。",
   "MELANGE.title": "メランジ",
-
   "CYLINDER_RELIC.title": "6連発シリンダー",
   "CYLINDER_RELIC.description": "各ターン開始時、消滅/儚いの付いた[gold]装填[/gold]1枚を手札に加える。この戦闘中に得る[gold]ブロック[/gold]が半分になる。",
   "CYLINDER_RELIC.flavor": "願いのために整えられた手作業の薬室。",
-
   "HOT_EJECTOR_RELIC.title": "ホット・エジェクター",
   "HOT_EJECTOR_RELIC.description": "各ターン、初めて実弾を発射したとき[gold]エナジー[/gold]を1得る。",
   "HOT_EJECTOR_RELIC.flavor": "薬莢が床を打つ音で、テンポが跳ね上がる。"

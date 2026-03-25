@@ -23,11 +23,9 @@
   "VIOLET_LOTUS.title": "보랏빛 연꽃",
   "VIOLET_LOTUS.description": "[gold]명상[/gold]에서 벗어날 때마다 추가로 [gold]에너지[/gold] 1을 얻습니다.",
   "VIOLET_LOTUS.flavor": "옛 문헌에는 \"마나 웅덩이\"의 표면이 이 꽃들로 가득했다고 적혀 있습니다.",
-
   "CYLINDER_RELIC.title": "6연발 실린더",
   "CYLINDER_RELIC.description": "매 턴 시작 시 소멸/휘발성이 붙은 [gold]장전[/gold] 카드를 1장 손에 추가합니다. 이번 전투 동안 획득하는 [gold]방어도[/gold]가 절반이 됩니다.",
   "CYLINDER_RELIC.flavor": "소원을 위해 준비된 수제 약실.",
-
   "HOT_EJECTOR_RELIC.title": "핫 이젝터",
   "HOT_EJECTOR_RELIC.description": "매 턴 처음으로 격발할 때 [gold]에너지[/gold]를 1 얻습니다.",
   "HOT_EJECTOR_RELIC.flavor": "탄피가 바닥을 치는 순간."

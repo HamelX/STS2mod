@@ -17,7 +17,7 @@ public sealed class EtchedTracer() : CardModel(0, CardType.Skill, CardRarity.Com
         if (cylinder == null)
             return;
 
-        if (Owner.Creature.CombatState?.GetOpponentsOf(Owner.Creature).Any(c => c.IsAlive) == true)
+        if (BulletResolver.HasAliveOpponents(Owner.Creature))
         {
             var target = cardPlay.Target?.IsAlive == true
                 ? cardPlay.Target

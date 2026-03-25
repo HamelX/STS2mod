@@ -14,7 +14,11 @@ public sealed class PrecisionShot() : CardModel(1, CardType.Attack, CardRarity.C
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
         var cylinder = Owner.Creature.GetPower<CylinderPower>();
-        if (cylinder == null)
+        if (cylinder == null || !BulletResolver.HasAliveOpponents(Owner.Creature))
+            return;
+
+        var target = BulletResolver.ResolveAliveTarget(Owner.Creature, cardPlay.Target);
+        if (target == null)
             return;
 
         var didFire = cylinder.TryConsumeCurrent(out var ammoType, out var sealLevel);
@@ -28,6 +32,6 @@ public sealed class PrecisionShot() : CardModel(1, CardType.Attack, CardRarity.C
         await PowerCmd.Apply<ImprintPower>(Owner.Creature, IsUpgraded ? 3 : 2, Owner.Creature, this);
 
         var baseDamage = BulletResolver.GetBaseDamage(ammoType, sealLevel) + 3m;
-        await BulletResolver.FireAtTarget(choiceContext, Owner.Creature, cardPlay.Target, this, ammoType, sealLevel, baseDamage);
+        await BulletResolver.FireAtTarget(choiceContext, Owner.Creature, target, this, ammoType, sealLevel, baseDamage);
     }
 }

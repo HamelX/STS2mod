@@ -1,15 +1,13 @@
-﻿{
+{
   "CHAMBER.title": "Chamber {n}",
   "CHAMBER.desc_empty": "Empty.",
   "CHAMBER.firing_note": "Firing chamber (12 o'clock).",
   "CHAMBER.damage": "Damage: {d}",
-
   "AMMO.normal": "Ammo: Normal",
   "AMMO.enhanced": "Ammo: Enhanced",
   "AMMO.penetrator": "Ammo: Penetrator",
   "AMMO.seal": "Ammo: Seal",
   "AMMO.unknown": "Ammo: ?",
-
   "AMMO.penetrator_note": "Effect: Ignore block",
   "AMMO.seal_level": "Seal level: {l}",
   "AMMO.seal_t4": "Lv5+: +1 extra hit",

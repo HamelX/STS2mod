@@ -3,13 +3,11 @@
   "CHAMBER.desc_empty": "空です。",
   "CHAMBER.firing_note": "発射薬室(12時)。",
   "CHAMBER.damage": "ダメージ: {d}",
-
   "AMMO.normal": "弾種: 通常弾",
   "AMMO.enhanced": "弾種: 強化弾",
   "AMMO.penetrator": "弾種: 貫通弾",
   "AMMO.seal": "弾種: 封印弾",
   "AMMO.unknown": "弾種: ?",
-
   "AMMO.penetrator_note": "効果: ブロック無視",
   "AMMO.seal_level": "封印レベル: {l}",
   "AMMO.seal_t4": "Lv5+: 追加ヒット1回",
