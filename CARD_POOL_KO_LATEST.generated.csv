@@ -1,0 +1,41 @@
+Order,CardId,카드명,효과
+1,SHOOT,사격,{IfUpgraded:show:격발 1회. {Damage:diff()} 피해(+3).|격발 1회. {Damage:diff()} 피해.}
+2,DEFEND_GUNSLINGER,방어,{Block:diff()} 방어도를 획득.
+3,RELOAD,장전,{IfUpgraded:show:일반탄 2발 장전(최대 6). 카드 1장 뽑기.|일반탄 2발 장전(최대 6).}
+4,TAKE_COVER,엄폐,{Block:diff()} 방어도를 획득. 빈 약실마다 방어도 +1을 획득. 이번 턴 [재장전 불가] 상태가 됩니다.
+5,EVASION,회피,{IfUpgraded:show:이번 턴 다음에 받는 피해를 절반으로 만들고 추가로 1 감소시킵니다.|이번 턴 다음에 받는 피해를 절반으로 만듭니다.}
+6,QUICK_RACK,퀵 랙,{IfUpgraded:show:각인 1소모. 격발 1회. 추적탄 2발 장전. 카드 1장 뽑기.|각인 1소모. 격발 1회. 추적탄 1발 장전. 카드 1장 뽑기.}
+7,HOT_CHAMBER,핫 챔버,각인 1소모. 격발 1회. 성공 시 추가 피해 {Damage:diff()}. 각인 1획득.
+8,CHAIN_BURST,체인 버스트,{IfUpgraded:show:각인 2소모. 격발 3회. 사냥개시가 있으면 소모하고 +2회.|각인 2소모. 격발 2회. 사냥개시가 있으면 소모하고 +1회.}
+9,OVERCLOCK_DRUM,오버클록 드럼,[gold]지속[/gold]: 매 턴 첫 Tracer 발사 시 방아쇠 1회 추가로 당깁니다.
+10,WALKING_FIRE,워킹 파이어,{IfUpgraded:show:각인 3소모. 격발 2회. 첫 성공 시 사냥개시 획득. 성공마다 추적탄 1발 장전.|각인 3소모. 격발 1회. 첫 성공 시 사냥개시 획득. 성공마다 추적탄 1발 장전.}
+11,CROSSFIRE_RHYTHM,사냥 개시,{IfUpgraded:show:각인 2소모. 격발 2회. 사냥개시 보유 시 +1회.|각인 2소모. 격발 1회. 사냥개시 보유 시 +1회.}
+12,PANNING,패닝,{IfUpgraded:show:장전된 탄환을 순서대로 모두 격발. 격발마다 {Damage:diff()} 피해. 보존.|장전된 탄환을 순서대로 모두 격발. 격발마다 {Damage:diff()} 피해.}
+13,SPRAY_FIRE,난사,장전된 탄환을 무작위 적에게 모두 격발. 총 {Damage:diff()} 피해. 격발 수만큼 [gold]각인[/gold] 획득(최대 3).
+14,EXECUTION_SHOT,처형 사격,격발 1회. 대상 체력이 절반 이하면 피해 2배. [gold]각인[/gold] 3 획득.
+15,FAN_THE_BRAND,낙인 흩뿌리기,도탄 스택을 {IfUpgraded:show:2|1} 획득. 각인 1을 획득.
+16,TAG_BURST,표식 폭발,격발 1회. 성공 시 추가 피해를 주고 자신에게 도탄 스택을 부여.
+17,ECHO_NOTE,에코 노트,각인 1소모. 카드를 {IfUpgraded:show:2|1}장 뽑은 뒤 [gold]각인[/gold] 1을 획득.
+18,REBOUND_NET,리바운드 넷,적 1명당 도탄 스택 1획득.
+19,RICOCHET_SHOT,도탄 사격,{IfUpgraded:show:각인 1소모. 격발 1회. 도탄 스택 1획득.|각인 2소모. 격발 1회. 도탄 스택 1획득.}
+20,IMPRINT_MANIFEST_RICOCHET,현현: 도탄,각인 {IfUpgraded:show:3|4}소모. 자신에게 현현: 도탄 스택을 부여.
+21,IMPRINT_IGNITION,각인 점화,[gold]지속[/gold]: 각인 소비 카드의 피해량 {IfUpgraded:show:+2|+1}.
+22,IMPRINT_COMPRESSION,각인 압축,[gold]지속[/gold]: 턴 시작 시 각인이 {IfUpgraded:show:3|4} 이상이면 카드 1장 뽑기.
+23,BALLISTIC_COMPILER,탄도 컴파일러,[gold]지속[/gold]: 매 턴 첫 Tracer 발사 시 카드 1장을 뽑고 각인을 {IfUpgraded:show:2|1} 획득.
+24,OVERCLOCK_CHARGE,오버클록 장약,[gold]지속[/gold]: 한 턴에 3번째 발사 성공 시 에너지를 1 획득. {IfUpgraded:show:선천성.|}
+25,SEAL_LOAD,봉인탄 장전,봉인탄 1발 장전(최대 1). 이미 장전되어 있으면 봉인 레벨 +1. 방어도를 획득.
+26,SIGIL_GUARD,시질 가드,{IfUpgraded:show:8|5} 방어도를 획득. 봉인 레벨당 방어도 +1을 획득.
+27,GRAND_RITE,그랜드 라이트,"장전된 모든 봉인탄 레벨을 {IfUpgraded:show:3|2} 올린 뒤, 현재 칸을 1회 격발합니다."
+28,SEAL_SEARCH,봉인 추적,카드를 {IfUpgraded:show:3|2}장 뽑습니다. 가장 높은 레벨의 봉인탄을 발사 칸으로 이동시킵니다.
+29,SEAL_RITE,봉인의식,[gold]지속[/gold]: 턴 시작 시 봉인탄이 장전되어 있으면 봉인 레벨을 1 올립니다.
+30,SEAL_OPEN,봉인 개방,가장 높은 레벨의 봉인탄을 발사 칸으로 이동시킵니다. {IfUpgraded:show:그 봉인탄 레벨을 2 올립니다.|}
+31,SEAL_AMPLIFY,봉인 증폭,{IfUpgraded:show:장전된 모든 봉인탄의 레벨을 4 올립니다.|봉인탄 1발을 선택해 레벨을 3 올립니다.}
+32,SEAL_RESONANCE,봉인 공명,가장 높은 봉인탄 레벨의 2배 피해.
+33,SEAL_RELEASE_KAI,봉인 해방: 개,장전된 봉인탄을 격발합니다. 해당 봉인탄을 2번 발사. {IfUpgraded:show:보존.|}
+34,SEAL_RAMPAGE,봉인 폭주,봉인탄 필요. 봉인 레벨을 0으로 만들고 에너지 1 회복.
+35,SEAL_INSIGHT,봉인 통찰,"카드 {Draw}장을 뽑습니다. 봉인탄이 장전되어 있으면 +1, 봉인 레벨이 7 이상이면 추가로 +1 뽑습니다."
+36,SEAL_BARRIER,봉인 방벽,봉인탄 장전 상태에 따라 방어도를 획득.
+37,ETCHED_TRACER,에칭 트레이서,{IfUpgraded:show:격발 1회. 추적탄 1발 장전. 카드 1장 뽑기.|격발 1회. 추적탄 1발 장전.}
+38,IMPRINT_SQUEEZE,각인 압착,카드 1장 버림. 각인 {IfUpgraded:show:3|2}획득.
+39,TRACER_CONVERSION,추적탄 변환,일반탄 최대 2발을 추적탄으로 변환. {IfUpgraded:show:카드 1장 뽑기.|}
+40,EMPTY_THE_MAGAZINE,탄창 비우기,탄환을 모두 제거합니다. 제거한 수만큼 뽑습니다. 이번 턴 더 이상 카드를 뽑을 수 없습니다.

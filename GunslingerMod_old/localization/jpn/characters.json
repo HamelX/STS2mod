@@ -1,0 +1,14 @@
+{
+  "GUNSLINGER.title": "ガンスリンガー",
+  "GUNSLINGER.titleObject": "ガンスリンガー",
+  "GUNSLINGER.description": "個人的な願いを叶えるために尖塔を登る現代のガンスリンガー。",
+  "GUNSLINGER.cardsModifierTitle": "ガンスリンガーのカード",
+  "GUNSLINGER.cardsModifierDescription": "ガンスリンガーのカードが報酬とショップに出現する。",
+  "GUNSLINGER.pronounSubject": "彼",
+  "GUNSLINGER.pronounObject": "彼を",
+  "GUNSLINGER.pronounPossessive": "彼の",
+  "GUNSLINGER.possessiveAdjective": "彼の",
+  "GUNSLINGER.aromaPrinciple": "[sine]シリンダーのクリック。願いの重み。[/sine]",
+  "GUNSLINGER.goldMonologue": "[sine]金は鋼を買えるが、救いは買えない。[/sine]",
+  "GUNSLINGER.eventDeathPrevention": "まだだ。願いは終わっていない。"
+}

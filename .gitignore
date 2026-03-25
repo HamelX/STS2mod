@@ -1,0 +1,67 @@
+# Godot 4+ specific ignores
+.godot/
+.nomedia
+.vs/
+
+# Godot-specific ignores
+.import/
+export.cfg
+export_credentials.cfg
+*.tmp
+*.uid
+*.import
+
+# Imported translations (automatically generated from CSV files)
+*.translation
+images/relics/old/
+
+# Mono-specific ignores
+.mono/
+data_*/
+mono_crash.*.json
+
+# Analysis artifacts
+/tools/_analysis/
+# Build outputs
+bin/
+obj/
+
+# User/build artifacts
+*.pck
+*.dll
+*.exe
+*.zip
+*.7z
+*.rar
+
+# IDE/editor
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+
+# OS/temp
+.DS_Store
+Thumbs.db
+*.tmp
+*.log
+
+# OpenClaw/private
+MEMORY.md
+USER.md
+SOUL.md
+AGENTS.md
+HEARTBEAT.md
+BOOTSTRAP.md
+memory/
+
+# Generated docs/sheets and temp tooling
+CARD_LIST_*
+CARD_POOL_*READABLE*
+UpgradeLog.htm
+Backup/
+tools/_tmp_*
+tools/*_token_issues.txt
+tools/*_remaining_tokens.txt
+tools/rework_*

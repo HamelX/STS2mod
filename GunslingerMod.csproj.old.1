@@ -1,0 +1,77 @@
+﻿<Project Sdk="Godot.NET.Sdk/4.6.1">
+	<!-- Import user-specific paths -->
+	<Import Project="local.props" Condition="Exists('local.props')" />
+
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<PlatformTarget>x64</PlatformTarget>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+
+		<AssemblyName>$(ModName)</AssemblyName>
+		<Version>$(ModVersion)</Version>
+
+		<!-- Derived paths -->
+		<ModsOutputDir Condition="'$(ModsOutputDir)'==''">$(STS2GamePath)\mods\$(ModName)</ModsOutputDir>
+		<GameDataDir>$(STS2GamePath)\data_sts2_windows_x86_64</GameDataDir>
+		<GodotProject>$(MSBuildProjectDirectory)</GodotProject>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Reference Include="0Harmony">
+			<HintPath>$(GameDataDir)\0Harmony.dll</HintPath>
+		</Reference>
+		<Reference Include="GodotSharp">
+			<HintPath>$(GameDataDir)\GodotSharp.dll</HintPath>
+		</Reference>
+		<Reference Include="sts2">
+			<HintPath>$(GameDataDir)\sts2.dll</HintPath>
+		</Reference>
+	</ItemGroup>
+
+	<ItemGroup>
+		<!-- Alle Godot Assets -->
+		<Content Include="images\**\*.*;scenes\**\*.*;materials\**\*.*;GunslingerMod\localization\**\*.json">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</Content>
+		<Content Include="src\Core\**">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</Content>
+
+		<!-- Import-Dateien verstecken -->
+		<None Remove="**\*.import" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Remove="src\Core\**\*.cs" />
+		<Compile Remove="sts2_decompiled\**\*.cs" />
+		<Compile Remove="tools\_analysis\**\*.cs" />
+		<!-- Falls es noch andere Spiel-Ordner gibt: -->
+		<!-- <Compile Remove="src\GameSystems\**\*.cs" /> -->
+	</ItemGroup>
+
+	<!-- Generate mod_manifest.json -->
+	<Target Name="GenerateModManifest" BeforeTargets="BeforeBuild">
+		<PropertyGroup>
+			<ModManifestPath>$(GodotProject)\mod_manifest.json</ModManifestPath>
+			<ModManifestContent>
+				{
+				"pck_name": "$(ModName)",
+				"name": "$(ModDisplayName)",
+				"author": "$(ModAuthor)",
+				"version": "$(ModVersion)"
+				}
+			</ModManifestContent>
+		</PropertyGroup>
+
+		<WriteLinesToFile File="$(ModManifestPath)" Lines="$(ModManifestContent)" Overwrite="true" Encoding="UTF-8" />
+		<Message Text="Generated mod_manifest.json" Importance="high" />
+	</Target>
+
+
+	<Target Name="PostBuild" AfterTargets="Build">
+		<MakeDir Directories="$(ModsOutputDir)" />
+		<Copy SourceFiles="$(TargetPath)" DestinationFolder="$(ModsOutputDir)" />
+		<Exec Command="&quot;$(GodotExePath)&quot; --headless --path &quot;$(GodotProject)&quot; --export-pack &quot;Windows Desktop&quot; &quot;$(ModsOutputDir)\$(ModName).pck&quot;" ContinueOnError="true" />
+	</Target>
+</Project>

@@ -1,0 +1,60 @@
+using System;
+using System.Linq;
+using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Models;
+using GunslingerMod.Models.Combat;
+using GunslingerMod.Models.Powers;
+
+namespace GunslingerMod.Models.Cards;
+
+public sealed class WalkingFire() : CardModel(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy), IImprintConsumerCard
+{
+    protected override bool IsPlayable => (Owner?.Creature?.GetPower<ImprintPower>()?.Amount ?? 0) >= 3;
+
+    protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    {
+        ArgumentNullException.ThrowIfNull(cardPlay.Target);
+
+        var cylinder = Owner.Creature.GetPower<CylinderPower>();
+        if (cylinder == null)
+            return;
+
+        await PowerCmd.Apply<ImprintPower>(Owner.Creature, -3, Owner.Creature, this);
+
+        var pulls = IsUpgraded ? 3 : 2;
+        var lastShotSucceeded = false;
+
+        for (var i = 0; i < pulls; i++)
+        {
+            lastShotSucceeded = false;
+
+            if (Owner.Creature.CombatState?.GetOpponentsOf(Owner.Creature).Any(c => c.IsAlive) != true)
+                break;
+
+            var target = cardPlay.Target.IsAlive
+                ? cardPlay.Target
+                : Owner.Creature.CombatState?.HittableEnemies.FirstOrDefault(e => e.IsAlive);
+            if (target == null)
+                break;
+
+            var didFire = cylinder.TryConsumeCurrent(out var ammoType, out var sealLevel);
+            cylinder.AdvanceChamber();
+            await PowerCmd.SetAmount<CylinderPower>(Owner.Creature, cylinder.CountLoaded(), Owner.Creature, this);
+
+            if (!didFire)
+                continue;
+
+            lastShotSucceeded = true;
+            var damage = Math.Max(0m, BulletResolver.GetBaseDamage(ammoType, sealLevel));
+            await BulletResolver.FireAtTarget(choiceContext, Owner.Creature, target, this, ammoType, sealLevel, damage);
+        }
+
+        if (lastShotSucceeded)
+        {
+            cylinder.TryLoadNext(CylinderPower.AmmoType.Tracer);
+            await PowerCmd.SetAmount<CylinderPower>(Owner.Creature, cylinder.CountLoaded(), Owner.Creature, this);
+        }
+    }
+}

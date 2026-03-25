@@ -1,0 +1,14 @@
+{
+  "GUNSLINGER.title": "건슬링어",
+  "GUNSLINGER.titleObject": "건슬링어",
+  "GUNSLINGER.description": "개인적인 소원을 이루기 위해 첨탑을 오르는 현대의 총잡이.",
+  "GUNSLINGER.cardsModifierTitle": "건슬링어 카드",
+  "GUNSLINGER.cardsModifierDescription": "건슬링어 카드가 보상과 상점에 등장합니다.",
+  "GUNSLINGER.pronounSubject": "그",
+  "GUNSLINGER.pronounObject": "그를",
+  "GUNSLINGER.pronounPossessive": "그의",
+  "GUNSLINGER.possessiveAdjective": "그의",
+  "GUNSLINGER.aromaPrinciple": "[sine]실린더가 딸깍. 소원의 무게.[/sine]",
+  "GUNSLINGER.goldMonologue": "[sine]금은 강철을 사지만, 구원은 사지 못한다.[/sine]",
+  "GUNSLINGER.eventDeathPrevention": "아직은. 소원은 끝나지 않았다."
+}

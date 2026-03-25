@@ -1,0 +1,18 @@
+﻿{
+    "CHAMBER.title":  "Chamber {n}",
+    "CHAMBER.desc_empty":  "Empty.",
+    "CHAMBER.firing_note":  "Firing chamber (12 o\u0027clock).",
+    "CHAMBER.damage":  "Damage: {d}",
+    "AMMO.normal":  "Ammo: Normal",
+    "AMMO.enhanced":  "Ammo: Enhanced",
+    "AMMO.penetrator":  "Ammo: Penetrator",
+    "AMMO.tracer":  "Ammo: Tracer",
+    "AMMO.seal":  "Ammo: Seal",
+    "AMMO.unknown":  "Ammo: ?",
+    "AMMO.penetrator_note":  "Effect: Ignore block",
+    "AMMO.tracer_note":  "Effect: Low damage. Enables Tracer Rhythm this turn.",
+    "AMMO.seal_level":  "Seal level: {l}",
+    "AMMO.seal_t4":  "Lv5+: +1 extra hit",
+    "AMMO.seal_t8":  "Lv7+: Double damage + Ignore block",
+    "AMMO.seal_t12":  "Lv15+: Overpenetration (70%/50% behind)"
+}
