@@ -64,16 +64,13 @@ public sealed class QuickRack() : CardModel(1, CardType.Attack, CardRarity.Commo
         if (cylinder.TryLoadNext(CylinderPower.AmmoType.Tracer))
             return true;
 
-        // If full, convert an existing non-Seal/non-Tracer round to Tracer so the card never whiffs on load.
-        for (var offset = 0; offset < CylinderPower.MaxRounds; offset++)
+        // Fallback should be narrow: only retune the current firing chamber when no empty slot exists.
+        var idx = cylinder.ChamberIndex;
+        var ammo = cylinder.GetAmmoType(idx);
+        if (ammo is CylinderPower.AmmoType.Normal or CylinderPower.AmmoType.Enhanced or CylinderPower.AmmoType.Penetrator)
         {
-            var idx = (cylinder.ChamberIndex + offset) % CylinderPower.MaxRounds;
-            var ammo = cylinder.GetAmmoType(idx);
-            if (ammo is CylinderPower.AmmoType.Normal or CylinderPower.AmmoType.Enhanced or CylinderPower.AmmoType.Penetrator)
-            {
-                cylinder.ClearChamberAt(idx);
-                return cylinder.TryLoadInto(idx, CylinderPower.AmmoType.Tracer);
-            }
+            cylinder.ClearChamberAt(idx);
+            return cylinder.TryLoadInto(idx, CylinderPower.AmmoType.Tracer);
         }
 
         return false;
