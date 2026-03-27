@@ -109,9 +109,7 @@ internal static class BulletResolver
             if (!HasAliveOpponents(source))
                 return;
 
-            var finalDamage = damage;
-            if (cardSource is IImprintConsumerCard)
-                finalDamage += source.GetPower<ImprintIgnitionPower>()?.Amount ?? 0;
+            var finalDamage = damage + (source.GetPower<ImprintIgnitionPower>()?.Amount ?? 0);
 
             // Seal Lv7+: keep a single hit, but double that hit's final damage.
             if (ammoType == CylinderPower.AmmoType.Seal && sealLevel >= CylinderPower.SealThresholdUnblockable)

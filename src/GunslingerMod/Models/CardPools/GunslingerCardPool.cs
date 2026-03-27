@@ -58,19 +58,16 @@ public sealed class GunslingerCardPool : CardPoolModel
             ModelDb.Card<SealTension>(),
             ModelDb.Card<HuntReload>(),
             ModelDb.Card<SealSearch>(),
-            ModelDb.Card<SealAmplify>(),
             ModelDb.Card<EmptyTheMagazine>(),
             ModelDb.Card<OverclockDrum>(),
             ModelDb.Card<OverclockCharge>(),
             ModelDb.Card<ExecutionShot>(),
             ModelDb.Card<ImprintIgnition>(),
             ModelDb.Card<SealRite>(),
+            ModelDb.Card<GrandRite>(),
             ModelDb.Card<SealReleaseKai>(),
             ModelDb.Card<SealRampage>(),
-            ModelDb.Card<SealInsight>(),
-            ModelDb.Card<SealBarrier>(),
             ModelDb.Card<FinalVolley>(),
-            ModelDb.Card<SealImprint>(),
             ModelDb.Card<DeadAngle>()
         ];
     }

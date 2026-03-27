@@ -31,18 +31,16 @@
 | `ChainBurst` | `CHAIN_BURST` | `1, Attack, Uncommon, AnyEnemy` | 체인 버스트 | {IfUpgraded:show:각인 2소모. 격발 1회. 사냥개시 ON이면 +2회.\|각인 2소모. 격발 1회. 사냥개시 ON이면 +1회.} |
 | `WalkingFire` | `WALKING_FIRE` | `1, Attack, Uncommon, AnyEnemy` | 워킹 파이어 | {IfUpgraded:show:각인 3을 소모합니다. 격발 3회. 이번 카드로 한 번이라도 실탄 발사에 성공하면 추적탄 1발을 장전합니다.\|각인 3을 소모합니다. 격발 2회. 이번 카드로 한 번이라도 실탄 발사에 성공하면 추적탄 1발을 장전합니다.} |
 | `BlankFire` | `BLANK_FIRE` | `0, Skill, Uncommon, None` | 블랭크 파이어 | {IfUpgraded:show:각인 1소모. 사냥개시 ON. 격발 1회.\|각인 2소모. 사냥개시 ON. 격발 1회.} |
-| `SealSearch` | `SEAL_SEARCH` | `1, Skill, Uncommon, None` | 봉인 추적 | {IfUpgraded:show:봉인탄이 장전되어 있으면 카드 4장 뽑기. 아니면 카드 3장 뽑기.\|봉인탄이 장전되어 있으면 카드 3장 뽑기. 아니면 카드 2장 뽑기.} |
-| `SealAmplify` | `SEAL_AMPLIFY` | `1, Skill, Uncommon, None` | 봉인 증폭 | {IfUpgraded:show:장전된 봉인탄의 레벨을 5 올립니다.\|장전된 봉인탄의 레벨을 3 올립니다.} |
+| `SealSearch` | `SEAL_SEARCH` | `1, Skill, Uncommon, None` | 봉인 추적 | {IfUpgraded:show:카드 3장 뽑기. 봉인탄이 장전되어 있으면 카드 1장 추가로 뽑기.\|카드 2장 뽑기. 봉인탄이 장전되어 있으면 카드 1장 추가로 뽑기.} |
 | `EmptyTheMagazine` | `EMPTY_THE_MAGAZINE` | `1, Skill, Uncommon, None` | 탄창 비우기 | 장전된 탄환을 모두 제거합니다. 제거한 수만큼 카드를 뽑습니다. 그 후, 이번 턴에는 더 이상 카드를 뽑을 수 없습니다. |
 | `OverclockDrum` | `OVERCLOCK_DRUM` | `2, Power, Rare, None` | 오버클록 드럼 | 매 턴 첫 Tracer 발사 시 방아쇠 1회 추가로 당깁니다. 이 효과는 중첩되지 않습니다. |
 | `OverclockCharge` | `OVERCLOCK_CHARGE` | `3, Power, Rare, None` | 오버클록 장약 | {IfUpgraded:show:한 턴에 3번째 발사 성공 시 에너지를 1 획득. 선천성.\|한 턴에 3번째 발사 성공 시 에너지를 1 획득.} |
 | `ExecutionShot` | `EXECUTION_SHOT` | `2, Attack, Rare, AnyEnemy` | 처형 사격 | {IfUpgraded:show:격발 1회. 대상 체력이 절반 이하면 피해 3배.\|격발 1회. 대상 체력이 절반 이하면 피해 2배.} |
-| `ImprintIgnition` | `IMPRINT_IGNITION` | `2, Power, Rare, None` | 각인 점화 | {IfUpgraded:show:각인 소비 카드의 피해량 +2.\|각인 소비 카드의 피해량 +1.} |
+| `ImprintIgnition` | `IMPRINT_IGNITION` | `2, Power, Rare, None` | 각인 점화 | {IfUpgraded:show:파워: 내 탄환 격발 피해 +2.\|파워: 내 탄환 격발 피해 +1.} |
 | `SealRite` | `SEAL_RITE` | `1, Power, Rare, None` | 봉인의식 | {IfUpgraded:show:파워: 턴 시작 시 봉인탄이 장전되어 있으면 장전된 봉인탄 레벨을 1 올립니다. 사용 시 봉인탄이 없다면 봉인탄 1발을 장전합니다. 선천성.\|파워: 턴 시작 시 봉인탄이 장전되어 있으면 장전된 봉인탄 레벨을 1 올립니다. 사용 시 봉인탄이 없다면 봉인탄 1발을 장전합니다.} |
+| `GrandRite` | `GRAND_RITE` | `2, Skill, Rare, AnyEnemy` | 그랜드 라이트 | {IfUpgraded:show:가장 높은 레벨의 장전된 봉인탄 레벨을 3 올립니다. 그 봉인탄을 발사 칸으로 정렬합니다. 직접 격발 1회.\|가장 높은 레벨의 장전된 봉인탄 레벨을 2 올립니다. 그 봉인탄을 발사 칸으로 정렬합니다. 직접 격발 1회.} |
 | `SealReleaseKai` | `SEAL_RELEASE_KAI` | `3, Attack, Rare, AnyEnemy` | 봉인 해방: 개 | {IfUpgraded:show:가장 높은 레벨의 장전된 봉인탄을 발사 칸으로 정렬합니다. 2회 격발. 보존.\|가장 높은 레벨의 장전된 봉인탄을 발사 칸으로 정렬합니다. 2회 격발.} |
 | `SealRampage` | `SEAL_RAMPAGE` | `0, Skill, Rare, None` | 봉인 폭주 | {IfUpgraded:show:봉인탄이 장전되어 있을 때만 사용 가능. 가장 높은 봉인 레벨 1 감소. [gold]에너지[/gold] 1 획득. 카드 1장 뽑기.\|봉인탄이 장전되어 있을 때만 사용 가능. 가장 높은 봉인 레벨 2 감소. [gold]에너지[/gold] 1 획득.} |
-| `SealInsight` | `SEAL_INSIGHT` | `1, Skill, Rare, None` | 봉인 통찰 | 카드 {Draw}장을 뽑습니다. 봉인탄이 장전되어 있으면 +1, 봉인 레벨이 7 이상이면 추가로 +1 더 뽑습니다. |
-| `SealBarrier` | `SEAL_BARRIER` | `0, Skill, Rare, Self` | 봉인 방벽 | 방어도 5 획득. 봉인탄이 있으면 최고 봉인 레벨 × 2만큼 추가 획득하고 해당 봉인탄 레벨을 1 올립니다. |
 
 ## 2026-03-27 확장 패스 반영 사항
 
@@ -78,8 +76,19 @@
 
 - `SealOpen` 제거: 카드 풀/활성 설계에서 삭제.
 - `GrandChamber` 제거: 카드 풀에서 삭제(중복 정렬 역할 축소).
-- `SealSearch` 재설계: 정렬 제거, 봉인탄 장전 여부 기반 드로우 지원 카드로 변경.
+- `SealSearch` 재설계: 정렬 제거, 드로우 2/3 + 봉인탄 장전 시 추가 드로우 1장.
 - `GrandRite` 재설계: 단일 봉인탄 성장(+2/+3) + 내부 정렬 + 즉시 1회 해방.
 - `SealReleaseKai` 정렬 내장: 최고 레벨 봉인탄 정렬 후 2회 발사.
 - `RicochetSeal` 재설계: 도탄 보상 제거, 봉인탄 직접 격발 성공 시 드로우 보상(1/2).
 - `SealRampage` 재설계: 최고 봉인 레벨 일부 소모(-2/-1) 후 에너지 1 획득, 업그레이드 시 카드 1장 드로우.
+
+## 2026-03-27 Gunslinger 정리/리밸런스 (이번 변경)
+
+- Seal 축은 **Path A(축소 유지)**를 채택:
+  - 유지: `SealLoad`, `SealTension`, `SealSearch`, `SigilGuard`, `SealRite`, `GrandRite`, `RicochetSeal`, `SealRampage`, `SealReleaseKai`
+  - 카드 풀 제외: `SealAmplify`, `SealImprint`, `SealInsight`, `SealBarrier`, `GrandChamber`, `SealOpen`
+- `ImprintIgnition` 효과 변경: "각인 소비 카드 피해 증가"가 아니라 "모든 탄환 격발 피해 증가(+1/+2)"로 통합.
+- Seal 해방 흐름 정리:
+  - 중간 해방: `GrandRite` (성장 + 내부 정렬 + 즉시 1회 격발)
+  - 최종 해방: `SealReleaseKai` (내부 정렬 + 2회 격발)
+  - 브리지 해방: `RicochetSeal` (내부 정렬 + 1회 직접 격발 + 성공 시 드로우)
