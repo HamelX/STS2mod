@@ -30,6 +30,7 @@ check "combatState.RoundNumber == 1 || cylinder.CountLoaded() == 0" "src/Gunslin
 check "__result ??= GD.Load<CompressedTexture2D>(GunslingerCharacterSelectIconPath);" "src/GunslingerMod/Patches/CharacterModel_GunslingerSilentVisualFallbackPatch.cs" "Character icon fallback load"
 check "TryConsumeCurrentWithSealSkip" "src/GunslingerMod/Models/Combat/BulletResolver.cs" "Seal-skip trigger helper added"
 check "[Gunslinger] SealSkip:" "src/GunslingerMod/Models/Combat/BulletResolver.cs" "Seal-skip debug log prefix"
+check "loaded == CylinderPower.MaxRounds" "src/GunslingerMod/Models/Combat/BulletResolver.cs" "Seal-skip disabled only on full-seal cylinder"
 check "Any(c => c.IsAlive && c.CurrentHp > 0)" "src/GunslingerMod/Models/Combat/BulletResolver.cs" "Alive-opponent checks use HP gate"
 check "if (shotsFired > 0 && HasAliveOpponents())" "src/GunslingerMod/Models/Cards/SprayFire.cs" "SprayFire skips post-kill imprint apply"
 

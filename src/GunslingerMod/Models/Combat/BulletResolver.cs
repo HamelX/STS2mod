@@ -66,7 +66,8 @@ internal static class BulletResolver
                 return false;
         }
 
-        return loaded > 0;
+        // Infinite-loop guard should only disable skip when the whole cylinder is Seal.
+        return loaded == CylinderPower.MaxRounds;
     }
 
     public static decimal GetBaseDamage(CylinderPower.AmmoType ammoType, byte sealLevel)
