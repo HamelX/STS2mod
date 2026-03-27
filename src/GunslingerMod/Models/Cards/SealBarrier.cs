@@ -33,6 +33,7 @@ public sealed class SealBarrier() : CardModel(0, CardType.Skill, CardRarity.Rare
             }
 
             block += bestLevel * 2m;
+            cylinder.IncrementSealLevels(1);
         }
 
         await CreatureCmd.GainBlock(Owner.Creature, block, ValueProp.Move, cardPlay);

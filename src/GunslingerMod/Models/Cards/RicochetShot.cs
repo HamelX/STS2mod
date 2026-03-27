@@ -1,12 +1,14 @@
+using System;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
+using GunslingerMod.Models.Combat;
 using GunslingerMod.Models.Powers;
 
 namespace GunslingerMod.Models.Cards;
 
-public sealed class RicochetShot() : CardModel(3, CardType.Skill, CardRarity.Rare, TargetType.None), IImprintConsumerCard
+public sealed class RicochetShot() : CardModel(3, CardType.Skill, CardRarity.Rare, TargetType.AnyEnemy), IImprintConsumerCard
 {
     private const int ImprintCost = 3;
 
@@ -17,7 +19,27 @@ public sealed class RicochetShot() : CardModel(3, CardType.Skill, CardRarity.Rar
         if ((Owner.Creature.GetPower<ImprintPower>()?.Amount ?? 0) < ImprintCost)
             return;
 
+        ArgumentNullException.ThrowIfNull(cardPlay.Target);
+
+        var cylinder = Owner.Creature.GetPower<CylinderPower>();
+        if (cylinder == null || !BulletResolver.HasAliveOpponents(Owner.Creature))
+            return;
+
+        var target = BulletResolver.ResolveAliveTarget(Owner.Creature, cardPlay.Target);
+        if (target == null)
+            return;
+
         await PowerCmd.Apply<ImprintPower>(Owner.Creature, -ImprintCost, Owner.Creature, this);
+
+        var didFire = BulletResolver.TryConsumeCurrentWithSealSkip(cylinder, this, out var ammoType, out var sealLevel);
+        await PowerCmd.SetAmount<CylinderPower>(Owner.Creature, cylinder.CountLoaded(), Owner.Creature, this);
+
+        if (didFire)
+        {
+            var damage = Math.Max(0m, BulletResolver.GetBaseDamage(ammoType, sealLevel));
+            await BulletResolver.FireAtTarget(choiceContext, Owner.Creature, target, this, ammoType, sealLevel, damage);
+        }
+
         await PowerCmd.Apply<RicochetPower>(Owner.Creature, 2, Owner.Creature, this);
         await PowerCmd.Apply<NextAttackFreePower>(Owner.Creature, 1, Owner.Creature, this);
     }

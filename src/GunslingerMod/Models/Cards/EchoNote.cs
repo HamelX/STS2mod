@@ -24,6 +24,6 @@ public sealed class EchoNote() : CardModel(0, CardType.Skill, CardRarity.Common,
             return;
 
         await PowerCmd.Apply<ImprintPower>(Owner.Creature, -1, Owner.Creature, this);
-        await CardPileCmd.Draw(choiceContext, IsUpgraded ? 2 : 1, Owner);
+        await CardPileCmd.Draw(choiceContext, IsUpgraded ? 3 : 2, Owner);
     }
 }
