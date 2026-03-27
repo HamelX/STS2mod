@@ -40,7 +40,6 @@ public sealed class TagBurst() : CardModel(1, CardType.Attack, CardRarity.Uncomm
 
         var bulletDamage = Math.Max(0m, BulletResolver.GetBaseDamage(ammoType, sealLevel));
         await BulletResolver.FireAtTarget(choiceContext, Owner.Creature, target, this, ammoType, sealLevel, bulletDamage);
-        await PowerCmd.Apply<ImprintPower>(Owner.Creature, 1, Owner.Creature, this);
 
         if (!BulletResolver.HasAliveOpponents(Owner.Creature))
             return;

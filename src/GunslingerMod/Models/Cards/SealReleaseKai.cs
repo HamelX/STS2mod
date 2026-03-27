@@ -7,7 +7,6 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using GunslingerMod.Models.Combat;
-using GunslingerMod.Models.Powers;
 
 namespace GunslingerMod.Models.Cards;
 
@@ -49,8 +48,6 @@ public sealed class SealReleaseKai() : CardModel(3, CardType.Attack, CardRarity.
 
         var combatState = Owner.Creature.CombatState;
         Creature? target = cardPlay.Target;
-        var shotsFired = 0;
-
         // Fire the consumed Seal bullet twice.
         for (var i = 0; i < 2; i++)
         {
@@ -63,14 +60,10 @@ public sealed class SealReleaseKai() : CardModel(3, CardType.Attack, CardRarity.
 
             var baseDamage = BulletResolver.GetBaseDamage(ammoType, sealLevel);
             await BulletResolver.FireAtTarget(choiceContext, Owner.Creature, target, this, ammoType, sealLevel, baseDamage);
-            shotsFired++;
 
             if (!BulletResolver.HasAliveOpponents(Owner.Creature))
                 return;
         }
-
-        if (shotsFired > 0 && BulletResolver.HasAliveOpponents(Owner.Creature))
-            await PowerCmd.Apply<ImprintPower>(Owner.Creature, Math.Min(3, shotsFired), Owner.Creature, this);
     }
 
     private static int FindNextSealIndex(CylinderPower cylinder)

@@ -118,6 +118,7 @@ internal static class BulletResolver
                 finalDamage *= 2m;
 
             await CreatureCmd.Damage(choiceContext, target, finalDamage, props, source, cardSource);
+            await PowerCmd.Apply<ImprintPower>(source, 1, source, cardSource);
 
             if (!HasAliveOpponents(source))
                 return;

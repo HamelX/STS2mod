@@ -350,8 +350,6 @@ public sealed class CylinderPower : PowerModel
     {
         if (Owner != null && Owner.Side == side)
         {
-            // Smooth seal gameplay: loaded Seal bullets gain 1 level each of your turns.
-            IncrementSealLevels(1);
             Amount = CountLoaded();
         }
         return Task.CompletedTask;
@@ -398,5 +396,4 @@ public sealed class CylinderPower : PowerModel
             ClearChamber(sealIndices[i]);
     }
 }
-
 

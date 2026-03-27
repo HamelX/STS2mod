@@ -4,7 +4,6 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using GunslingerMod.Models.Combat;
-using GunslingerMod.Models.Powers;
 
 namespace GunslingerMod.Models.Cards;
 
@@ -37,6 +36,5 @@ public sealed class GrandRite() : CardModel(2, CardType.Skill, CardRarity.Rare, 
 
         var damage = Math.Max(0m, BulletResolver.GetBaseDamage(ammoType, sealLevel));
         await BulletResolver.FireAtTarget(choiceContext, Owner.Creature, target, this, ammoType, sealLevel, damage);
-        await PowerCmd.Apply<ImprintPower>(Owner.Creature, 1, Owner.Creature, this);
     }
 }

@@ -8,7 +8,6 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using GunslingerMod.Models.Combat;
 using GunslingerMod.Models.DynamicVars;
-using GunslingerMod.Models.Powers;
 
 namespace GunslingerMod.Models.Cards;
 
@@ -52,12 +51,6 @@ public sealed class SprayFire() : CardModel(2, CardType.Attack, CardRarity.Commo
 
             if (!HasAliveOpponents())
                 break;
-        }
-
-        if (shotsFired > 0 && HasAliveOpponents())
-        {
-            var imprintGain = Math.Min(3, shotsFired);
-            await PowerCmd.Apply<ImprintPower>(Owner.Creature, imprintGain, Owner.Creature, this);
         }
 
         bool HasAliveOpponents()

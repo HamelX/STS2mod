@@ -7,7 +7,6 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 using GunslingerMod.Models.Combat;
-using GunslingerMod.Models.Powers;
 
 namespace GunslingerMod.Models.Cards;
 
@@ -44,8 +43,6 @@ public sealed class Shoot() : CardModel(1, CardType.Attack, CardRarity.Basic, Ta
             await CardPileCmd.Draw(choiceContext, 1, Owner);
             return;
         }
-
-        await PowerCmd.Apply<ImprintPower>(Owner.Creature, 1, Owner.Creature, this);
 
         var baseDamage = Math.Max(0m, BulletResolver.GetBaseDamage(ammoType, sealLevel));
         if (IsUpgraded)

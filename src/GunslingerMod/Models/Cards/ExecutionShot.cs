@@ -3,7 +3,6 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using GunslingerMod.Models.Combat;
-using GunslingerMod.Models.Powers;
 
 namespace GunslingerMod.Models.Cards;
 
@@ -25,8 +24,6 @@ public sealed class ExecutionShot() : CardModel(2, CardType.Attack, CardRarity.R
 
         if (!didFire)
             return;
-
-        await PowerCmd.Apply<ImprintPower>(Owner.Creature, 3, Owner.Creature, this);
 
         var baseDamage = BulletResolver.GetBaseDamage(ammoType, sealLevel);
 

@@ -7,7 +7,6 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using GunslingerMod.Models.Combat;
 using GunslingerMod.Models.DynamicVars;
-using GunslingerMod.Models.Powers;
 
 namespace GunslingerMod.Models.Cards;
 
@@ -25,7 +24,6 @@ public sealed class Panning() : CardModel(3, CardType.Attack, CardRarity.Common,
         if (cylinder == null || cylinder.Amount <= 0)
             return;
 
-        var shotsFired = 0;
         for (var i = 0; i < 6; i++)
         {
             if (!HasAliveOpponents())
@@ -36,8 +34,6 @@ public sealed class Panning() : CardModel(3, CardType.Attack, CardRarity.Common,
 
             if (!didFire)
                 continue;
-
-            shotsFired++;
 
             var shotTarget = ResolveAliveTarget(preferredTarget);
             if (shotTarget == null)
@@ -51,12 +47,6 @@ public sealed class Panning() : CardModel(3, CardType.Attack, CardRarity.Common,
 
             if (!HasAliveOpponents())
                 break;
-        }
-
-        if (shotsFired > 0 && HasAliveOpponents())
-        {
-            var imprintGain = Math.Min(3, shotsFired);
-            await PowerCmd.Apply<ImprintPower>(Owner.Creature, imprintGain, Owner.Creature, this);
         }
 
         bool HasAliveOpponents()
