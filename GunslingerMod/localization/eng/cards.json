@@ -42,7 +42,7 @@
   "TRACER_CONVERSION.title": "Tracer Conversion",
   "TRACER_CONVERSION.description": "{IfUpgraded:show:Convert up to 2 loaded Normal bullets into Tracer bullets. Draw 1 card.|Convert up to 2 loaded Normal bullets into Tracer bullets. }",
   "READ_THE_MARK.title": "Read the Mark",
-  "READ_THE_MARK.description": "Gain {Block:diff()} Block. If you have any Ricochet stack/effect, draw 1 card.",
+  "READ_THE_MARK.description": "{IfUpgraded:show:Gain {Block:diff()} Block. If you have Ricochet, draw 1 card.|Gain {Block:diff()} Block. If you have Ricochet, draw 1 card.}",
   "FAN_THE_BRAND.title": "Fan the Brand",
   "FAN_THE_BRAND.description": "{IfUpgraded:show:Gain 3 Ricochet. Gain 1 Imprint.|Gain 2 Ricochet. Gain 1 Imprint.}",
   "TAG_BURST.title": "Tag Burst",
@@ -60,7 +60,7 @@
   "QUICK_RACK.title": "Quick Rack",
   "QUICK_RACK.description": "{IfUpgraded:show:Spend 1 Imprint. Load 2 Tracer rounds. If Tracer Rhythm is ON, Trigger Pull 2 times. Otherwise, draw 1 card.|Spend 1 Imprint. Load 2 Tracer rounds. If Tracer Rhythm is ON, Trigger Pull 1 time. Otherwise, draw 1 card.}",
   "HOT_CHAMBER.title": "Hot Chamber",
-  "HOT_CHAMBER.description": "{IfUpgraded:show:Load 2 Tracer rounds. If Tracer Rhythm is ON, draw 2 cards. Otherwise, draw 1 card.|Load 2 Tracer rounds. If Tracer Rhythm is ON, draw 2 cards. Otherwise, draw 1 card. Base: Spend 1 Imprint.}",
+  "HOT_CHAMBER.description": "{IfUpgraded:show:Load 3 Tracer rounds. If Tracer Rhythm is ON, draw 2 cards. Otherwise, draw 1 card.|Load 2 Tracer rounds. If Tracer Rhythm is ON, draw 2 cards. Otherwise, draw 1 card.}",
   "CHAIN_BURST.title": "Chain Burst",
   "CHAIN_BURST.description": "{IfUpgraded:show:Spend 2 Imprint. Trigger Pull 1 time. If Tracer Rhythm is ON, +2 times.|Spend 2 Imprint. Trigger Pull 1 time. If Tracer Rhythm is ON, +1 time.}",
   "OVERCLOCK_DRUM.title": "Overclock Drum",
@@ -108,5 +108,13 @@
   "GRAND_CHAMBER.title": "Grand Chamber",
   "GRAND_CHAMBER.description": "{IfUpgraded:show:If a Seal bullet is loaded: draw 2 cards, align that Seal to the firing chamber, and increase its level by 1. (Costs 1).|If a Seal bullet is loaded: draw 2 cards, align that Seal to the firing chamber, and increase its level by 1.}",
   "DEAD_ANGLE.title": "Dead Angle",
-  "DEAD_ANGLE.description": "{IfUpgraded:show:Spend 2 Imprint. Gain 3 Ricochet. Draw 1 card. (Costs 0).|Spend 2 Imprint. Gain 3 Ricochet. Draw 1 card. }"
+  "DEAD_ANGLE.description": "{IfUpgraded:show:Spend 2 Imprint. Gain 3 Ricochet. Draw 1 card. (Costs 0).|Spend 2 Imprint. Gain 3 Ricochet. Draw 1 card. }",
+  "RICOCHET_PRIMER.title": "Ricochet Primer",
+  "RICOCHET_PRIMER.description": "{IfUpgraded:show:Gain 3 Ricochet. Gain 1 Imprint.|Gain 2 Ricochet. Gain 1 Imprint.}",
+  "BANK_SHOT.title": "Bank Shot",
+  "BANK_SHOT.description": "{IfUpgraded:show:Trigger Pull 2 times. If you have Ricochet, trigger pull +1 additional time.|Trigger Pull 1 time. If you have Ricochet, trigger pull +1 additional time.}",
+  "TRACER_STRIKE.title": "Tracer Strike",
+  "TRACER_STRIKE.description": "{IfUpgraded:show:Load 2 Tracer bullets. Trigger Pull 1 time.|Load 1 Tracer bullet. Trigger Pull 1 time.}",
+  "HUNT_TRIGGER.title": "Hunt Trigger",
+  "HUNT_TRIGGER.description": "{IfUpgraded:show:Load 1 Tracer bullet. Trigger Pull 1 time. If Tracer Rhythm is ON, trigger pull +2 additional times.|Load 1 Tracer bullet. Trigger Pull 1 time. If Tracer Rhythm is ON, trigger pull +1 additional time.}"
 }
