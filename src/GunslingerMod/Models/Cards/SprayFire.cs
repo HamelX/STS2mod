@@ -54,7 +54,7 @@ public sealed class SprayFire() : CardModel(2, CardType.Attack, CardRarity.Commo
                 break;
         }
 
-        if (shotsFired > 0)
+        if (shotsFired > 0 && HasAliveOpponents())
         {
             var imprintGain = Math.Min(3, shotsFired);
             await PowerCmd.Apply<ImprintPower>(Owner.Creature, imprintGain, Owner.Creature, this);
@@ -65,7 +65,7 @@ public sealed class SprayFire() : CardModel(2, CardType.Attack, CardRarity.Commo
 
         Creature? GetDeterministicOpponent(int seed)
         {
-            var alive = Owner.Creature.CombatState?.GetOpponentsOf(Owner.Creature).Where(c => c.IsAlive).ToList();
+            var alive = Owner.Creature.CombatState?.GetOpponentsOf(Owner.Creature).Where(c => c.IsAlive && c.CurrentHp > 0).ToList();
             if (alive == null || alive.Count == 0)
                 return null;
 

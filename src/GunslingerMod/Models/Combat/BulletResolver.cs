@@ -191,13 +191,13 @@ internal static class BulletResolver
     }
 
     public static bool HasAliveOpponents(Creature source)
-        => source.CombatState?.GetOpponentsOf(source).Any(c => c.IsAlive) == true;
+        => source.CombatState?.GetOpponentsOf(source).Any(c => c.IsAlive && c.CurrentHp > 0) == true;
 
     public static Creature? ResolveAliveTarget(Creature source, Creature? preferredTarget)
     {
-        if (preferredTarget is { IsAlive: true } && preferredTarget.Side != source.Side)
+        if (preferredTarget is { IsAlive: true } && preferredTarget.CurrentHp > 0 && preferredTarget.Side != source.Side)
             return preferredTarget;
 
-        return source.CombatState?.GetOpponentsOf(source).FirstOrDefault(c => c.IsAlive);
+        return source.CombatState?.GetOpponentsOf(source).FirstOrDefault(c => c.IsAlive && c.CurrentHp > 0);
     }
 }
