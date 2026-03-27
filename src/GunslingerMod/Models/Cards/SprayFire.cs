@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using GunslingerMod.Models.Combat;
+using GunslingerMod.Models.Powers;
 using GunslingerMod.Models.DynamicVars;
 
 namespace GunslingerMod.Models.Cards;
