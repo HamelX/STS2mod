@@ -4,7 +4,6 @@ using Godot;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Modding;
 using MegaCrit.Sts2.Core.Models;
-using GunslingerMod.Models.Characters;
 
 [ModInitializer("Initialize")]
 public class ModEntry
@@ -35,7 +34,36 @@ public class ModelDbAllCharactersPatch
     private static void Postfix(ref IEnumerable<CharacterModel> __result)
     {
         var charactersList = __result.ToList();
-        charactersList.Add(ModelDb.Character<Gunslinger>());
+        var gunslingerType = Type.GetType("GunslingerMod.Models.Characters.Gunslinger");
+        if (gunslingerType == null)
+        {
+            GD.PrintErr("[Gunslinger] Gunslinger type not found. Skipping character registration.");
+            return;
+        }
+
+        var characterMethod = typeof(ModelDb)
+            .GetMethods(BindingFlags.Public | BindingFlags.Static)
+            .FirstOrDefault(m =>
+                m.Name == "Character" &&
+                m.IsGenericMethodDefinition &&
+                m.GetGenericArguments().Length == 1 &&
+                m.GetParameters().Length == 0);
+
+        if (characterMethod == null)
+        {
+            GD.PrintErr("[Gunslinger] ModelDb.Character<T>() method not found. Skipping character registration.");
+            return;
+        }
+
+        if (characterMethod.MakeGenericMethod(gunslingerType).Invoke(null, null) is CharacterModel gunslingerCharacter)
+        {
+            charactersList.Add(gunslingerCharacter);
+        }
+        else
+        {
+            GD.PrintErr("[Gunslinger] Failed to instantiate Gunslinger character model.");
+            return;
+        }
 
         __result = charactersList;
 
