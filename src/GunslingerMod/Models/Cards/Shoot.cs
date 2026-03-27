@@ -41,6 +41,7 @@ public sealed class Shoot() : CardModel(1, CardType.Attack, CardRarity.Basic, Ta
         if (!didFire)
         {
             // Dry-fire smoothing: pulling the trigger on an empty chamber refunds tempo via draw.
+            // Intentionally still respects NoDrawPower (e.g., Empty the Magazine this turn).
             await CardPileCmd.Draw(choiceContext, 1, Owner);
             return;
         }

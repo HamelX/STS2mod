@@ -19,10 +19,10 @@
 | `SprayFire` | `SPRAY_FIRE` | `2, Attack, Common, None` | 난사 | 장전된 탄환을 무작위 적에게 모두 격발합니다. 총 {Damage:diff()} 피해를 줍니다. |
 | `SealLoad` | `SEAL_LOAD` | `1, Skill, Common, None` | 봉인탄 장전 | 봉인탄 1발 장전(최대 1). 이미 장전되어 있으면 봉인 레벨 +1. {IfUpgraded:show:방어도 8 획득.\|방어도 5 획득.} |
 | `SigilGuard` | `SIGIL_GUARD` | `1, Skill, Common, Self` | 시질 가드 | {IfUpgraded:show:방어도 12 획득. 봉인 레벨당 방어도 +1.\|방어도 8 획득. 봉인 레벨당 방어도 +1.} |
-| `EtchedTracer` | `ETCHED_TRACER` | `0, Skill, Common, None` | 에칭 트레이서 | 격발 1회. 추적탄 1발 장전. {IfUpgraded:show:대신 추적탄 2발 장전.\|} |
+| `EtchedTracer` | `ETCHED_TRACER` | `0, Attack, Common, AnyEnemy` | 에칭 트레이서 | 대상을 지정해 격발 1회. 그 후 추적탄을 {IfUpgraded:show:2\|1}발 장전합니다. |
 | `ImprintSqueeze` | `IMPRINT_SQUEEZE` | `0, Skill, Uncommon, None` | 각인 압착 | 카드 1장 버림. 각인 {IfUpgraded:show:3\|2}획득. |
 | `ImprintCompression` | `IMPRINT_COMPRESSION` | `1, Power, Uncommon, None` | 각인 압축 | 턴 시작 시 각인이 {IfUpgraded:show:3\|4} 이상이면 카드 1장 뽑기. |
-| `FanTheBrand` | `FAN_THE_BRAND` | `1, Skill, Uncommon, None` | 낙인 흩뿌리기 | 도탄 스택을 {IfUpgraded:show:2\|1} 획득. 각인 1을 획득. |
+| `FanTheBrand` | `FAN_THE_BRAND` | `1, Skill, Uncommon, None` | 낙인 흩뿌리기 | 도탄 {IfUpgraded:show:3\|2} 획득. 각인 1을 획득. |
 | `RicochetShot` | `RICOCHET_SHOT` | `3, Skill, Rare, AnyEnemy` | 도탄 사격 | 각인 3소모. 격발 1회. 도탄 2 획득. 다음 공격 카드의 비용이 0이 됩니다. {IfUpgraded:show:(코스트 2).\|(코스트 3).} |
 | `ReboundNet` | `REBOUND_NET` | `1, Skill, Uncommon, None` | 리바운드 넷 | 적 1명당 도탄 스택 1 획득. {IfUpgraded:show:(코스트 0).\|} |
 | `ImprintManifestRicochet` | `IMPRINT_MANIFEST_RICOCHET` | `2, Skill, Rare, None` | 현현: 도탄 | 각인 {IfUpgraded:show:3\|4}소모. 이번 턴 모든 탄환 격발 시 도탄 발동. |
@@ -33,8 +33,8 @@
 | `BlankFire` | `BLANK_FIRE` | `0, Skill, Uncommon, None` | 블랭크 파이어 | 각인 {IfUpgraded:show:1\|2}소모. 사냥개시 ON. 격발 1회. |
 | `SealSearch` | `SEAL_SEARCH` | `1, Skill, Uncommon, None` | 봉인 추적 | 카드를 {IfUpgraded:show:3\|2}장 뽑습니다. 가장 높은 레벨의 봉인탄을 발사 칸으로 이동시킵니다. |
 | `SealAmplify` | `SEAL_AMPLIFY` | `1, Skill, Uncommon, None` | 봉인 증폭 | {IfUpgraded:show:장전된 봉인탄의 레벨을 5 올립니다.\|장전된 봉인탄의 레벨을 3 올립니다.} |
-| `EmptyTheMagazine` | `EMPTY_THE_MAGAZINE` | `1, Skill, Uncommon, None` | 탄창 비우기 | 탄환을 모두 제거합니다. 제거한 수만큼 뽑습니다. 이번 턴 더 이상 카드를 뽑을 수 없습니다. |
-| `OverclockDrum` | `OVERCLOCK_DRUM` | `2, Power, Rare, None` | 오버클록 드럼 | 매 턴 첫 Tracer 발사 시 방아쇠 1회 추가로 당깁니다. |
+| `EmptyTheMagazine` | `EMPTY_THE_MAGAZINE` | `1, Skill, Uncommon, None` | 탄창 비우기 | 장전된 탄환을 모두 제거합니다. 제거한 수만큼 카드를 뽑습니다. 그 후, 이번 턴에는 더 이상 카드를 뽑을 수 없습니다. |
+| `OverclockDrum` | `OVERCLOCK_DRUM` | `2, Power, Rare, None` | 오버클록 드럼 | 매 턴 첫 Tracer 발사 시 방아쇠 1회 추가로 당깁니다. 이 효과는 중첩되지 않습니다. |
 | `OverclockCharge` | `OVERCLOCK_CHARGE` | `3, Power, Rare, None` | 오버클록 장약 | 한 턴에 3번째 발사 성공 시 에너지를 1 획득. {IfUpgraded:show:선천성.\|} |
 | `ExecutionShot` | `EXECUTION_SHOT` | `2, Attack, Rare, AnyEnemy` | 처형 사격 | 격발 1회. 대상 체력이 절반 이하면 피해 {IfUpgraded:show:3배\|2배}. |
 | `ImprintIgnition` | `IMPRINT_IGNITION` | `2, Power, Rare, None` | 각인 점화 | 각인 소비 카드의 피해량 {IfUpgraded:show:+2\|+1}. |
@@ -62,3 +62,12 @@
 
 - `GrandChamber`의 "한 턴 보너스"는 별도 신규 상태를 만들지 않고, 정렬된 Seal 레벨 +1로 처리했습니다.
 - `FinalVolley`의 에너지 환급 조건은 "처음 2회 격발이 모두 실탄 발사 성공"으로 계산합니다(업그레이드 시 3회 격발 추가).
+
+## 2026-03-27 정리 + 초반 파워플로어 보정
+
+- 시작 덱을 `Shoot x4 / Defend x3 / Reload x2 / EtchedTracer x1`로 조정.
+- `CylinderRelic`은 전투 1라운드 시작 시 일반탄을 2발 자동 장전(이후에는 완전 빈 실린더일 때만 1발 자동 장전).
+- `TagBurst` 설명을 수치형 문구로 명확화:
+  - 격발 1회, 발사 성공 시 추가 {Damage:diff()} + 각인당 {IfUpgraded:show:2|1} 피해, 도탄 {IfUpgraded:show:2|1}.
+- `OverclockDrum`은 효과를 비중첩(single)로 고정해 오해 소지가 있는 가짜 중첩을 제거.
+- `SteadyAim`을 도탄 `{IfUpgraded:show:3|2}`로, `FanTheBrand`를 도탄 `{IfUpgraded:show:3|2} + 각인 1`로 상향.

@@ -20,12 +20,18 @@ public sealed class CylinderRelic : RelicModel
         if (cylinder == null)
             return;
 
-        var shouldAutoLoad = combatState.RoundNumber == 1 || cylinder.CountLoaded() == 0;
-        if (!shouldAutoLoad)
+        var loadCount = combatState.RoundNumber == 1 ? 2 : (cylinder.CountLoaded() == 0 ? 1 : 0);
+        if (loadCount <= 0)
             return;
 
-        if (cylinder.TryLoadNext(CylinderPower.AmmoType.Normal))
-            await PowerCmd.SetAmount<CylinderPower>(Owner.Creature, cylinder.CountLoaded(), Owner.Creature, null);
+        var loadedAny = false;
+        for (var i = 0; i < loadCount; i++)
+            loadedAny |= cylinder.TryLoadNext(CylinderPower.AmmoType.Normal);
+
+        if (!loadedAny)
+            return;
+
+        await PowerCmd.SetAmount<CylinderPower>(Owner.Creature, cylinder.CountLoaded(), Owner.Creature, null);
 
         Flash();
     }

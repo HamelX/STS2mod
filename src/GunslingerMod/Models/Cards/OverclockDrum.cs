@@ -10,6 +10,10 @@ public sealed class OverclockDrum() : CardModel(2, CardType.Power, CardRarity.Ra
 {
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        var existing = Owner.Creature.GetPower<OverclockDrumPower>();
+        if (existing?.Amount > 0)
+            return;
+
         await PowerCmd.Apply<OverclockDrumPower>(Owner.Creature, 1, Owner.Creature, this);
     }
 }

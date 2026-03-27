@@ -10,7 +10,7 @@ public sealed class FanTheBrand() : CardModel(1, CardType.Skill, CardRarity.Unco
 {
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<RicochetPower>(Owner.Creature, IsUpgraded ? 2 : 1, Owner.Creature, this);
+        await PowerCmd.Apply<RicochetPower>(Owner.Creature, IsUpgraded ? 3 : 2, Owner.Creature, this);
         await PowerCmd.Apply<ImprintPower>(Owner.Creature, 1, Owner.Creature, this);
     }
 }
