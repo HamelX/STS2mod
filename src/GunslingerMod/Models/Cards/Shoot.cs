@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using GunslingerMod.Models.Combat;
 using GunslingerMod.Models.Powers;
@@ -40,9 +41,17 @@ public sealed class Shoot() : CardModel(1, CardType.Attack, CardRarity.Basic, Ta
 
         if (!didFire)
         {
-            // Dry-fire smoothing: pulling the trigger on an empty chamber refunds tempo via draw.
-            // Intentionally still respects NoDrawPower (e.g., Empty the Magazine this turn).
+            // Dry-fire smoothing: pulling the trigger on an empty chamber refunds tempo via draw,
+            // even if No Draw is active for the turn.
+            var noDraw = Owner.Creature.GetPower<NoDrawPower>();
+            if (noDraw != null)
+                await PowerCmd.Remove<NoDrawPower>(Owner.Creature);
+
             await CardPileCmd.Draw(choiceContext, 1, Owner);
+
+            if (noDraw != null)
+                await PowerCmd.Apply<NoDrawPower>(Owner.Creature, noDraw.Amount, Owner.Creature, this);
+
             return;
         }
 
