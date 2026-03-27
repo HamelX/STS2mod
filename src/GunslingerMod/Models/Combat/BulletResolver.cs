@@ -51,7 +51,7 @@ internal static class BulletResolver
     }
 
     private static bool IsSealDedicatedCard(CardModel cardSource)
-        => cardSource is SealReleaseKai or GrandRite or SealOpen or SealSearch;
+        => cardSource is SealReleaseKai or GrandRite or SealOpen or SealSearch or RicochetSeal;
 
     private static bool AreAllLoadedRoundsSeal(CylinderPower cylinder)
     {
