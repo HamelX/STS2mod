@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
@@ -73,5 +74,14 @@ public sealed class RicochetImprintPower : PowerModel
         {
             RicochetContext.Current = oldContext;
         }
+    }
+
+    public override Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
+    {
+        // Manifest: Ricochet is explicitly a "this turn" effect.
+        if (Owner != null && Owner.Side == side)
+            return PowerCmd.SetAmount<RicochetImprintPower>(Owner, 0, Owner, null);
+
+        return Task.CompletedTask;
     }
 }
