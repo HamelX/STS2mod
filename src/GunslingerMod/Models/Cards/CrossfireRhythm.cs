@@ -35,8 +35,7 @@ public sealed class CrossfireRhythm() : CardModel(1, CardType.Attack, CardRarity
             if (target == null)
                 break;
 
-            var didFire = cylinder.TryConsumeCurrent(out var ammoType, out var sealLevel);
-            cylinder.AdvanceChamber();
+            var didFire = BulletResolver.TryConsumeCurrentWithSealSkip(cylinder, this, out var ammoType, out var sealLevel);
             await PowerCmd.SetAmount<CylinderPower>(Owner.Creature, cylinder.CountLoaded(), Owner.Creature, this);
 
             if (!didFire)

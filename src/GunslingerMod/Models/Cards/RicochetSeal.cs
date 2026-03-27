@@ -21,8 +21,7 @@ public sealed class RicochetSeal() : CardModel(1, CardType.Attack, CardRarity.Un
         if (target == null)
             return;
 
-        var didFire = cylinder.TryConsumeCurrent(out var ammoType, out var sealLevel);
-        cylinder.AdvanceChamber();
+        var didFire = BulletResolver.TryConsumeCurrentWithSealSkip(cylinder, this, out var ammoType, out var sealLevel);
         await PowerCmd.SetAmount<CylinderPower>(Owner.Creature, cylinder.CountLoaded(), Owner.Creature, this);
 
         if (!didFire)

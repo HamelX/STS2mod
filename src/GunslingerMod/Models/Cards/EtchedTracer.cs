@@ -27,8 +27,7 @@ public sealed class EtchedTracer() : CardModel(0, CardType.Skill, CardRarity.Com
 
             if (target != null)
             {
-                var didFire = cylinder.TryConsumeCurrent(out var ammoType, out var sealLevel);
-                cylinder.AdvanceChamber();
+                var didFire = BulletResolver.TryConsumeCurrentWithSealSkip(cylinder, this, out var ammoType, out var sealLevel);
 
                 if (didFire)
                 {

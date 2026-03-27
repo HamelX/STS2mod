@@ -27,6 +27,8 @@ check "await CardPileCmd.Draw(choiceContext, 1, Owner);" "src/GunslingerMod/Mode
 check "cylinder.CountSealLoaded() == 0" "src/GunslingerMod/Models/Cards/SealRite.cs" "SealRite autoloads Seal if empty"
 check "combatState.RoundNumber == 1 || cylinder.CountLoaded() == 0" "src/GunslingerMod/Relics/CylinderRelic.cs" "CylinderRelic start/empty autoload logic"
 check "__result ??= GD.Load<CompressedTexture2D>(GunslingerCharacterSelectIconPath);" "src/GunslingerMod/Patches/CharacterModel_GunslingerSilentVisualFallbackPatch.cs" "Character icon fallback load"
+check "TryConsumeCurrentWithSealSkip" "src/GunslingerMod/Models/Combat/BulletResolver.cs" "Seal-skip trigger helper added"
+check "[Gunslinger] SealSkip:" "src/GunslingerMod/Models/Combat/BulletResolver.cs" "Seal-skip debug log prefix"
 
 echo
 echo "[DONE] Gunslinger bugfix signatures verified."
