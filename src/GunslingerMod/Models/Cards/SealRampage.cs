@@ -1,36 +1,19 @@
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
-using GunslingerMod.Models.DynamicVars;
 using GunslingerMod.Models.Powers;
 
 namespace GunslingerMod.Models.Cards;
 
-// 봉인 폭주
 public sealed class SealRampage() : CardModel(0, CardType.Skill, CardRarity.Rare, TargetType.None)
 {
-    protected override IEnumerable<DynamicVar> CanonicalVars =>
-    [
-        new SealEnergyVar()
-    ];
-
     protected override bool IsPlayable
     {
         get
         {
             var cylinder = Owner?.Creature?.GetPower<CylinderPower>();
-            if (cylinder == null)
-                return false;
-
-            for (var i = 0; i < CylinderPower.MaxRounds; i++)
-            {
-                if (cylinder.GetAmmoType(i) == CylinderPower.AmmoType.Seal && cylinder.GetSealLevel(i) > 0)
-                    return true;
-            }
-
-            return false;
+            return cylinder != null && FindHighestLevelSealIndex(cylinder) >= 0;
         }
     }
 
@@ -40,33 +23,40 @@ public sealed class SealRampage() : CardModel(0, CardType.Skill, CardRarity.Rare
         if (cylinder == null)
             return;
 
-        var hasSeal = false;
-        for (var i = 0; i < CylinderPower.MaxRounds; i++)
-        {
-            if (cylinder.GetAmmoType(i) == CylinderPower.AmmoType.Seal && cylinder.GetSealLevel(i) > 0)
-            {
-                hasSeal = true;
-                break;
-            }
-        }
-
-        if (!hasSeal)
+        var sealIndex = FindHighestLevelSealIndex(cylinder);
+        if (sealIndex < 0)
             return;
 
-        // Recover 1 cost.
+        var reduction = IsUpgraded ? 1 : 2;
+        var currentLevel = cylinder.GetSealLevel(sealIndex);
+        var delta = Math.Min(currentLevel, reduction);
+        if (delta > 0)
+            cylinder.ReduceSealLevel(sealIndex, (byte)delta);
+
         await PlayerCmd.GainEnergy(1, Owner);
 
-        // Sheet spec: halve Seal levels (round down), both base and upgraded.
+        if (IsUpgraded)
+            await CardPileCmd.Draw(choiceContext, 1, Owner);
+    }
+
+    private static int FindHighestLevelSealIndex(CylinderPower cylinder)
+    {
+        var bestIdx = -1;
+        var bestLvl = -1;
+
         for (var i = 0; i < CylinderPower.MaxRounds; i++)
         {
             if (cylinder.GetAmmoType(i) != CylinderPower.AmmoType.Seal)
                 continue;
 
-            var level = cylinder.GetSealLevel(i);
-            var targetLevel = level / 2;
-            var delta = level - targetLevel;
-            if (delta > 0)
-                cylinder.ReduceSealLevel(i, (byte)delta);
+            var lvl = cylinder.GetSealLevel(i);
+            if (lvl > bestLvl)
+            {
+                bestLvl = lvl;
+                bestIdx = i;
+            }
         }
+
+        return bestIdx;
     }
 }

@@ -1,5 +1,4 @@
 using System;
-using System.Linq;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -11,7 +10,6 @@ using GunslingerMod.Models.Powers;
 
 namespace GunslingerMod.Models.Cards;
 
-// 봉인해제 : 개
 public sealed class SealReleaseKai() : CardModel(3, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
 {
     protected override void OnUpgrade()
@@ -34,7 +32,7 @@ public sealed class SealReleaseKai() : CardModel(3, CardType.Attack, CardRarity.
         if (cylinder == null)
             return;
 
-        var sealIdx = FindNextSealIndex(cylinder);
+        var sealIdx = FindHighestLevelSealIndex(cylinder);
         if (sealIdx < 0)
             return;
 
@@ -49,7 +47,6 @@ public sealed class SealReleaseKai() : CardModel(3, CardType.Attack, CardRarity.
 
         var combatState = Owner.Creature.CombatState;
         Creature? target = cardPlay.Target;
-        // Fire the consumed Seal bullet twice.
         for (var i = 0; i < 2; i++)
         {
             if (!BulletResolver.HasAliveOpponents(Owner.Creature))
@@ -67,18 +64,25 @@ public sealed class SealReleaseKai() : CardModel(3, CardType.Attack, CardRarity.
         }
     }
 
-    private static int FindNextSealIndex(CylinderPower cylinder)
+    private static int FindHighestLevelSealIndex(CylinderPower cylinder)
     {
-        if (cylinder.GetAmmoType(cylinder.ChamberIndex) == CylinderPower.AmmoType.Seal)
-            return cylinder.ChamberIndex;
+        var bestIdx = -1;
+        var bestLvl = -1;
 
         for (var i = 0; i < CylinderPower.MaxRounds; i++)
         {
-            if (cylinder.GetAmmoType(i) == CylinderPower.AmmoType.Seal)
-                return i;
+            if (cylinder.GetAmmoType(i) != CylinderPower.AmmoType.Seal)
+                continue;
+
+            var lvl = cylinder.GetSealLevel(i);
+            if (lvl > bestLvl)
+            {
+                bestLvl = lvl;
+                bestIdx = i;
+            }
         }
 
-        return -1;
+        return bestIdx;
     }
 
     private static Creature? GetNextAliveTarget(CombatState? combatState, Creature owner, Creature? currentTarget)

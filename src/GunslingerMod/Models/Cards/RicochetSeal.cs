@@ -26,7 +26,7 @@ public sealed class RicochetSeal() : CardModel(1, CardType.Attack, CardRarity.Un
         if (cylinder == null || !BulletResolver.HasAliveOpponents(Owner.Creature))
             return;
 
-        var sealIdx = FindNextSealIndex(cylinder);
+        var sealIdx = FindHighestLevelSealIndex(cylinder);
         if (sealIdx < 0)
             return;
 
@@ -47,20 +47,27 @@ public sealed class RicochetSeal() : CardModel(1, CardType.Attack, CardRarity.Un
         await BulletResolver.FireAtTarget(choiceContext, Owner.Creature, target, this, ammoType, sealLevel, damage);
 
         if (ammoType == CylinderPower.AmmoType.Seal)
-            await PowerCmd.Apply<RicochetPower>(Owner.Creature, IsUpgraded ? 3 : 2, Owner.Creature, this);
+            await CardPileCmd.Draw(choiceContext, IsUpgraded ? 2 : 1, Owner);
     }
 
-    private static int FindNextSealIndex(CylinderPower cylinder)
+    private static int FindHighestLevelSealIndex(CylinderPower cylinder)
     {
-        if (cylinder.GetAmmoType(cylinder.ChamberIndex) == CylinderPower.AmmoType.Seal)
-            return cylinder.ChamberIndex;
+        var bestIdx = -1;
+        var bestLvl = -1;
 
         for (var i = 0; i < CylinderPower.MaxRounds; i++)
         {
-            if (cylinder.GetAmmoType(i) == CylinderPower.AmmoType.Seal)
-                return i;
+            if (cylinder.GetAmmoType(i) != CylinderPower.AmmoType.Seal)
+                continue;
+
+            var lvl = cylinder.GetSealLevel(i);
+            if (lvl > bestLvl)
+            {
+                bestLvl = lvl;
+                bestIdx = i;
+            }
         }
 
-        return -1;
+        return bestIdx;
     }
 }
