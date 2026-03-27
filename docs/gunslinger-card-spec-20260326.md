@@ -31,7 +31,7 @@
 | `ChainBurst` | `CHAIN_BURST` | `1, Attack, Uncommon, AnyEnemy` | 체인 버스트 | {IfUpgraded:show:각인 2소모. 격발 1회. 사냥개시 ON이면 +2회.\|각인 2소모. 격발 1회. 사냥개시 ON이면 +1회.} |
 | `WalkingFire` | `WALKING_FIRE` | `1, Attack, Uncommon, AnyEnemy` | 워킹 파이어 | {IfUpgraded:show:각인 3을 소모합니다. 격발 3회. 이번 카드로 한 번이라도 실탄 발사에 성공하면 추적탄 1발을 장전합니다.\|각인 3을 소모합니다. 격발 2회. 이번 카드로 한 번이라도 실탄 발사에 성공하면 추적탄 1발을 장전합니다.} |
 | `BlankFire` | `BLANK_FIRE` | `0, Skill, Uncommon, None` | 블랭크 파이어 | {IfUpgraded:show:각인 1소모. 사냥개시 ON. 격발 1회.\|각인 2소모. 사냥개시 ON. 격발 1회.} |
-| `SealSearch` | `SEAL_SEARCH` | `1, Skill, Uncommon, None` | 봉인 추적 | {IfUpgraded:show:카드를 3장 뽑습니다. 가장 높은 레벨의 봉인탄을 발사 칸으로 이동시킵니다.\|카드를 2장 뽑습니다. 가장 높은 레벨의 봉인탄을 발사 칸으로 이동시킵니다.} |
+| `SealSearch` | `SEAL_SEARCH` | `1, Skill, Uncommon, None` | 봉인 추적 | {IfUpgraded:show:봉인탄이 장전되어 있으면 카드 4장 뽑기. 아니면 카드 3장 뽑기.\|봉인탄이 장전되어 있으면 카드 3장 뽑기. 아니면 카드 2장 뽑기.} |
 | `SealAmplify` | `SEAL_AMPLIFY` | `1, Skill, Uncommon, None` | 봉인 증폭 | {IfUpgraded:show:장전된 봉인탄의 레벨을 5 올립니다.\|장전된 봉인탄의 레벨을 3 올립니다.} |
 | `EmptyTheMagazine` | `EMPTY_THE_MAGAZINE` | `1, Skill, Uncommon, None` | 탄창 비우기 | 장전된 탄환을 모두 제거합니다. 제거한 수만큼 카드를 뽑습니다. 그 후, 이번 턴에는 더 이상 카드를 뽑을 수 없습니다. |
 | `OverclockDrum` | `OVERCLOCK_DRUM` | `2, Power, Rare, None` | 오버클록 드럼 | 매 턴 첫 Tracer 발사 시 방아쇠 1회 추가로 당깁니다. 이 효과는 중첩되지 않습니다. |
@@ -39,28 +39,27 @@
 | `ExecutionShot` | `EXECUTION_SHOT` | `2, Attack, Rare, AnyEnemy` | 처형 사격 | {IfUpgraded:show:격발 1회. 대상 체력이 절반 이하면 피해 3배.\|격발 1회. 대상 체력이 절반 이하면 피해 2배.} |
 | `ImprintIgnition` | `IMPRINT_IGNITION` | `2, Power, Rare, None` | 각인 점화 | {IfUpgraded:show:각인 소비 카드의 피해량 +2.\|각인 소비 카드의 피해량 +1.} |
 | `SealRite` | `SEAL_RITE` | `1, Power, Rare, None` | 봉인의식 | {IfUpgraded:show:파워: 턴 시작 시 봉인탄이 장전되어 있으면 장전된 봉인탄 레벨을 1 올립니다. 사용 시 봉인탄이 없다면 봉인탄 1발을 장전합니다. 선천성.\|파워: 턴 시작 시 봉인탄이 장전되어 있으면 장전된 봉인탄 레벨을 1 올립니다. 사용 시 봉인탄이 없다면 봉인탄 1발을 장전합니다.} |
-| `SealOpen` | `SEAL_OPEN` | `1, Skill, Rare, None` | 봉인 개방 | {IfUpgraded:show:가장 높은 레벨의 봉인탄을 발사 칸으로 이동시킵니다. 그 봉인탄 레벨을 2 올립니다.\|가장 높은 레벨의 봉인탄을 발사 칸으로 이동시킵니다.} |
-| `SealReleaseKai` | `SEAL_RELEASE_KAI` | `3, Attack, Rare, AnyEnemy` | 봉인 해방: 개 | {IfUpgraded:show:장전된 봉인탄을 격발합니다. 해당 봉인탄을 2번 발사. 보존.\|장전된 봉인탄을 격발합니다. 해당 봉인탄을 2번 발사.} |
-| `SealRampage` | `SEAL_RAMPAGE` | `0, Skill, Rare, None` | 봉인 폭주 | 봉인탄이 장전되어 있을 때만 사용 가능. 모든 봉인 레벨을 절반으로 만들고 [gold]에너지[/gold] 1 획득. |
+| `SealReleaseKai` | `SEAL_RELEASE_KAI` | `3, Attack, Rare, AnyEnemy` | 봉인 해방: 개 | {IfUpgraded:show:가장 높은 레벨의 장전된 봉인탄을 발사 칸으로 정렬합니다. 2회 격발. 보존.\|가장 높은 레벨의 장전된 봉인탄을 발사 칸으로 정렬합니다. 2회 격발.} |
+| `SealRampage` | `SEAL_RAMPAGE` | `0, Skill, Rare, None` | 봉인 폭주 | {IfUpgraded:show:봉인탄이 장전되어 있을 때만 사용 가능. 가장 높은 봉인 레벨 1 감소. [gold]에너지[/gold] 1 획득. 카드 1장 뽑기.\|봉인탄이 장전되어 있을 때만 사용 가능. 가장 높은 봉인 레벨 2 감소. [gold]에너지[/gold] 1 획득.} |
 | `SealInsight` | `SEAL_INSIGHT` | `1, Skill, Rare, None` | 봉인 통찰 | 카드 {Draw}장을 뽑습니다. 봉인탄이 장전되어 있으면 +1, 봉인 레벨이 7 이상이면 추가로 +1 더 뽑습니다. |
 | `SealBarrier` | `SEAL_BARRIER` | `0, Skill, Rare, Self` | 봉인 방벽 | 방어도 5 획득. 봉인탄이 있으면 최고 봉인 레벨 × 2만큼 추가 획득하고 해당 봉인탄 레벨을 1 올립니다. |
 
 ## 2026-03-27 확장 패스 반영 사항
 
-- 카드 풀에 13장 확장 반영(총 50장):
+- 카드 풀에 13장 확장 반영(2026-03-27 초기 기준).
   - 재도입: `TagBurst`, `RicochetSeal`, `ReadTheMark`, `TracerLoad`, `CrossfireRhythm`
-  - 신규: `SteadyAim`, `CasingCount`, `SealTension`, `HuntReload`, `FinalVolley`, `SealImprint`, `GrandChamber`, `DeadAngle`
+  - 신규: `SteadyAim`, `CasingCount`, `SealTension`, `HuntReload`, `FinalVolley`, `SealImprint`, `GrandChamber`, `DeadAngle` *(이후 Seal 축 정리에서 `GrandChamber`는 카드 풀 제외)*
 - `ReadTheMark`은 회전 효과를 제거하고, 방어 + 도탄 상태 체크 드로우로 단순화.
 - 확장 규칙에 맞춰 순수 회전/스왑 신규 카드는 추가하지 않음.
 - 상태 보상 강화:
   - 빈 약실 상태 보상: `CasingCount`
   - 사냥개시(Tracer rhythm) 보상: `HuntReload`, `CrossfireRhythm`
-  - Seal 준비/정렬/해방 보조: `SealTension`, `SealImprint`, `GrandChamber`
+  - Seal 준비/정렬/해방 보조: `SealTension`, `SealImprint`, `GrandChamber` *(초기안, 최신안에서는 `GrandChamber` 제외)*
   - Imprint↔Ricochet 연결 강화: `TagBurst`, `SteadyAim`, `DeadAngle`, `RicochetSeal`
 
 ### 이번 패스의 의도적 구현 메모
 
-- `GrandChamber`의 "한 턴 보너스"는 별도 신규 상태를 만들지 않고, 정렬된 Seal 레벨 +1로 처리했습니다.
+- `GrandChamber`의 "한 턴 보너스"는 별도 신규 상태를 만들지 않고, 정렬된 Seal 레벨 +1로 처리했습니다. *(해당 카드는 이후 카드 풀 제외)*
 - `FinalVolley`의 에너지 환급 조건은 "처음 2회 격발이 모두 실탄 발사 성공"으로 계산합니다(업그레이드 시 3회 격발 추가).
 
 ## 2026-03-27 정리 + 초반 파워플로어 보정
@@ -73,3 +72,14 @@
 - `OverclockDrum`은 효과를 비중첩(single)로 고정해 오해 소지가 있는 가짜 중첩을 제거.
 - `SteadyAim` 상향: 기본 도탄 2, 업그레이드 도탄 3.
 - `FanTheBrand` 상향: 기본 도탄 2 + 각인 1, 업그레이드 도탄 3 + 각인 1.
+
+
+## 2026-03-27 Seal 축 정리 패스
+
+- `SealOpen` 제거: 카드 풀/활성 설계에서 삭제.
+- `GrandChamber` 제거: 카드 풀에서 삭제(중복 정렬 역할 축소).
+- `SealSearch` 재설계: 정렬 제거, 봉인탄 장전 여부 기반 드로우 지원 카드로 변경.
+- `GrandRite` 재설계: 단일 봉인탄 성장(+2/+3) + 내부 정렬 + 즉시 1회 해방.
+- `SealReleaseKai` 정렬 내장: 최고 레벨 봉인탄 정렬 후 2회 발사.
+- `RicochetSeal` 재설계: 도탄 보상 제거, 봉인탄 직접 격발 성공 시 드로우 보상(1/2).
+- `SealRampage` 재설계: 최고 봉인 레벨 일부 소모(-2/-1) 후 에너지 1 획득, 업그레이드 시 카드 1장 드로우.

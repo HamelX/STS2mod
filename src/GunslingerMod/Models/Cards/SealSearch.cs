@@ -10,36 +10,13 @@ public sealed class SealSearch() : CardModel(1, CardType.Skill, CardRarity.Uncom
 {
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await CardPileCmd.Draw(choiceContext, IsUpgraded ? 3 : 2, Owner);
-
         var cylinder = Owner.Creature.GetPower<CylinderPower>();
-        if (cylinder == null || cylinder.CountSealLoaded() <= 0)
-            return;
+        var drawAmount = IsUpgraded ? 3 : 2;
 
-        var bestIdx = -1;
-        var bestLvl = -1;
-        for (var i = 0; i < CylinderPower.MaxRounds; i++)
-        {
-            if (cylinder.GetAmmoType(i) != CylinderPower.AmmoType.Seal)
-                continue;
+        if (cylinder != null && cylinder.CountSealLoaded() > 0)
+            drawAmount += 1;
 
-            var lvl = cylinder.GetSealLevel(i);
-            if (lvl > bestLvl)
-            {
-                bestLvl = lvl;
-                bestIdx = i;
-            }
-        }
-
-        if (bestIdx < 0)
-            return;
-
-        if (bestIdx != cylinder.ChamberIndex)
-            cylinder.SwapChambers(bestIdx, cylinder.ChamberIndex);
-
-        // Upgrade reward: the searched seal is immediately refined for next trigger pull.
-        if (IsUpgraded && cylinder.GetAmmoType(cylinder.ChamberIndex) == CylinderPower.AmmoType.Seal)
-            cylinder.IncrementSealLevel(cylinder.ChamberIndex, 1);
+        await CardPileCmd.Draw(choiceContext, drawAmount, Owner);
     }
 
     protected override void OnUpgrade()
