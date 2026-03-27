@@ -19,6 +19,7 @@ check() {
 }
 
 check "ModelDb.Card<Reload>()," "src/GunslingerMod/Models/Characters/Gunslinger.cs" "Starting deck includes Reload"
+check "ModelDb.Card<SealRite>()" "src/GunslingerMod/Models/Characters/Gunslinger.cs" "Starting deck includes SealRite (playtest)"
 check "if (!IsUpgraded)" "src/GunslingerMod/Models/Cards/TakeCover.cs" "TakeCover+ skips ReloadLock"
 check "await CardPileCmd.Draw(choiceContext, 1, Owner);" "src/GunslingerMod/Models/Cards/QuickRack.cs" "QuickRack OFF-rhythm draw"
 check "else" "src/GunslingerMod/Models/Cards/HotChamber.cs" "HotChamber OFF-rhythm branch exists"
