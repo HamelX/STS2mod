@@ -13,7 +13,7 @@ public sealed class SealAmplifyAmountVar : DynamicVar
 
     public override void UpdateCardPreview(CardModel card, CardPreviewMode previewMode, Creature? target, bool runGlobalHooks)
     {
-        var value = card.IsUpgraded ? 4m : 3m;
+        var value = card.IsUpgraded ? 5m : 3m;
         PreviewValue = value;
         EnchantedValue = value;
     }

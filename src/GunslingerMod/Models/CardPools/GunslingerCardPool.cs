@@ -50,7 +50,6 @@ public sealed class GunslingerCardPool : CardPoolModel
             ModelDb.Card<BlankFire>(),
             ModelDb.Card<SealSearch>(),
             ModelDb.Card<SealAmplify>(),
-            ModelDb.Card<SealResonance>(),
             ModelDb.Card<EmptyTheMagazine>(),
             ModelDb.Card<OverclockDrum>(),
             ModelDb.Card<OverclockCharge>(),
