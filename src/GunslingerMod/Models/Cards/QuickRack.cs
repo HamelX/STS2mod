@@ -33,7 +33,10 @@ public sealed class QuickRack() : CardModel(1, CardType.Attack, CardRarity.Commo
 
         var hasRhythm = (Owner.Creature.GetPower<TracerFiredThisTurnPower>()?.Amount ?? 0) > 0;
         if (!hasRhythm)
+        {
+            await CardPileCmd.Draw(choiceContext, 1, Owner);
             return;
+        }
 
         var pulls = IsUpgraded ? 2 : 1;
         for (var i = 0; i < pulls; i++)
@@ -45,8 +48,7 @@ public sealed class QuickRack() : CardModel(1, CardType.Attack, CardRarity.Commo
             if (target == null)
                 break;
 
-            var didFire = cylinder.TryConsumeCurrent(out var ammoType, out var sealLevel);
-            cylinder.AdvanceChamber();
+            var didFire = BulletResolver.TryConsumeCurrentWithSealSkip(cylinder, this, out var ammoType, out var sealLevel);
             await PowerCmd.SetAmount<CylinderPower>(Owner.Creature, cylinder.CountLoaded(), Owner.Creature, this);
 
             if (!didFire)

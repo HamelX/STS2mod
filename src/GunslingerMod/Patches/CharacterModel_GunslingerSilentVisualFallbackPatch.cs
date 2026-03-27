@@ -4,6 +4,7 @@ using HarmonyLib;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Characters;
 using MegaCrit.Sts2.Core.Nodes.Combat;
+using Godot;
 
 namespace GunslingerMod.Patches;
 
@@ -14,6 +15,12 @@ namespace GunslingerMod.Patches;
 [HarmonyPatch(typeof(CharacterModel))]
 public static class CharacterModel_GunslingerSilentVisualFallbackPatch
 {
+    private const string GunslingerCharacterSelectIconPath = "res://images/packed/character_select/char_select_gunslinger.png";
+    private const string GunslingerCharacterSelectLockedIconPath = "res://images/packed/character_select/char_select_gunslinger_locked.png";
+    private const string GunslingerIconTexturePath = "res://images/ui/top_panel/character_icon_gunslinger.png";
+    private const string GunslingerIconOutlineTexturePath = "res://images/ui/top_panel/character_icon_gunslinger_outline.png";
+    private const string GunslingerMapMarkerPath = "res://images/packed/map/icons/map_marker_gunslinger.png";
+
     private static bool IsTarget(CharacterModel model) => model is Gunslinger;
 
     private static Silent? TryGetSilentModel()
@@ -105,10 +112,11 @@ public static class CharacterModel_GunslingerSilentVisualFallbackPatch
 
     [HarmonyPatch("get_CharacterSelectIcon")]
     [HarmonyPostfix]
-    private static void CharacterSelectIcon_Postfix(CharacterModel __instance, ref Godot.CompressedTexture2D __result)
+    private static void CharacterSelectIcon_Postfix(CharacterModel __instance, ref CompressedTexture2D __result)
     {
         if (!IsTarget(__instance))
             return;
+        __result ??= GD.Load<CompressedTexture2D>(GunslingerCharacterSelectIconPath);
         if (__result != null)
             return;
 
@@ -119,10 +127,11 @@ public static class CharacterModel_GunslingerSilentVisualFallbackPatch
 
     [HarmonyPatch("get_CharacterSelectLockedIcon")]
     [HarmonyPostfix]
-    private static void CharacterSelectLockedIcon_Postfix(CharacterModel __instance, ref Godot.CompressedTexture2D __result)
+    private static void CharacterSelectLockedIcon_Postfix(CharacterModel __instance, ref CompressedTexture2D __result)
     {
         if (!IsTarget(__instance))
             return;
+        __result ??= GD.Load<CompressedTexture2D>(GunslingerCharacterSelectLockedIconPath);
         if (__result != null)
             return;
 
@@ -133,10 +142,11 @@ public static class CharacterModel_GunslingerSilentVisualFallbackPatch
 
     [HarmonyPatch("get_IconTexture")]
     [HarmonyPostfix]
-    private static void IconTexture_Postfix(CharacterModel __instance, ref Godot.Texture2D __result)
+    private static void IconTexture_Postfix(CharacterModel __instance, ref Texture2D __result)
     {
         if (!IsTarget(__instance))
             return;
+        __result ??= GD.Load<Texture2D>(GunslingerIconTexturePath);
         if (__result != null)
             return;
 
@@ -147,10 +157,11 @@ public static class CharacterModel_GunslingerSilentVisualFallbackPatch
 
     [HarmonyPatch("get_IconOutlineTexture")]
     [HarmonyPostfix]
-    private static void IconOutlineTexture_Postfix(CharacterModel __instance, ref Godot.Texture2D __result)
+    private static void IconOutlineTexture_Postfix(CharacterModel __instance, ref Texture2D __result)
     {
         if (!IsTarget(__instance))
             return;
+        __result ??= GD.Load<Texture2D>(GunslingerIconOutlineTexturePath);
         if (__result != null)
             return;
 
@@ -161,10 +172,11 @@ public static class CharacterModel_GunslingerSilentVisualFallbackPatch
 
     [HarmonyPatch("get_MapMarker")]
     [HarmonyPostfix]
-    private static void MapMarker_Postfix(CharacterModel __instance, ref Godot.CompressedTexture2D __result)
+    private static void MapMarker_Postfix(CharacterModel __instance, ref CompressedTexture2D __result)
     {
         if (!IsTarget(__instance))
             return;
+        __result ??= GD.Load<CompressedTexture2D>(GunslingerMapMarkerPath);
         if (__result != null)
             return;
 

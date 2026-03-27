@@ -24,7 +24,8 @@ public sealed class TakeCover() : CardModel(1, CardType.Skill, CardRarity.Common
         var totalBlock = DynamicVars.Block.BaseValue + (emptyChambers * BlockPerEmptyChamber);
 
         await CreatureCmd.GainBlock(Owner.Creature, totalBlock, ValueProp.Move, cardPlay);
-        await PowerCmd.Apply<ReloadLockPower>(Owner.Creature, 1, Owner.Creature, this);
+        if (!IsUpgraded)
+            await PowerCmd.Apply<ReloadLockPower>(Owner.Creature, 1, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

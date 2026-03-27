@@ -33,35 +33,28 @@ public sealed class SprayFire() : CardModel(2, CardType.Attack, CardRarity.Commo
             if (!HasAliveOpponents())
                 break;
 
-            if (cylinder.IsLoaded(cylinder.ChamberIndex))
-            {
-                if (!cylinder.TryConsumeCurrent(out var ammoType, out var sealLevel))
-                    break;
+            var didFire = BulletResolver.TryConsumeCurrentWithSealSkip(cylinder, this, out var ammoType, out var sealLevel);
+            await PowerCmd.SetAmount<CylinderPower>(Owner.Creature, cylinder.CountLoaded(), Owner.Creature, this);
 
-                await PowerCmd.SetAmount<CylinderPower>(Owner.Creature, cylinder.CountLoaded(), Owner.Creature, this);
+            if (!didFire)
+                continue;
 
-                var randomTarget = GetDeterministicOpponent(shotsFired + cylinder.ChamberIndex);
-                if (randomTarget == null)
-                    break;
+            var randomTarget = GetDeterministicOpponent(shotsFired + cylinder.ChamberIndex);
+            if (randomTarget == null)
+                break;
 
-                var shotDamage = BulletResolver.GetBaseDamage(ammoType, sealLevel);
+            var shotDamage = BulletResolver.GetBaseDamage(ammoType, sealLevel);
 
-                // Per-shot resolution contract:
-                // fire once -> apply damage -> re-check combat end before continuing.
-                await BulletResolver.FireAtTarget(choiceContext, Owner.Creature, randomTarget, this, ammoType, sealLevel, shotDamage);
-                shotsFired++;
-
-                if (!HasAliveOpponents())
-                    break;
-            }
-
-            cylinder.AdvanceChamber();
+            // Per-shot resolution contract:
+            // fire once -> apply damage -> re-check combat end before continuing.
+            await BulletResolver.FireAtTarget(choiceContext, Owner.Creature, randomTarget, this, ammoType, sealLevel, shotDamage);
+            shotsFired++;
 
             if (!HasAliveOpponents())
                 break;
         }
 
-        if (shotsFired > 0)
+        if (shotsFired > 0 && HasAliveOpponents())
         {
             var imprintGain = Math.Min(3, shotsFired);
             await PowerCmd.Apply<ImprintPower>(Owner.Creature, imprintGain, Owner.Creature, this);
@@ -72,7 +65,7 @@ public sealed class SprayFire() : CardModel(2, CardType.Attack, CardRarity.Commo
 
         Creature? GetDeterministicOpponent(int seed)
         {
-            var alive = Owner.Creature.CombatState?.GetOpponentsOf(Owner.Creature).Where(c => c.IsAlive).ToList();
+            var alive = Owner.Creature.CombatState?.GetOpponentsOf(Owner.Creature).Where(c => c.IsAlive && c.CurrentHp > 0).ToList();
             if (alive == null || alive.Count == 0)
                 return null;
 

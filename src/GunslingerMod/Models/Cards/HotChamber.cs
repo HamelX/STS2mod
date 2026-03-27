@@ -39,6 +39,8 @@ public sealed class HotChamber() : CardModel(1, CardType.Skill, CardRarity.Commo
 
         if ((Owner.Creature.GetPower<TracerFiredThisTurnPower>()?.Amount ?? 0) > 0)
             await CardPileCmd.Draw(choiceContext, 2, Owner);
+        else
+            await CardPileCmd.Draw(choiceContext, 1, Owner);
     }
 
     private static bool TryLoadTracerWithFallback(CylinderPower cylinder)

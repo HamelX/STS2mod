@@ -41,8 +41,7 @@ public sealed class SealReleaseKai() : CardModel(3, CardType.Attack, CardRarity.
         if (sealIdx != cylinder.ChamberIndex)
             cylinder.SwapChambers(sealIdx, cylinder.ChamberIndex);
 
-        var didFire = cylinder.TryConsumeCurrent(out var ammoType, out var sealLevel);
-        cylinder.AdvanceChamber();
+        var didFire = BulletResolver.TryConsumeCurrentWithSealSkip(cylinder, this, out var ammoType, out var sealLevel);
         await PowerCmd.SetAmount<CylinderPower>(Owner.Creature, cylinder.CountLoaded(), Owner.Creature, this);
 
         if (!didFire)
