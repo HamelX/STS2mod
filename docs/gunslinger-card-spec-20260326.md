@@ -44,3 +44,21 @@
 | `SealRampage` | `SEAL_RAMPAGE` | `0, Skill, Rare, None` | 봉인 폭주 | 봉인탄이 장전되어 있을 때만 사용 가능. 모든 봉인 레벨을 절반으로 만들고 [gold]에너지[/gold] 1 획득. |
 | `SealInsight` | `SEAL_INSIGHT` | `1, Skill, Rare, None` | 봉인 통찰 | 카드 {Draw}장을 뽑습니다. 봉인탄이 장전되어 있으면 +1, 봉인 레벨이 7 이상이면 추가로 +1 더 뽑습니다. |
 | `SealBarrier` | `SEAL_BARRIER` | `0, Skill, Rare, Self` | 봉인 방벽 | 방어도 5 획득. 봉인탄이 있으면 최고 봉인 레벨 × 2만큼 추가 획득하고 해당 봉인탄 레벨을 1 올립니다. |
+
+## 2026-03-27 확장 패스 반영 사항
+
+- 카드 풀에 13장 확장 반영(총 50장):
+  - 재도입: `TagBurst`, `RicochetSeal`, `ReadTheMark`, `TracerLoad`, `CrossfireRhythm`
+  - 신규: `SteadyAim`, `CasingCount`, `SealTension`, `HuntReload`, `FinalVolley`, `SealImprint`, `GrandChamber`, `DeadAngle`
+- `ReadTheMark`은 회전 효과를 제거하고, 방어 + 도탄 상태 체크 드로우로 단순화.
+- 확장 규칙에 맞춰 순수 회전/스왑 신규 카드는 추가하지 않음.
+- 상태 보상 강화:
+  - 빈 약실 상태 보상: `CasingCount`
+  - 사냥개시(Tracer rhythm) 보상: `HuntReload`, `CrossfireRhythm`
+  - Seal 준비/정렬/해방 보조: `SealTension`, `SealImprint`, `GrandChamber`
+  - Imprint↔Ricochet 연결 강화: `TagBurst`, `SteadyAim`, `DeadAngle`, `RicochetSeal`
+
+### 이번 패스의 의도적 구현 메모
+
+- `GrandChamber`의 "한 턴 보너스"는 별도 신규 상태를 만들지 않고, 정렬된 Seal 레벨 +1로 처리했습니다.
+- `FinalVolley`의 에너지 환급 조건은 "처음 2회 격발이 모두 실탄 발사 성공"으로 계산합니다(업그레이드 시 3회 격발 추가).
