@@ -6,7 +6,6 @@ using GunslingerMod.Models.Powers;
 
 namespace GunslingerMod.Models.Cards;
 
-// 遊됱씤 ?섏떇(弱곩뜲?凉?
 public sealed class SealRite() : CardModel(1, CardType.Power, CardRarity.Rare, TargetType.None)
 {
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
