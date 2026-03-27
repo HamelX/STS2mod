@@ -19,6 +19,6 @@ public sealed class DeadAngle() : CardModel(1, CardType.Skill, CardRarity.Rare, 
 
     protected override void OnUpgrade()
     {
-        SetBaseCost(0);
+        EnergyCost.UpgradeBy(-1);
     }
 }

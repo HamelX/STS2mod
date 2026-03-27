@@ -51,6 +51,6 @@ public sealed class GrandChamber() : CardModel(2, CardType.Skill, CardRarity.Rar
 
     protected override void OnUpgrade()
     {
-        SetBaseCost(1);
+        EnergyCost.UpgradeBy(-1);
     }
 }
