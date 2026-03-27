@@ -33,29 +33,22 @@ public sealed class SprayFire() : CardModel(2, CardType.Attack, CardRarity.Commo
             if (!HasAliveOpponents())
                 break;
 
-            if (cylinder.IsLoaded(cylinder.ChamberIndex))
-            {
-                if (!cylinder.TryConsumeCurrent(out var ammoType, out var sealLevel))
-                    break;
+            var didFire = BulletResolver.TryConsumeCurrentWithSealSkip(cylinder, this, out var ammoType, out var sealLevel);
+            await PowerCmd.SetAmount<CylinderPower>(Owner.Creature, cylinder.CountLoaded(), Owner.Creature, this);
 
-                await PowerCmd.SetAmount<CylinderPower>(Owner.Creature, cylinder.CountLoaded(), Owner.Creature, this);
+            if (!didFire)
+                continue;
 
-                var randomTarget = GetDeterministicOpponent(shotsFired + cylinder.ChamberIndex);
-                if (randomTarget == null)
-                    break;
+            var randomTarget = GetDeterministicOpponent(shotsFired + cylinder.ChamberIndex);
+            if (randomTarget == null)
+                break;
 
-                var shotDamage = BulletResolver.GetBaseDamage(ammoType, sealLevel);
+            var shotDamage = BulletResolver.GetBaseDamage(ammoType, sealLevel);
 
-                // Per-shot resolution contract:
-                // fire once -> apply damage -> re-check combat end before continuing.
-                await BulletResolver.FireAtTarget(choiceContext, Owner.Creature, randomTarget, this, ammoType, sealLevel, shotDamage);
-                shotsFired++;
-
-                if (!HasAliveOpponents())
-                    break;
-            }
-
-            cylinder.AdvanceChamber();
+            // Per-shot resolution contract:
+            // fire once -> apply damage -> re-check combat end before continuing.
+            await BulletResolver.FireAtTarget(choiceContext, Owner.Creature, randomTarget, this, ammoType, sealLevel, shotDamage);
+            shotsFired++;
 
             if (!HasAliveOpponents())
                 break;

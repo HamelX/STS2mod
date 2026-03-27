@@ -31,29 +31,23 @@ public sealed class Panning() : CardModel(3, CardType.Attack, CardRarity.Common,
             if (!HasAliveOpponents())
                 break;
 
-            if (cylinder.IsLoaded(cylinder.ChamberIndex))
-            {
-                if (!cylinder.TryConsumeCurrent(out var ammoType, out var sealLevel))
-                    break;
+            var didFire = BulletResolver.TryConsumeCurrentWithSealSkip(cylinder, this, out var ammoType, out var sealLevel);
+            await PowerCmd.SetAmount<CylinderPower>(Owner.Creature, cylinder.CountLoaded(), Owner.Creature, this);
 
-                shotsFired++;
-                await PowerCmd.SetAmount<CylinderPower>(Owner.Creature, cylinder.CountLoaded(), Owner.Creature, this);
+            if (!didFire)
+                continue;
 
-                var shotTarget = ResolveAliveTarget(preferredTarget);
-                if (shotTarget == null)
-                    break;
+            shotsFired++;
 
-                var shotDamage = BulletResolver.GetBaseDamage(ammoType, sealLevel);
+            var shotTarget = ResolveAliveTarget(preferredTarget);
+            if (shotTarget == null)
+                break;
 
-                // Per-shot resolution contract:
-                // fire once -> apply damage -> re-check combat end before continuing.
-                await BulletResolver.FireAtTarget(choiceContext, Owner.Creature, shotTarget, this, ammoType, sealLevel, shotDamage);
+            var shotDamage = BulletResolver.GetBaseDamage(ammoType, sealLevel);
 
-                if (!HasAliveOpponents())
-                    break;
-            }
-
-            cylinder.AdvanceChamber();
+            // Per-shot resolution contract:
+            // fire once -> apply damage -> re-check combat end before continuing.
+            await BulletResolver.FireAtTarget(choiceContext, Owner.Creature, shotTarget, this, ammoType, sealLevel, shotDamage);
 
             if (!HasAliveOpponents())
                 break;

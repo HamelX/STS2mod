@@ -35,9 +35,7 @@ public sealed class Shoot() : CardModel(1, CardType.Attack, CardRarity.Basic, Ta
             return;
 
         // Shoot is a "trigger pull": even if the current chamber is empty, the cylinder should still rotate.
-        var didFire = cylinder.TryConsumeCurrent(out var ammoType, out var sealLevel);
-
-        cylinder.AdvanceChamber();
+        var didFire = BulletResolver.TryConsumeCurrentWithSealSkip(cylinder, this, out var ammoType, out var sealLevel);
         await PowerCmd.SetAmount<CylinderPower>(Owner.Creature, cylinder.CountLoaded(), Owner.Creature, this);
 
         if (!didFire)

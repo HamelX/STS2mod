@@ -32,8 +32,7 @@ public sealed class TagBurst() : CardModel(1, CardType.Attack, CardRarity.Uncomm
             return;
 
         // Trigger-pull path: always rotate, only resolve effects if a live round fired.
-        var didFire = cylinder.TryConsumeCurrent(out var ammoType, out var sealLevel);
-        cylinder.AdvanceChamber();
+        var didFire = BulletResolver.TryConsumeCurrentWithSealSkip(cylinder, this, out var ammoType, out var sealLevel);
         await PowerCmd.SetAmount<CylinderPower>(Owner.Creature, cylinder.CountLoaded(), Owner.Creature, this);
 
         if (!didFire)

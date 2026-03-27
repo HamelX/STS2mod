@@ -8,11 +8,67 @@ using MegaCrit.Sts2.Core.ValueProps;
 using GunslingerMod.Models.Cards;
 using GunslingerMod.Models.Powers;
 using GunslingerMod.Relics;
+using Godot;
 
 namespace GunslingerMod.Models.Combat;
 
 internal static class BulletResolver
 {
+    public static bool TryConsumeCurrentWithSealSkip(
+        CylinderPower cylinder,
+        CardModel cardSource,
+        out CylinderPower.AmmoType ammoType,
+        out byte sealLevel)
+    {
+        var allowSealConsumption = IsSealDedicatedCard(cardSource);
+        var allLoadedAreSeal = AreAllLoadedRoundsSeal(cylinder);
+
+        for (var i = 0; i < CylinderPower.MaxRounds; i++)
+        {
+            if (!cylinder.IsLoaded(cylinder.ChamberIndex))
+            {
+                var didDryFire = cylinder.TryConsumeCurrent(out ammoType, out sealLevel);
+                cylinder.AdvanceChamber();
+                return didDryFire;
+            }
+
+            var currentType = cylinder.GetAmmoType(cylinder.ChamberIndex);
+            if (currentType == CylinderPower.AmmoType.Seal && !allowSealConsumption && !allLoadedAreSeal)
+            {
+                GD.Print($"[Gunslinger] SealSkip: skipped seal at chamber={cylinder.ChamberIndex} card={cardSource.Id.Entry}");
+                cylinder.AdvanceChamber();
+                continue;
+            }
+
+            var didFire = cylinder.TryConsumeCurrent(out ammoType, out sealLevel);
+            cylinder.AdvanceChamber();
+            return didFire;
+        }
+
+        ammoType = CylinderPower.AmmoType.None;
+        sealLevel = 0;
+        return false;
+    }
+
+    private static bool IsSealDedicatedCard(CardModel cardSource)
+        => cardSource is SealReleaseKai or GrandRite or SealOpen or SealSearch;
+
+    private static bool AreAllLoadedRoundsSeal(CylinderPower cylinder)
+    {
+        var loaded = 0;
+        for (var i = 0; i < CylinderPower.MaxRounds; i++)
+        {
+            if (!cylinder.IsLoaded(i))
+                continue;
+
+            loaded++;
+            if (cylinder.GetAmmoType(i) != CylinderPower.AmmoType.Seal)
+                return false;
+        }
+
+        return loaded > 0;
+    }
+
     public static decimal GetBaseDamage(CylinderPower.AmmoType ammoType, byte sealLevel)
     {
         return ammoType switch
@@ -123,8 +179,7 @@ internal static class BulletResolver
         if (target == null)
             return;
 
-        var didFire = cylinder.TryConsumeCurrent(out var ammoType, out var sealLevel);
-        cylinder.AdvanceChamber();
+        var didFire = TryConsumeCurrentWithSealSkip(cylinder, cardSource, out var ammoType, out var sealLevel);
         await PowerCmd.SetAmount<CylinderPower>(source, cylinder.CountLoaded(), source, cardSource);
 
         if (!didFire)
