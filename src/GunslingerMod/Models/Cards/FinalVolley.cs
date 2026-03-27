@@ -1,4 +1,3 @@
-using System;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -8,10 +7,8 @@ using GunslingerMod.Models.Powers;
 
 namespace GunslingerMod.Models.Cards;
 
-public sealed class CrossfireRhythm() : CardModel(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy), IImprintConsumerCard
+public sealed class FinalVolley() : CardModel(2, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
 {
-    protected override bool IsPlayable => (Owner?.Creature?.GetPower<ImprintPower>()?.Amount ?? 0) >= 2;
-
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
@@ -20,10 +17,8 @@ public sealed class CrossfireRhythm() : CardModel(1, CardType.Attack, CardRarity
         if (cylinder == null)
             return;
 
-        await PowerCmd.Apply<ImprintPower>(Owner.Creature, -2, Owner.Creature, this);
-
-        var hasRhythm = (Owner.Creature.GetPower<TracerFiredThisTurnPower>()?.Amount ?? 0) > 0;
-        var triggerPulls = (IsUpgraded ? 2 : 1) + (hasRhythm ? 1 : 0);
+        var triggerPulls = IsUpgraded ? 3 : 2;
+        var firstTwoSuccesses = 0;
 
         for (var i = 0; i < triggerPulls; i++)
         {
@@ -40,8 +35,14 @@ public sealed class CrossfireRhythm() : CardModel(1, CardType.Attack, CardRarity
             if (!didFire)
                 continue;
 
+            if (i < 2)
+                firstTwoSuccesses += 1;
+
             var damage = Math.Max(0m, BulletResolver.GetBaseDamage(ammoType, sealLevel));
             await BulletResolver.FireAtTarget(choiceContext, Owner.Creature, target, this, ammoType, sealLevel, damage);
         }
+
+        if (firstTwoSuccesses >= 2 && Owner.Creature.Player != null)
+            await PlayerCmd.GainEnergy(1, Owner.Creature.Player);
     }
 }

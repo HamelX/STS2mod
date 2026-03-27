@@ -37,6 +37,9 @@ public sealed class GunslingerCardPool : CardPoolModel
             ModelDb.Card<SealLoad>(),
             ModelDb.Card<SigilGuard>(),
             ModelDb.Card<EtchedTracer>(),
+            ModelDb.Card<ReadTheMark>(),
+            ModelDb.Card<TracerLoad>(),
+            ModelDb.Card<SteadyAim>(),
             ModelDb.Card<ImprintSqueeze>(),
             ModelDb.Card<ImprintCompression>(),
             ModelDb.Card<FanTheBrand>(),
@@ -48,6 +51,12 @@ public sealed class GunslingerCardPool : CardPoolModel
             ModelDb.Card<ChainBurst>(),
             ModelDb.Card<WalkingFire>(),
             ModelDb.Card<BlankFire>(),
+            ModelDb.Card<CrossfireRhythm>(),
+            ModelDb.Card<TagBurst>(),
+            ModelDb.Card<RicochetSeal>(),
+            ModelDb.Card<CasingCount>(),
+            ModelDb.Card<SealTension>(),
+            ModelDb.Card<HuntReload>(),
             ModelDb.Card<SealSearch>(),
             ModelDb.Card<SealAmplify>(),
             ModelDb.Card<EmptyTheMagazine>(),
@@ -60,7 +69,11 @@ public sealed class GunslingerCardPool : CardPoolModel
             ModelDb.Card<SealReleaseKai>(),
             ModelDb.Card<SealRampage>(),
             ModelDb.Card<SealInsight>(),
-            ModelDb.Card<SealBarrier>()
+            ModelDb.Card<SealBarrier>(),
+            ModelDb.Card<FinalVolley>(),
+            ModelDb.Card<SealImprint>(),
+            ModelDb.Card<GrandChamber>(),
+            ModelDb.Card<DeadAngle>()
         ];
     }
 

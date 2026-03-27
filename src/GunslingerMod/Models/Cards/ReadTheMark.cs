@@ -25,17 +25,8 @@ public sealed class ReadTheMark() : CardModel(1, CardType.Skill, CardRarity.Comm
             (Owner.Creature.GetPower<RicochetPower>()?.Amount ?? 0) > 0 ||
             (Owner.Creature.GetPower<RicochetImprintPower>()?.Amount ?? 0) > 0;
 
-        if (!hasRicochetStack)
-            return;
-
-        await CardPileCmd.Draw(choiceContext, 1, Owner);
-
-        var cylinder = Owner.Creature.GetPower<CylinderPower>();
-        if (cylinder == null)
-            return;
-
-        cylinder.AdvanceChamber();
-        await PowerCmd.SetAmount<CylinderPower>(Owner.Creature, cylinder.CountLoaded(), Owner.Creature, this);
+        if (hasRicochetStack)
+            await CardPileCmd.Draw(choiceContext, 1, Owner);
     }
 
     protected override void OnUpgrade()
