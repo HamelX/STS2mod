@@ -6,33 +6,16 @@ using GunslingerMod.Models.Powers;
 
 namespace GunslingerMod.Models.Cards;
 
-public sealed class HotChamber() : CardModel(1, CardType.Skill, CardRarity.Common, TargetType.None), IImprintConsumerCard
+public sealed class HotChamber() : CardModel(0, CardType.Skill, CardRarity.Common, TargetType.None)
 {
-    protected override bool IsPlayable
-    {
-        get
-        {
-            if (IsUpgraded)
-                return true;
-            return (Owner?.Creature?.GetPower<ImprintPower>()?.Amount ?? 0) >= 1;
-        }
-    }
-
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         var cylinder = Owner.Creature.GetPower<CylinderPower>();
         if (cylinder == null)
             return;
 
-        if (!IsUpgraded)
-        {
-            if ((Owner.Creature.GetPower<ImprintPower>()?.Amount ?? 0) < 1)
-                return;
-
-            await PowerCmd.Apply<ImprintPower>(Owner.Creature, -1, Owner.Creature, this);
-        }
-
-        for (var i = 0; i < 2; i++)
+        var tracerLoads = IsUpgraded ? 3 : 2;
+        for (var i = 0; i < tracerLoads; i++)
             TryLoadTracerWithFallback(cylinder);
 
         await PowerCmd.SetAmount<CylinderPower>(Owner.Creature, cylinder.CountLoaded(), Owner.Creature, this);

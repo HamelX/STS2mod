@@ -14,7 +14,7 @@ public sealed class ReadTheMark() : CardModel(1, CardType.Skill, CardRarity.Comm
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(7m, ValueProp.Move)
+        new BlockVar(8m, ValueProp.Move)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

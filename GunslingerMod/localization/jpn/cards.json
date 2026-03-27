@@ -42,7 +42,7 @@
   "TRACER_CONVERSION.title": "Tracer変換",
   "TRACER_CONVERSION.description": "{IfUpgraded:show:通常弾を最大2発、Tracer弾に変換する。カードを1枚引く。|通常弾を最大2発、Tracer弾に変換する。}",
   "READ_THE_MARK.title": "標識読み",
-  "READ_THE_MARK.description": "ブロックを得る。自身に跳弾関連スタック/効果があればカードを1枚引く。",
+  "READ_THE_MARK.description": "{IfUpgraded:show:{Block:diff()}ブロックを得る。跳弾があればカードを1枚引く。|{Block:diff()}ブロックを得る。跳弾があればカードを1枚引く。}",
   "FAN_THE_BRAND.title": "烙印散布",
   "FAN_THE_BRAND.description": "{IfUpgraded:show:跳弾を3得る。刻印を1得る。|跳弾を2得る。刻印を1得る。}",
   "TAG_BURST.title": "タグバースト",
@@ -60,7 +60,7 @@
   "QUICK_RACK.title": "クイックラック",
   "QUICK_RACK.description": "{IfUpgraded:show:刻印を1消費。トレーサー弾を2発装填。トレーサーリズムONならトリガープル2回、OFFなら1枚ドロー。|刻印を1消費。トレーサー弾を2発装填。トレーサーリズムONならトリガープル1回、OFFなら1枚ドロー。}",
   "HOT_CHAMBER.title": "ホットチャンバー",
-  "HOT_CHAMBER.description": "{IfUpgraded:show:トレーサー弾を2発装填。トレーサーリズムONなら2枚ドロー、OFFなら1枚ドロー。|トレーサー弾を2発装填。トレーサーリズムONなら2枚ドロー、OFFなら1枚ドロー。基本: 刻印1消費。}",
+  "HOT_CHAMBER.description": "{IfUpgraded:show:トレーサー弾を3発装填。トレーサーリズムONならカードを2枚引く。OFFならカードを1枚引く。|トレーサー弾を2発装填。トレーサーリズムONならカードを2枚引く。OFFならカードを1枚引く。}",
   "CHAIN_BURST.title": "チェインバースト",
   "CHAIN_BURST.description": "{IfUpgraded:show:刻印2消費。引き金を1回引く。Tracer RhythmがONなら追加で2回。|刻印2消費。引き金を1回引く。Tracer RhythmがONなら追加で1回。}",
   "OVERCLOCK_DRUM.title": "オーバークロックドラム",
@@ -108,5 +108,13 @@
   "GRAND_CHAMBER.title": "グランド・チャンバー",
   "GRAND_CHAMBER.description": "{IfUpgraded:show:Seal弾が装填済みなら: カードを2枚引き、そのSealを発射薬室に合わせ、レベルを1上げる。(コスト1)。|Seal弾が装填済みなら: カードを2枚引き、そのSealを発射薬室に合わせ、レベルを1上げる。}",
   "DEAD_ANGLE.title": "デッド・アングル",
-  "DEAD_ANGLE.description": "{IfUpgraded:show:刻印2消費。跳弾3を得る。カードを1枚引く。(コスト0)。|刻印2消費。跳弾3を得る。カードを1枚引く。}"
+  "DEAD_ANGLE.description": "{IfUpgraded:show:刻印2消費。跳弾3を得る。カードを1枚引く。(コスト0)。|刻印2消費。跳弾3を得る。カードを1枚引く。}",
+  "RICOCHET_PRIMER.title": "リコシェプライマー",
+  "RICOCHET_PRIMER.description": "{IfUpgraded:show:跳弾を3獲得。刻印を1獲得。|跳弾を2獲得。刻印を1獲得。}",
+  "BANK_SHOT.title": "バンクショット",
+  "BANK_SHOT.description": "{IfUpgraded:show:トリガープル2回。跳弾があれば追加で+1回トリガープル。|トリガープル1回。跳弾があれば追加で+1回トリガープル。}",
+  "TRACER_STRIKE.title": "トレーサーストライク",
+  "TRACER_STRIKE.description": "{IfUpgraded:show:トレーサー弾を2発装填。トリガープル1回。|トレーサー弾を1発装填。トリガープル1回。}",
+  "HUNT_TRIGGER.title": "ハントトリガー",
+  "HUNT_TRIGGER.description": "{IfUpgraded:show:トレーサー弾を1発装填。トリガープル1回。トレーサーリズムONなら追加で+2回トリガープル。|トレーサー弾を1発装填。トリガープル1回。トレーサーリズムONなら追加で+1回トリガープル。}"
 }
