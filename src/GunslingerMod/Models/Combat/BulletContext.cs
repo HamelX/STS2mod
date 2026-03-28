@@ -26,7 +26,7 @@ public static class BulletContext
     /// Fallback bullet-source check for hook contexts where async-local bullet context may be lost.
     /// Keep this narrow so non-bullet attacks do not trigger bullet-only reactions.
     /// </summary>
-        public static bool IsBulletCardSource(CardModel? cardSource)
+    public static bool IsBulletCardSource(CardModel? cardSource)
     {
         return cardSource is Shoot
             or QuickRack
@@ -37,6 +37,15 @@ public static class BulletContext
             or BlankFire
             or EtchedTracer
             or ExecutionShot
+            or PrecisionShot
+            or RicochetShot
+            or RicochetFollowUp
+            or TracerStrike
+            or TagBurst
+            or HuntTrigger
+            or BankShot
+            or CrossfireRhythm
+            or FinalVolley
             or SealReleaseKai;
     }
 
