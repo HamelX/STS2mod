@@ -41,16 +41,13 @@ public sealed class Shoot() : CardModel(1, CardType.Attack, CardRarity.Basic, Ta
 
         if (!didFire)
         {
-            // Dry-fire smoothing: pulling the trigger on an empty chamber refunds tempo via draw,
-            // even if No Draw is active for the turn.
+            // Dry-fire smoothing: pulling the trigger on an empty chamber refunds tempo via draw.
+            // If No Draw is active, clear it so this compensation draw can always happen.
             var noDraw = Owner.Creature.GetPower<NoDrawPower>();
             if (noDraw != null)
                 await PowerCmd.Remove<NoDrawPower>(Owner.Creature);
 
             await CardPileCmd.Draw(choiceContext, 1, Owner);
-
-            if (noDraw != null)
-                await PowerCmd.Apply<NoDrawPower>(Owner.Creature, noDraw.Amount, Owner.Creature, this);
 
             return;
         }
