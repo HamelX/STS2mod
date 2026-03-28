@@ -58,7 +58,7 @@
   "EXECUTION_SHOT.title": "処刑射撃",
   "EXECUTION_SHOT.description": "{IfUpgraded:show:トリガープル1回。対象のHPが半分以下なら3倍ダメージ。|トリガープル1回。対象のHPが半分以下なら2倍ダメージ。}",
   "QUICK_RACK.title": "クイックラック",
-  "QUICK_RACK.description": "{IfUpgraded:show:トレーサー弾を2発装填。ハント開始ONならトリガープル2回。ハント開始OFFならカードを1枚引く。|トレーサー弾を2発装填。ハント開始ONならトリガープル1回。}",
+  "QUICK_RACK.description": "{IfUpgraded:show:トレーサー弾を2発装填。ハント開始状態ならトリガープル2回。ハント開始状態でなければカードを1枚引く。|トレーサー弾を2発装填。ハント開始状態ならトリガープル1回。}",
   "HOT_CHAMBER.title": "ホットチャンバー",
   "HOT_CHAMBER.description": "{IfUpgraded:show:トレーサー弾を3発装填。トレーサーリズムONならカードを2枚引く。OFFならカードを1枚引く。|トレーサー弾を2発装填。トレーサーリズムONならカードを2枚引く。OFFならカードを1枚引く。}",
   "CHAIN_BURST.title": "チェインバースト",
@@ -92,7 +92,7 @@
   "RELOAD.title": "リロード",
   "RELOAD.description": "{IfUpgraded:show:通常弾を2発装填する（最大6）。カードを1枚引く。|通常弾を2発装填する（最大6）。}",
   "BLANK_FIRE.title": "ブランクファイア",
-  "BLANK_FIRE.description": "{IfUpgraded:show:ハント開始をONにする。トリガープル1回。カードを1枚引く。|ハント開始をONにする。トリガープル1回。}",
+  "BLANK_FIRE.description": "{IfUpgraded:show:ハント開始状態になる。トリガープル1回。カードを1枚引く。|ハント開始状態になる。トリガープル1回。}",
   "SEAL_BARRIER.description": "5ブロックを得る。封印弾があれば、最高封印レベル×2の追加ブロックを得て、その封印弾レベルを1上げる。",
   "SEAL_BARRIER.title": "封印障壁",
   "CASING_COUNT.title": "ケーシング・カウント",
@@ -118,5 +118,5 @@
   "RICOCHET_FOLLOW_UP.title": "リコシェ追撃",
   "RICOCHET_FOLLOW_UP.description": "{IfUpgraded:show:トリガープル1回。リコシェがあればトリガープル+1回。|トリガープル1回。リコシェがあればカードを1枚引く。}",
   "HUNT_PREP.title": "ハント準備",
-  "HUNT_PREP.description": "{IfUpgraded:show:ハント開始をONにする。トレーサー弾を2発装填。カードを2枚引く。|ハント開始をONにする。トレーサー弾を2発装填。カードを1枚引く。}"
+  "HUNT_PREP.description": "{IfUpgraded:show:ハント開始状態になる。トレーサー弾を2発装填。カードを2枚引く。|ハント開始状態になる。トレーサー弾を2発装填。カードを1枚引く。}"
 }
