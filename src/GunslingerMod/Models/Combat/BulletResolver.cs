@@ -75,9 +75,9 @@ internal static class BulletResolver
         return ammoType switch
         {
             CylinderPower.AmmoType.Enhanced => 10m,
-            CylinderPower.AmmoType.Tracer => 4m,
-            CylinderPower.AmmoType.Seal => 8m + sealLevel,
-            _ => 6m
+            CylinderPower.AmmoType.Tracer => 6m,
+            CylinderPower.AmmoType.Seal => 10m + sealLevel,
+            _ => 8m
         };
     }
 

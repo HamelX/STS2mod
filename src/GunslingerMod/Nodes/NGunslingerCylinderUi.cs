@@ -184,9 +184,9 @@ public partial class NGunslingerCylinderUi : Control
             var dmg = ammoType switch
             {
                 CylinderPower.AmmoType.Enhanced => 10,
-                CylinderPower.AmmoType.Tracer => 4,
-                CylinderPower.AmmoType.Seal => 8 + sealLevel,
-                _ => 6
+                CylinderPower.AmmoType.Tracer => 6,
+                CylinderPower.AmmoType.Seal => 10 + sealLevel,
+                _ => 8
             };
 
             var ammoNameKey = ammoType switch
