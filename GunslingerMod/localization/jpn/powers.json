@@ -34,5 +34,8 @@
   "BALLISTIC_COMPILER_POWER.smartDescription": "各ターン最初のTracer発射時、カードを1枚引き刻印を得る。",
   "OVERCLOCK_CHARGE_POWER.title": "オーバークロック装薬",
   "OVERCLOCK_CHARGE_POWER.description": "各ターン3回目の発射成功ごとにエナジー{Amount}を得る。",
-  "OVERCLOCK_CHARGE_POWER.smartDescription": "各ターン3回目の発射成功ごとにエナジー{Amount}を得る。"
+  "OVERCLOCK_CHARGE_POWER.smartDescription": "各ターン3回目の発射成功ごとにエナジー{Amount}を得る。",
+  "BARRAGE_COLLAPSE_POWER.title": "弾幕崩壊",
+  "BARRAGE_COLLAPSE_POWER.description": "このターン、跳弾が発動するたびに他のすべての敵に3ダメージ。最初の{Amount}回のみ適用。",
+  "BARRAGE_COLLAPSE_POWER.smartDescription": "このターン、跳弾発動時に他のすべての敵へ3ダメージ。（残り{Amount}回）"
 }

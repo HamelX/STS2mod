@@ -47,6 +47,7 @@ public sealed class GunslingerCardPool : CardPoolModel
             ModelDb.Card<FanTheBrand>(),
             ModelDb.Card<RicochetShot>(),
             ModelDb.Card<BankShot>(),
+            ModelDb.Card<BarrageCollapse>(),
             ModelDb.Card<ReboundNet>(),
             ModelDb.Card<ImprintManifestRicochet>(),
             ModelDb.Card<TracerConversion>(),

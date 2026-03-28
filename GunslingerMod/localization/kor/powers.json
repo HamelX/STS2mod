@@ -34,5 +34,8 @@
   "BALLISTIC_COMPILER_POWER.smartDescription": "매 턴 첫 추적탄 발사 시 카드 1장을 뽑고 각인을 얻습니다.",
   "OVERCLOCK_CHARGE_POWER.title": "오버클록 장약",
   "OVERCLOCK_CHARGE_POWER.description": "매 턴 3번째 발사 성공마다 에너지 {Amount}를 얻습니다.",
-  "OVERCLOCK_CHARGE_POWER.smartDescription": "매 턴 3번째 발사 성공마다 에너지 {Amount}를 얻습니다."
+  "OVERCLOCK_CHARGE_POWER.smartDescription": "매 턴 3번째 발사 성공마다 에너지 {Amount}를 얻습니다.",
+  "BARRAGE_COLLAPSE_POWER.title": "탄막 붕괴",
+  "BARRAGE_COLLAPSE_POWER.description": "이번 턴 도탄 발동 시, 다른 모든 적에게 피해 3. 처음 {Amount}번만 적용됩니다.",
+  "BARRAGE_COLLAPSE_POWER.smartDescription": "이번 턴 도탄 발동 시, 다른 모든 적에게 피해 3. 남은 횟수: {Amount}."
 }

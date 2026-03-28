@@ -64,6 +64,9 @@ public sealed class RicochetPower : PowerModel
             bulletInfo.RicochetTriggered = true;
 
         await PowerCmd.Decrement(this);
+        var barrageCollapse = Owner.GetPower<BarrageCollapsePower>();
+        if (barrageCollapse != null && barrageCollapse.Amount > 0)
+            await barrageCollapse.OnRicochetTriggered(choiceContext, bounceTarget, Owner, cardSource);
 
         var oldContext = RicochetContext.Current;
         RicochetContext.Current = new RicochetContext.RicochetInfo(ricochetDamage);
