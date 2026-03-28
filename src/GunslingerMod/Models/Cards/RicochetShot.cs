@@ -8,7 +8,7 @@ using GunslingerMod.Models.Powers;
 
 namespace GunslingerMod.Models.Cards;
 
-public sealed class RicochetShot() : CardModel(3, CardType.Skill, CardRarity.Rare, TargetType.AnyEnemy), IImprintConsumerCard
+public sealed class RicochetShot() : CardModel(2, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy), IImprintConsumerCard
 {
     private const int ImprintCost = 3;
 

@@ -8,7 +8,7 @@ using GunslingerMod.Models.Powers;
 
 namespace GunslingerMod.Models.Cards;
 
-public sealed class QuickRack() : CardModel(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
+public sealed class RicochetFollowUp() : CardModel(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
 {
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
@@ -18,20 +18,14 @@ public sealed class QuickRack() : CardModel(1, CardType.Attack, CardRarity.Commo
         if (cylinder == null)
             return;
 
-        for (var i = 0; i < 2; i++)
-            TryLoadTracerWithFallback(cylinder);
+        var hasRicochet =
+            (Owner.Creature.GetPower<RicochetPower>()?.Amount ?? 0) > 0 ||
+            (Owner.Creature.GetPower<RicochetImprintPower>()?.Amount ?? 0) > 0;
 
-        await PowerCmd.SetAmount<CylinderPower>(Owner.Creature, cylinder.CountLoaded(), Owner.Creature, this);
+        var pulls = 1;
+        if (hasRicochet && IsUpgraded)
+            pulls += 1;
 
-        var huntStartOn = (Owner.Creature.GetPower<TracerFiredThisTurnPower>()?.Amount ?? 0) > 0;
-        if (!huntStartOn)
-        {
-            if (IsUpgraded)
-                await CardPileCmd.Draw(choiceContext, 1, Owner);
-            return;
-        }
-
-        var pulls = IsUpgraded ? 2 : 1;
         for (var i = 0; i < pulls; i++)
         {
             if (!BulletResolver.HasAliveOpponents(Owner.Creature))
@@ -50,21 +44,8 @@ public sealed class QuickRack() : CardModel(1, CardType.Attack, CardRarity.Commo
             var damage = Math.Max(0m, BulletResolver.GetBaseDamage(ammoType, sealLevel));
             await BulletResolver.FireAtTarget(choiceContext, Owner.Creature, target, this, ammoType, sealLevel, damage);
         }
-    }
 
-    private static bool TryLoadTracerWithFallback(CylinderPower cylinder)
-    {
-        if (cylinder.TryLoadNext(CylinderPower.AmmoType.Tracer))
-            return true;
-
-        var idx = cylinder.ChamberIndex;
-        var ammo = cylinder.GetAmmoType(idx);
-        if (ammo is CylinderPower.AmmoType.Normal or CylinderPower.AmmoType.Enhanced or CylinderPower.AmmoType.Penetrator)
-        {
-            cylinder.ClearChamberAt(idx);
-            return cylinder.TryLoadInto(idx, CylinderPower.AmmoType.Tracer);
-        }
-
-        return false;
+        if (hasRicochet && !IsUpgraded)
+            await CardPileCmd.Draw(choiceContext, 1, Owner);
     }
 }

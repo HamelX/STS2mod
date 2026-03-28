@@ -1,3 +1,4 @@
+using System;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -7,7 +8,7 @@ using GunslingerMod.Models.Powers;
 
 namespace GunslingerMod.Models.Cards;
 
-public sealed class RicochetSeal() : CardModel(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
+public sealed class SealBreak() : CardModel(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
 {
     protected override bool IsPlayable
     {
