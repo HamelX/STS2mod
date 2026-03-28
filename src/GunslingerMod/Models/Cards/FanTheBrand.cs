@@ -6,11 +6,11 @@ using GunslingerMod.Models.Powers;
 
 namespace GunslingerMod.Models.Cards;
 
-public sealed class FanTheBrand() : CardModel(1, CardType.Skill, CardRarity.Uncommon, TargetType.None)
+public sealed class FanTheBrand() : CardModel(1, CardType.Skill, CardRarity.Common, TargetType.None)
 {
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<RicochetPower>(Owner.Creature, IsUpgraded ? 3 : 2, Owner.Creature, this);
+        await PowerCmd.Apply<RicochetPower>(Owner.Creature, IsUpgraded ? 4 : 3, Owner.Creature, this);
         await PowerCmd.Apply<ImprintPower>(Owner.Creature, 1, Owner.Creature, this);
     }
 }

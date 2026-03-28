@@ -22,7 +22,7 @@
 | `TracerStrike` | `TRACER_STRIKE` | `1, Attack, Common, AnyEnemy` | 트레이서 스트라이크 | {IfUpgraded:show:추적탄 2발 장전. 격발 1회.\|추적탄 1발 장전. 격발 1회.} |
 | `ImprintSqueeze` | `IMPRINT_SQUEEZE` | `0, Skill, Uncommon, None` | 각인 압착 | {IfUpgraded:show:카드 1장 버림. 각인 3획득.\|카드 1장 버림. 각인 2획득.} |
 | `ImprintCompression` | `IMPRINT_COMPRESSION` | `1, Power, Uncommon, None` | 각인 압축 | {IfUpgraded:show:턴 시작 시 각인이 3 이상이면 카드 1장 뽑기.\|턴 시작 시 각인이 4 이상이면 카드 1장 뽑기.} |
-| `FanTheBrand` | `FAN_THE_BRAND` | `1, Skill, Uncommon, None` | 낙인 흩뿌리기 | {IfUpgraded:show:도탄 3 획득. 각인 1을 획득.\|도탄 2 획득. 각인 1을 획득.} |
+| `FanTheBrand` | `FAN_THE_BRAND` | `1, Skill, Common, None` | 낙인 흩뿌리기 | {IfUpgraded:show:도탄 4 획득. 각인 1 획득.\|도탄 3 획득. 각인 1 획득.} |
 | `RicochetShot` | `RICOCHET_SHOT` | `3, Skill, Rare, AnyEnemy` | 도탄 사격 | {IfUpgraded:show:각인 3소모. 격발 1회. 도탄 2 획득. 다음 공격 카드의 비용이 0이 됩니다. (코스트 2).\|각인 3소모. 격발 1회. 도탄 2 획득. 다음 공격 카드의 비용이 0이 됩니다. (코스트 3).} |
 | `BankShot` | `BANK_SHOT` | `1, Attack, Uncommon, AnyEnemy` | 뱅크 샷 | {IfUpgraded:show:격발 2회. 도탄이 있으면 +1회 추가 격발.\|격발 1회. 도탄이 있으면 +1회 추가 격발.} |
 | `ReboundNet` | `REBOUND_NET` | `1, Skill, Uncommon, None` | 리바운드 넷 | {IfUpgraded:show:적 1명당 도탄 스택 1 획득. (코스트 0).\|적 1명당 도탄 스택 1 획득.} |
@@ -70,7 +70,8 @@
   - `TagBurst` 설명(업그레이드): 격발 1회, 발사 성공 시 추가 {Damage:diff()} + 각인당 2 피해, 도탄 2 획득.
 - `OverclockDrum`은 효과를 비중첩(single)로 고정해 오해 소지가 있는 가짜 중첩을 제거.
 - `SteadyAim` 상향: 기본 도탄 2, 업그레이드 도탄 3.
-- `FanTheBrand` 상향: 기본 도탄 2 + 각인 1, 업그레이드 도탄 3 + 각인 1.
+- `FanTheBrand` 상향: 기본 도탄 3 + 각인 1, 업그레이드 도탄 4 + 각인 1.
+- `FanTheBrand` 희귀도 조정: Uncommon → Common.
 
 
 ## 2026-03-27 Seal 축 정리 패스

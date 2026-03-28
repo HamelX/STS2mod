@@ -44,7 +44,7 @@
   "READ_THE_MARK.title": "Read the Mark",
   "READ_THE_MARK.description": "{IfUpgraded:show:Gain {Block:diff()} Block. If you have Ricochet, draw 1 card.|Gain {Block:diff()} Block. If you have Ricochet, draw 1 card.}",
   "FAN_THE_BRAND.title": "Fan the Brand",
-  "FAN_THE_BRAND.description": "{IfUpgraded:show:Gain 3 Ricochet. Gain 1 Imprint.|Gain 2 Ricochet. Gain 1 Imprint.}",
+  "FAN_THE_BRAND.description": "{IfUpgraded:show:Gain 4 Ricochet. Gain 1 Imprint.|Gain 3 Ricochet. Gain 1 Imprint.}",
   "TAG_BURST.title": "Tag Burst",
   "TAG_BURST.description": "{IfUpgraded:show:Trigger Pull 1 time. On successful shot, deal an additional {Damage:diff()} damage plus 2 per Imprint. Gain 2 Ricochet.|Trigger Pull 1 time. On successful shot, deal an additional {Damage:diff()} damage plus 1 per Imprint. Gain 1 Ricochet.}",
   "WALKING_FIRE.title": "Walking Fire",
