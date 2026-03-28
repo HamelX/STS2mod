@@ -44,7 +44,7 @@
   "READ_THE_MARK.title": "標識読み",
   "READ_THE_MARK.description": "{IfUpgraded:show:{Block:diff()}ブロックを得る。跳弾があればカードを1枚引く。|{Block:diff()}ブロックを得る。跳弾があればカードを1枚引く。}",
   "FAN_THE_BRAND.title": "烙印散布",
-  "FAN_THE_BRAND.description": "{IfUpgraded:show:跳弾を3得る。刻印を1得る。|跳弾を2得る。刻印を1得る。}",
+  "FAN_THE_BRAND.description": "{IfUpgraded:show:跳弾4を得る。刻印1を得る。|跳弾3を得る。刻印1を得る。}",
   "TAG_BURST.title": "タグバースト",
   "TAG_BURST.description": "{IfUpgraded:show:トリガープル1回。発射に成功したら、追加で{Damage:diff()}ダメージを与え、刻印1につき2ダメージをさらに与える。跳弾を2得る。|トリガープル1回。発射に成功したら、追加で{Damage:diff()}ダメージを与え、刻印1につき1ダメージをさらに与える。跳弾を1得る。}",
   "WALKING_FIRE.title": "ウォーキングファイア",
