@@ -55,7 +55,7 @@ public sealed class TagBurst() : CardModel(1, CardType.Attack, CardRarity.Uncomm
             // never misclassify this burst as a bullet when async-local context is unavailable.
             await CreatureCmd.Damage(choiceContext, target, burstDamage, ValueProp.Move, Owner.Creature, null);
 
-        await PowerCmd.Apply<RicochetPower>(Owner.Creature, IsUpgraded ? 2 : 1, Owner.Creature, this);
+        await PowerCmd.Apply<RicochetPower>(Owner.Creature, IsUpgraded ? 3 : 2, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

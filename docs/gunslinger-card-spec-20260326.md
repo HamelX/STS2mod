@@ -1,6 +1,6 @@
 # Gunslinger 전체 카드 사양 (현재 코드 기준)
 
-- 기준 시점: 2026-03-27
+- 기준 시점: 2026-03-28
 - 소스: `src/GunslingerMod/Models/CardPools/GunslingerCardPool.cs` + 각 카드 클래스 + `GunslingerMod/localization/kor/cards.json`
 - 시스템 메모: 실탄 발사 성공 시 공통 규칙으로 각인 +1을 획득합니다.
 - 시스템 메모: 기본 실린더 파워에서는 턴 시작 자동 봉인 레벨 성장을 제공하지 않습니다.
@@ -10,20 +10,22 @@
 | `Shoot` | `SHOOT` | `1, Attack, Basic, AnyEnemy` | 사격 | {IfUpgraded:show:격발 1회. 실탄이면 {Damage:diff()} 피해(+3)를 줍니다. 빈 약실이면 카드 1장을 뽑습니다.\|격발 1회. 실탄이면 {Damage:diff()} 피해를 줍니다. 빈 약실이면 카드 1장을 뽑습니다.} |
 | `DefendGunslinger` | `DEFEND_GUNSLINGER` | `(확인 필요)` | 방어 | {Block:diff()} 방어도를 획득. |
 | `Reload` | `RELOAD` | `0, Skill, Common, None` | 장전 | {IfUpgraded:show:일반탄 2발 장전(최대 6). 카드 1장 뽑기.\|일반탄 2발 장전(최대 6).} |
-| `TakeCover` | `TAKE_COVER` | `1, Skill, Common, None` | 엄폐 | {IfUpgraded:show:{Block:diff()} 방어도를 얻습니다. 빈 약실 하나당 방어도를 +1 얻습니다.\|{Block:diff()} 방어도를 얻습니다. 빈 약실 하나당 방어도를 +1 얻습니다. 이번 턴 [재장전 불가] 상태가 됩니다.} |
+| `TakeCover` | `TAKE_COVER` | `1, Skill, Common, None` | 엄폐 | {IfUpgraded:show:{Block:diff()} 방어도 획득. 빈 약실 1개당 방어도 +1.\|{Block:diff()} 방어도 획득. 빈 약실 1개당 방어도 +1.} |
 | `Evasion` | `EVASION` | `1, Skill, Common, None` | 회피 | {IfUpgraded:show:이번 턴 다음에 받는 피해를 절반으로 만듭니다. (코스트 0).\|이번 턴 다음에 받는 피해를 절반으로 만듭니다.} |
 | `EchoNote` | `ECHO_NOTE` | `0, Skill, Common, None` | 에코 노트 | {IfUpgraded:show:각인 1소모. 카드 3장 뽑기.\|각인 1소모. 카드 2장 뽑기.} |
-| `QuickRack` | `QUICK_RACK` | `1, Attack, Common, AnyEnemy` | 퀵 랙 | {IfUpgraded:show:각인 1을 소모합니다. 추적탄 2발을 장전합니다. 사냥개시 상태면 격발 2회, 아니면 카드 1장 뽑기.\|각인 1을 소모합니다. 추적탄 2발을 장전합니다. 사냥개시 상태면 격발 1회, 아니면 카드 1장 뽑기.} |
+| `QuickRack` | `QUICK_RACK` | `1, Attack, Common, AnyEnemy` | 퀵 랙 | {IfUpgraded:show:추적탄 2발 장전. 사냥개시 ON이면 격발 2회. 사냥개시 OFF이면 카드 1장 뽑기.\|추적탄 2발 장전. 사냥개시 ON이면 격발 1회.} |
 | `HotChamber` | `HOT_CHAMBER` | `0, Skill, Common, None` | 핫 챔버 | {IfUpgraded:show:추적탄 3발 장전. 사냥개시 ON이면 카드 2장 뽑기. OFF이면 카드 1장 뽑기.\|추적탄 2발 장전. 사냥개시 ON이면 카드 2장 뽑기. OFF이면 카드 1장 뽑기.} |
 | `Panning` | `PANNING` | `3, Attack, Common, AnyEnemy` | 패닝 | {IfUpgraded:show:장전된 탄환을 순서대로 모두 격발. 격발마다 {Damage:diff()} 피해. 보존.\|장전된 탄환을 순서대로 모두 격발. 격발마다 {Damage:diff()} 피해.} |
 | `SprayFire` | `SPRAY_FIRE` | `2, Attack, Common, None` | 난사 | 장전된 탄환을 무작위 적에게 모두 격발합니다. 총 {Damage:diff()} 피해를 줍니다. |
 | `SealLoad` | `SEAL_LOAD` | `1, Skill, Common, None` | 봉인탄 장전 | {IfUpgraded:show:봉인탄 1발 장전(최대 1). 이미 장전되어 있으면 봉인 레벨 +1. 방어도 8 획득.\|봉인탄 1발 장전(최대 1). 이미 장전되어 있으면 봉인 레벨 +1. 방어도 5 획득.} |
 | `EtchedTracer` | `ETCHED_TRACER` | `0, Attack, Common, AnyEnemy` | 에칭 트레이서 | {IfUpgraded:show:대상을 지정해 격발 1회. 그 후 추적탄을 2발 장전합니다.\|대상을 지정해 격발 1회. 그 후 추적탄을 1발 장전합니다.} |
 | `TracerStrike` | `TRACER_STRIKE` | `1, Attack, Common, AnyEnemy` | 트레이서 스트라이크 | {IfUpgraded:show:추적탄 2발 장전. 격발 1회.\|추적탄 1발 장전. 격발 1회.} |
+| `ReadTheMark` | `READ_THE_MARK` | `1, Skill, Common, None` | 리드 더 마크 | {IfUpgraded:show:{Block:diff()} 방어도를 획득. 도탄이 있으면 카드 1장 뽑기.\|{Block:diff()} 방어도를 획득. 도탄이 있으면 카드 1장 뽑기.} |
+| `RicochetFollowUp` | `RICOCHET_FOLLOW_UP` | `1, Attack, Common, AnyEnemy` | 도탄 추격 | {IfUpgraded:show:격발 1회. 도탄이 있으면 격발 +1회.\|격발 1회. 도탄이 있으면 카드 1장 뽑기.} |
 | `ImprintSqueeze` | `IMPRINT_SQUEEZE` | `0, Skill, Uncommon, None` | 각인 압착 | {IfUpgraded:show:카드 1장 버림. 각인 3획득.\|카드 1장 버림. 각인 2획득.} |
 | `ImprintCompression` | `IMPRINT_COMPRESSION` | `1, Power, Uncommon, None` | 각인 압축 | {IfUpgraded:show:턴 시작 시 각인이 3 이상이면 카드 1장 뽑기.\|턴 시작 시 각인이 4 이상이면 카드 1장 뽑기.} |
 | `FanTheBrand` | `FAN_THE_BRAND` | `1, Skill, Common, None` | 낙인 흩뿌리기 | {IfUpgraded:show:도탄 4 획득. 각인 1 획득.\|도탄 3 획득. 각인 1 획득.} |
-| `RicochetShot` | `RICOCHET_SHOT` | `3, Skill, Rare, AnyEnemy` | 도탄 사격 | {IfUpgraded:show:각인 3소모. 격발 1회. 도탄 2 획득. 다음 공격 카드의 비용이 0이 됩니다. (코스트 2).\|각인 3소모. 격발 1회. 도탄 2 획득. 다음 공격 카드의 비용이 0이 됩니다. (코스트 3).} |
+| `RicochetShot` | `RICOCHET_SHOT` | `2, Attack, Rare, AnyEnemy` | 도탄 사격 | {IfUpgraded:show:각인 3 소모. 격발 1회. 도탄 2 획득. 다음 공격 카드 비용 0. (코스트 1)\|각인 3 소모. 격발 1회. 도탄 2 획득. 다음 공격 카드 비용 0. (코스트 2)} |
 | `BankShot` | `BANK_SHOT` | `1, Attack, Uncommon, AnyEnemy` | 뱅크 샷 | {IfUpgraded:show:격발 2회. 도탄이 있으면 +1회 추가 격발.\|격발 1회. 도탄이 있으면 +1회 추가 격발.} |
 | `ReboundNet` | `REBOUND_NET` | `1, Skill, Uncommon, None` | 리바운드 넷 | {IfUpgraded:show:적 1명당 도탄 스택 1 획득. (코스트 0).\|적 1명당 도탄 스택 1 획득.} |
 | `ImprintManifestRicochet` | `IMPRINT_MANIFEST_RICOCHET` | `2, Skill, Rare, None` | 현현: 도탄 | {IfUpgraded:show:각인 3소모. 이번 턴 모든 탄환 격발 시 도탄 발동.\|각인 4소모. 이번 턴 모든 탄환 격발 시 도탄 발동.} |
@@ -31,8 +33,9 @@
 | `BallisticCompiler` | `BALLISTIC_COMPILER` | `1, Power, Uncommon, None` | 탄도 컴파일러 | {IfUpgraded:show:매 턴 첫 Tracer 발사 시 카드 1장을 뽑고 각인을 2 획득.\|매 턴 첫 Tracer 발사 시 카드 1장을 뽑고 각인을 1 획득.} |
 | `ChainBurst` | `CHAIN_BURST` | `1, Attack, Uncommon, AnyEnemy` | 체인 버스트 | {IfUpgraded:show:각인 2소모. 격발 1회. 사냥개시 ON이면 +2회.\|각인 2소모. 격발 1회. 사냥개시 ON이면 +1회.} |
 | `WalkingFire` | `WALKING_FIRE` | `1, Attack, Uncommon, AnyEnemy` | 워킹 파이어 | {IfUpgraded:show:각인 3을 소모합니다. 격발 3회. 이번 카드로 한 번이라도 실탄 발사에 성공하면 추적탄 1발을 장전합니다.\|각인 3을 소모합니다. 격발 2회. 이번 카드로 한 번이라도 실탄 발사에 성공하면 추적탄 1발을 장전합니다.} |
-| `BlankFire` | `BLANK_FIRE` | `0, Skill, Uncommon, None` | 블랭크 파이어 | {IfUpgraded:show:각인 1소모. 사냥개시 ON. 격발 1회.\|각인 2소모. 사냥개시 ON. 격발 1회.} |
-| `RicochetSeal` | `RICOCHET_SEAL` | `1, Attack, Uncommon, AnyEnemy` | 리코셰 씰 | {IfUpgraded:show:가장 높은 레벨의 장전된 봉인탄을 발사 칸으로 정렬합니다. 장전된 봉인탄 1발을 직접 격발합니다. 발사 성공 시 카드 2장 뽑기.\|가장 높은 레벨의 장전된 봉인탄을 발사 칸으로 정렬합니다. 장전된 봉인탄 1발을 직접 격발합니다. 발사 성공 시 카드 1장 뽑기.} |
+| `BlankFire` | `BLANK_FIRE` | `0, Skill, Uncommon, None` | 블랭크 파이어 | {IfUpgraded:show:사냥개시 ON. 격발 1회. 카드 1장 뽑기.\|사냥개시 ON. 격발 1회.} |
+| `HuntPrep` | `HUNT_PREP` | `1, Skill, Uncommon, None` | 사냥개시 준비 | {IfUpgraded:show:사냥개시 ON. 추적탄 2발 장전. 카드 2장 뽑기.\|사냥개시 ON. 추적탄 2발 장전. 카드 1장 뽑기.} |
+| `SealBreak` | `SEAL_BREAK` | `1, Attack, Uncommon, AnyEnemy` | 봉인 파열 | {IfUpgraded:show:가장 높은 레벨의 장전된 봉인탄을 발사 칸으로 정렬합니다. 장전된 봉인탄 1발을 직접 격발합니다. 발사 성공 시 카드 2장 뽑기.\|가장 높은 레벨의 장전된 봉인탄을 발사 칸으로 정렬합니다. 장전된 봉인탄 1발을 직접 격발합니다. 발사 성공 시 카드 1장 뽑기.} |
 | `SealTension` | `SEAL_TENSION` | `1, Skill, Uncommon, None` | 봉인 긴장 | {IfUpgraded:show:봉인탄이 장전되어 있으면: 방어도 10 획득. 해당 봉인 레벨 3 상승. 없으면 봉인탄 1발 장전.\|봉인탄이 장전되어 있으면: 방어도 7 획득. 해당 봉인 레벨 2 상승. 없으면 봉인탄 1발 장전.} |
 | `EmptyTheMagazine` | `EMPTY_THE_MAGAZINE` | `1, Skill, Uncommon, None` | 탄창 비우기 | 장전된 탄환을 모두 제거합니다. 제거한 수만큼 카드를 뽑습니다. 그 후, 이번 턴에는 더 이상 카드를 뽑을 수 없습니다. |
 | `OverclockDrum` | `OVERCLOCK_DRUM` | `2, Power, Rare, None` | 오버클록 드럼 | 매 턴 첫 Tracer 발사 시 방아쇠 1회 추가로 당깁니다. 이 효과는 중첩되지 않습니다. |
@@ -122,3 +125,28 @@
 - `HUNT_TRIGGER`
   - 설명: `{IfUpgraded:show:추적탄 1발 장전. 격발 1회. 사냥개시 ON이면 +2회 추가 격발.|추적탄 1발 장전. 격발 1회. 사냥개시 ON이면 +1회 추가 격발.}`
   - 동작: 추적탄 장전 후 기본 격발 1회, 사냥개시 ON 보너스 격발.
+
+
+## 2026-03-28 Gunslinger 풀 오버홀 패스
+
+- 메인 축 고정:
+  - Tracer/Hunt-start
+  - Imprint/Ricochet
+- Seal 축은 소형 6장 서브 패키지로 유지:
+  - `SealLoad`, `SealTension`, `SealRite`, `SealBreak`, `GrandRite`, `SealReleaseKai`
+- 필수 리워크 반영:
+  - `TakeCover`: 재장전 봉쇄 제거, 빈 약실 보정 블록형으로 단순화.
+  - `QuickRack`: 각인 소모/플레이 게이트 제거, Hunt-start ON 격발 보상형으로 재설계.
+  - `BlankFire`: 각인 소모 제거, Hunt-start ON + 격발 1회로 단순화(강화 시 1드로우).
+  - `TagBurst`: 발사 성공 시 추가타 수치 유지 + 도탄 획득량을 2/3으로 상향.
+  - `RicochetShot`: 코스트 2(강화 1), 타입 Attack으로 전투 템포 개선.
+  - `RicochetSeal` → `SealBreak`로 개명 및 역할 고정(Seal 해방 브리지).
+- 신규 카드 2장 추가:
+  - `RicochetFollowUp`(Common Attack): 도탄 보유 시 기본은 1드로우, 강화 시 +1회 격발.
+  - `HuntPrep`(Uncommon Skill): Hunt-start ON + 추적탄 2발 장전 + 1/2드로우.
+- 활성 풀 제외:
+  - `HuntReload`
+  - (`SealAmplify`, `SealImprint`, `SealInsight`, `SealBarrier`, `SigilGuard`, `SealSearch`, `SealRampage`, `GrandChamber`, `SealOpen`는 기존과 동일하게 비활성 유지)
+- 코드/텍스트 동기화:
+  - EN/JP/KR 카드 설명을 실제 수치/조건과 일치하도록 갱신.
+  - 업그레이드 설명은 리워크/신규 카드 전부 `{IfUpgraded:show:UPG|BASE}` 전면 교체형으로 통일.

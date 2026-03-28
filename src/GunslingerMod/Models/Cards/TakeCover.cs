@@ -15,7 +15,7 @@ public sealed class TakeCover() : CardModel(1, CardType.Skill, CardRarity.Common
 
     public override bool GainsBlock => true;
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(8m, ValueProp.Move)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(7m, ValueProp.Move)];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
@@ -24,12 +24,10 @@ public sealed class TakeCover() : CardModel(1, CardType.Skill, CardRarity.Common
         var totalBlock = DynamicVars.Block.BaseValue + (emptyChambers * BlockPerEmptyChamber);
 
         await CreatureCmd.GainBlock(Owner.Creature, totalBlock, ValueProp.Move, cardPlay);
-        if (!IsUpgraded)
-            await PowerCmd.Apply<ReloadLockPower>(Owner.Creature, 1, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Block.UpgradeValueBy(4m);
+        DynamicVars.Block.UpgradeValueBy(3m);
     }
 }
