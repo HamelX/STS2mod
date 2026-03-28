@@ -18,11 +18,8 @@ public sealed class HuntTrigger() : CardModel(1, CardType.Attack, CardRarity.Unc
         if (cylinder == null)
             return;
 
-        cylinder.TryLoadNext(CylinderPower.AmmoType.Tracer);
-        await PowerCmd.SetAmount<CylinderPower>(Owner.Creature, cylinder.CountLoaded(), Owner.Creature, this);
-
-        var hasRhythm = (Owner.Creature.GetPower<TracerFiredThisTurnPower>()?.Amount ?? 0) > 0;
-        var triggerPulls = 1 + (hasRhythm ? (IsUpgraded ? 2 : 1) : 0);
+        var hasHuntStart = (Owner.Creature.GetPower<TracerFiredThisTurnPower>()?.Amount ?? 0) > 0;
+        var triggerPulls = 1 + (hasHuntStart ? (IsUpgraded ? 2 : 1) : 0);
 
         for (var i = 0; i < triggerPulls; i++)
         {
@@ -41,6 +38,12 @@ public sealed class HuntTrigger() : CardModel(1, CardType.Attack, CardRarity.Unc
 
             var damage = Math.Max(0m, BulletResolver.GetBaseDamage(ammoType, sealLevel));
             await BulletResolver.FireAtTarget(choiceContext, Owner.Creature, target, this, ammoType, sealLevel, damage);
+        }
+
+        if (!hasHuntStart)
+        {
+            cylinder.TryLoadNext(CylinderPower.AmmoType.Tracer);
+            await PowerCmd.SetAmount<CylinderPower>(Owner.Creature, cylinder.CountLoaded(), Owner.Creature, this);
         }
     }
 }

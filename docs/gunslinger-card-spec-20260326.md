@@ -14,19 +14,20 @@
 | `Evasion` | `EVASION` | `1, Skill, Common, None` | 회피 | {IfUpgraded:show:이번 턴 다음에 받는 피해를 절반으로 만듭니다. (코스트 0).\|이번 턴 다음에 받는 피해를 절반으로 만듭니다.} |
 | `EchoNote` | `ECHO_NOTE` | `0, Skill, Common, None` | 에코 노트 | {IfUpgraded:show:각인 1소모. 카드 3장 뽑기.\|각인 1소모. 카드 2장 뽑기.} |
 | `QuickRack` | `QUICK_RACK` | `1, Attack, Common, AnyEnemy` | 퀵 랙 | {IfUpgraded:show:추적탄 2발 장전. 사냥개시 상태면 격발 2회. 사냥개시 상태가 아니면 카드 1장 뽑기.\|추적탄 2발 장전. 사냥개시 상태면 격발 1회.} |
-| `HotChamber` | `HOT_CHAMBER` | `0, Skill, Common, None` | 핫 챔버 | {IfUpgraded:show:추적탄 3발 장전. 사냥개시 상태면 카드 2장 뽑기. 사냥개시 상태가 아니면 카드 1장 뽑기.\|추적탄 2발 장전. 사냥개시 상태면 카드 2장 뽑기. 사냥개시 상태가 아니면 카드 1장 뽑기.} |
+| `HotChamber` | `HOT_CHAMBER` | `0, Skill, Common, None` | 핫 챔버 | {IfUpgraded:show:추적탄 3발 장전. 사냥개시 ON이면 카드 2장 뽑기. 아니면 카드 1장 뽑기.\|추적탄 2발 장전. 사냥개시 ON이면 카드 2장 뽑기. 아니면 카드 1장 뽑기.} |
 | `Panning` | `PANNING` | `3, Attack, Common, AnyEnemy` | 패닝 | {IfUpgraded:show:장전된 탄환을 순서대로 모두 격발. 격발마다 {Damage:diff()} 피해. 보존.\|장전된 탄환을 순서대로 모두 격발. 격발마다 {Damage:diff()} 피해.} |
 | `SprayFire` | `SPRAY_FIRE` | `2, Attack, Common, None` | 난사 | 장전된 탄환을 무작위 적에게 모두 격발합니다. 총 {Damage:diff()} 피해를 줍니다. |
 | `SealLoad` | `SEAL_LOAD` | `1, Skill, Common, None` | 봉인탄 장전 | {IfUpgraded:show:봉인탄 1발 장전(최대 1). 이미 장전되어 있으면 봉인 레벨 +1. 방어도 8 획득.\|봉인탄 1발 장전(최대 1). 이미 장전되어 있으면 봉인 레벨 +1. 방어도 5 획득.} |
 | `EtchedTracer` | `ETCHED_TRACER` | `0, Attack, Common, AnyEnemy` | 에칭 트레이서 | {IfUpgraded:show:대상을 지정해 격발 1회. 그 후 추적탄을 2발 장전합니다.\|대상을 지정해 격발 1회. 그 후 추적탄을 1발 장전합니다.} |
 | `TracerStrike` | `TRACER_STRIKE` | `1, Attack, Common, AnyEnemy` | 트레이서 스트라이크 | {IfUpgraded:show:추적탄 2발 장전. 격발 1회.\|추적탄 1발 장전. 격발 1회.} |
-| `ReadTheMark` | `READ_THE_MARK` | `1, Skill, Common, None` | 리드 더 마크 | {IfUpgraded:show:{Block:diff()} 방어도를 획득. 도탄이 있으면 카드 1장 뽑기.\|{Block:diff()} 방어도를 획득. 도탄이 있으면 카드 1장 뽑기.} |
+| `ReadTheMark` | `READ_THE_MARK` | `1, Skill, Common, None` | 리드 더 마크 | {IfUpgraded:show:{Block:diff()} 방어도 획득. 도탄이 있으면 카드 1장 뽑기.\|{Block:diff()} 방어도 획득. 도탄이 있으면 카드 1장 뽑기.} |
 | `RicochetFollowUp` | `RICOCHET_FOLLOW_UP` | `1, Attack, Common, AnyEnemy` | 도탄 추격 | {IfUpgraded:show:격발 1회. 도탄이 있으면 격발 +1회.\|격발 1회. 도탄이 있으면 카드 1장 뽑기.} |
 | `ImprintSqueeze` | `IMPRINT_SQUEEZE` | `0, Skill, Uncommon, None` | 각인 압착 | {IfUpgraded:show:카드 1장 버림. 각인 3획득.\|카드 1장 버림. 각인 2획득.} |
 | `ImprintCompression` | `IMPRINT_COMPRESSION` | `1, Power, Uncommon, None` | 각인 압축 | {IfUpgraded:show:턴 시작 시 각인이 3 이상이면 카드 1장 뽑기.\|턴 시작 시 각인이 4 이상이면 카드 1장 뽑기.} |
 | `FanTheBrand` | `FAN_THE_BRAND` | `1, Skill, Common, None` | 낙인 흩뿌리기 | {IfUpgraded:show:도탄 4 획득. 각인 1 획득.\|도탄 3 획득. 각인 1 획득.} |
 | `RicochetShot` | `RICOCHET_SHOT` | `2, Attack, Rare, AnyEnemy` | 도탄 사격 | {IfUpgraded:show:각인 3 소모. 격발 1회. 도탄 2 획득. 다음 공격 카드 비용 0. (코스트 1)\|각인 3 소모. 격발 1회. 도탄 2 획득. 다음 공격 카드 비용 0. (코스트 2)} |
-| `BankShot` | `BANK_SHOT` | `1, Attack, Uncommon, AnyEnemy` | 뱅크 샷 | {IfUpgraded:show:격발 2회. 도탄이 있으면 +1회 추가 격발.\|격발 1회. 도탄이 있으면 +1회 추가 격발.} |
+| `BankShot` | `BANK_SHOT` | `1, Attack, Uncommon, AnyEnemy` | 뱅크 샷 | {IfUpgraded:show:격발 1회. 도탄이 있으면 도탄 1 소모. 추가로 피해 {Damage:diff()}.\|격발 1회. 도탄이 있으면 도탄 1 소모. 추가로 피해 {Damage:diff()}.} |
+| `BarrageCollapse` | `BARRAGE_COLLAPSE` | `2, Skill, Rare, None` | 탄막 붕괴 | {IfUpgraded:show:도탄 5 획득. 이번 턴 처음 5번의 도탄 발동 시, 다른 모든 적에게 피해 3.\|도탄 4 획득. 이번 턴 처음 4번의 도탄 발동 시, 다른 모든 적에게 피해 3.} |
 | `ReboundNet` | `REBOUND_NET` | `1, Skill, Uncommon, None` | 리바운드 넷 | {IfUpgraded:show:적 1명당 도탄 스택 1 획득. (코스트 0).\|적 1명당 도탄 스택 1 획득.} |
 | `ImprintManifestRicochet` | `IMPRINT_MANIFEST_RICOCHET` | `2, Skill, Rare, None` | 현현: 도탄 | {IfUpgraded:show:각인 3소모. 이번 턴 모든 탄환 격발 시 도탄 발동.\|각인 4소모. 이번 턴 모든 탄환 격발 시 도탄 발동.} |
 | `TracerConversion` | `TRACER_CONVERSION` | `0, Skill, Uncommon, None` | 추적탄 변환 | {IfUpgraded:show:일반탄 최대 2발을 추적탄으로 변환. 카드 1장 뽑기.\|일반탄 최대 2발을 추적탄으로 변환.} |
@@ -98,8 +99,8 @@
 
 ## 2026-03-27 Ricochet/Tracer 메인축 보강 패스
 
-- 신규 카드 4장 추가(메인축 밀도 보강):
-  - Ricochet/Imprint: `RicochetPrimer`(공용 진입), `BankShot`(전투형 브리지)
+- 신규 카드 5장 추가(메인축 밀도 보강):
+  - Ricochet/Imprint: `RicochetPrimer`(공용 진입), `BankShot`(전투형 브리지), `BarrageCollapse`(광역 페이오프)
   - Tracer/Hunt-start: `TracerStrike`(즉시 전투형 공용), `HuntTrigger`(사냥개시 보상형 언커먼)
 - `HotChamber` 조정: 코스트 `1 → 0`, 각인 요구 제거, 업그레이드 시 장전량 `2 → 3`으로 단순 상향.
 - `ReadTheMark` 블록 수치 조정: `7 → 8`(업그레이드 시 +3 유지).
@@ -111,20 +112,23 @@
   - 설명: `{IfUpgraded:show:{Block:diff()} 방어도를 획득. 도탄이 있으면 카드 1장 뽑기.|{Block:diff()} 방어도를 획득. 도탄이 있으면 카드 1장 뽑기.}`
   - 동작: 방어도 획득 후, `RicochetPower` 또는 `RicochetImprintPower`가 1 이상이면 카드 1장 뽑기.
 - `HOT_CHAMBER`
-  - 설명: `{IfUpgraded:show:추적탄 3발 장전. 사냥개시 상태면 카드 2장 뽑기. 사냥개시 상태가 아니면 카드 1장 뽑기.|추적탄 2발 장전. 사냥개시 상태면 카드 2장 뽑기. 사냥개시 상태가 아니면 카드 1장 뽑기.}`
+  - 설명: `{IfUpgraded:show:추적탄 3발 장전. 사냥개시 ON이면 카드 2장 뽑기. 아니면 카드 1장 뽑기.|추적탄 2발 장전. 사냥개시 ON이면 카드 2장 뽑기. 아니면 카드 1장 뽑기.}`
   - 동작: 코스트 0. 각인 소모 없음. 장전 후 사냥개시 상태 여부에 따라 2/1 드로우.
 - `RICOCHET_PRIMER`
   - 설명: `{IfUpgraded:show:도탄 3 획득. 각인 1 획득.|도탄 2 획득. 각인 1 획득.}`
   - 동작: 조건 없이 도탄 + 각인 즉시 획득.
 - `BANK_SHOT`
-  - 설명: `{IfUpgraded:show:격발 2회. 도탄이 있으면 +1회 추가 격발.|격발 1회. 도탄이 있으면 +1회 추가 격발.}`
-  - 동작: 도탄(`RicochetPower` 또는 `RicochetImprintPower`) 보유 시 격발 횟수 +1.
+  - 설명: `{IfUpgraded:show:격발 1회. 도탄이 있으면 도탄 1 소모. 추가로 피해 {Damage:diff()}.|격발 1회. 도탄이 있으면 도탄 1 소모. 추가로 피해 {Damage:diff()}.}`
+  - 동작: 격발 1회 수행 후, 도탄(`RicochetPower` 또는 `RicochetImprintPower`)이 있으면 1 소모하고 추가 피해를 줍니다.
 - `TRACER_STRIKE`
   - 설명: `{IfUpgraded:show:추적탄 2발 장전. 격발 1회.|추적탄 1발 장전. 격발 1회.}`
   - 동작: 먼저 추적탄 장전 후 격발 1회 수행.
 - `HUNT_TRIGGER`
-  - 설명: `{IfUpgraded:show:추적탄 1발 장전. 격발 1회. 사냥개시 상태면 +2회 추가 격발.|추적탄 1발 장전. 격발 1회. 사냥개시 상태면 +1회 추가 격발.}`
-  - 동작: 추적탄 장전 후 기본 격발 1회, 사냥개시 상태면 보너스 격발.
+  - 설명: `{IfUpgraded:show:격발 1회. 사냥개시 ON이면 +2회 격발. 아니면 추적탄 1발 장전.|격발 1회. 사냥개시 ON이면 +1회 격발. 아니면 추적탄 1발 장전.}`
+  - 동작: 기본 격발 1회 후, 사냥개시 ON이면 추가 격발. OFF면 추적탄 1발 장전.
+- `BARRAGE_COLLAPSE`
+  - 설명: `{IfUpgraded:show:도탄 5 획득. 이번 턴 처음 5번의 도탄 발동 시, 다른 모든 적에게 피해 3.|도탄 4 획득. 이번 턴 처음 4번의 도탄 발동 시, 다른 모든 적에게 피해 3.}`
+  - 동작: `BarrageCollapsePower`로 이번 턴 처음 N번의 도탄 발동마다 다른 모든 적에게 피해 3을 추가합니다.
 
 
 ## 2026-03-28 Gunslinger 풀 오버홀 패스

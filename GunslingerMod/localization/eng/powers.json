@@ -34,5 +34,8 @@
   "BALLISTIC_COMPILER_POWER.smartDescription": "On your first Tracer shot each turn, draw 1 and gain Imprint.",
   "OVERCLOCK_CHARGE_POWER.title": "Overclock Charge",
   "OVERCLOCK_CHARGE_POWER.description": "On every 3rd successful shot each turn, gain {Amount} Energy.",
-  "OVERCLOCK_CHARGE_POWER.smartDescription": "On every 3rd successful shot each turn, gain {Amount} Energy."
+  "OVERCLOCK_CHARGE_POWER.smartDescription": "On every 3rd successful shot each turn, gain {Amount} Energy.",
+  "BARRAGE_COLLAPSE_POWER.title": "Barrage Collapse",
+  "BARRAGE_COLLAPSE_POWER.description": "This turn, when Ricochet triggers, deal 3 damage to all other enemies. Only the first {Amount} Ricochet triggers apply this.",
+  "BARRAGE_COLLAPSE_POWER.smartDescription": "This turn, when Ricochet triggers, deal 3 damage to all other enemies. ({Amount} triggers left)."
 }
