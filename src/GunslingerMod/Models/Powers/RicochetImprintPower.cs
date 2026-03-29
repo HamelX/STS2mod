@@ -54,10 +54,15 @@ public sealed class RicochetImprintPower : PowerModel
         if (combatState == null)
             return;
 
-        var candidates = combatState.HittableEnemies.Where(e => !e.IsDead && e.Side == target.Side && e != target).ToList();
-        var bounceTarget = candidates.Count > 0
-            ? (Owner.Player?.RunState.Rng.CombatTargets.NextItem(candidates) ?? candidates[0])
-            : target;
+        var candidates = combatState.HittableEnemies
+            .Where(e => e.IsAlive && !e.IsDead && e.CurrentHp > 0 && e.Side == target.Side && e != target)
+            .ToList();
+        if (candidates.Count == 0)
+            return;
+
+        var bounceTarget = Owner.Player?.RunState.Rng.CombatTargets.NextItem(candidates) ?? candidates[0];
+        if (bounceTarget == null || !bounceTarget.IsAlive || bounceTarget.IsDead || bounceTarget.CurrentHp <= 0)
+            return;
 
         if (bulletInfo != null)
             bulletInfo.RicochetTriggered = true;

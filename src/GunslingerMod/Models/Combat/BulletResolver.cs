@@ -16,7 +16,7 @@ namespace GunslingerMod.Models.Combat;
 internal static class BulletResolver
 {
     public static bool ShouldContinueFiring(CombatState? combat)
-        => combat?.HittableEnemies.Any(e => e.IsAlive && e.CurrentHp > 0) == true;
+        => combat?.HittableEnemies.Any(e => e.IsAlive && !e.IsDead && e.CurrentHp > 0) == true;
 
     public static BulletTag GetBulletTag(CylinderPower.AmmoType ammoType)
         => ammoType switch
