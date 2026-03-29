@@ -14,7 +14,11 @@ public sealed class SealRite() : CardModel(1, CardType.Power, CardRarity.Rare, T
         if (cylinder != null)
         {
             if (cylinder.CountSealLoaded() == 0)
-                cylinder.TryLoadNext(CylinderPower.AmmoType.Seal);
+            {
+                var loadedNewSeal = cylinder.TryLoadNext(CylinderPower.AmmoType.Seal);
+                if (loadedNewSeal)
+                    await SealShotHelper.GrantTemporaryToHand(this);
+            }
             else
                 cylinder.IncrementSealLevels(1);
             await PowerCmd.SetAmount<CylinderPower>(Owner.Creature, cylinder.CountLoaded(), Owner.Creature, this);

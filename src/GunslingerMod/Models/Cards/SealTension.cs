@@ -34,7 +34,9 @@ public sealed class SealTension() : CardModel(1, CardType.Skill, CardRarity.Unco
         }
         else
         {
-            cylinder.TryLoadNext(CylinderPower.AmmoType.Seal);
+            var loadedNewSeal = cylinder.TryLoadNext(CylinderPower.AmmoType.Seal);
+            if (loadedNewSeal)
+                await SealShotHelper.GrantTemporaryToHand(this);
         }
 
         var count = cylinder.CountLoaded();

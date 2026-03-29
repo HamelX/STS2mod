@@ -15,8 +15,16 @@ public sealed class SealBurstLoad() : CardModel(1, CardType.Skill, CardRarity.Co
             return;
 
         var loads = IsUpgraded ? 2 : 1;
+        var loadedNewSeal = false;
         for (var i = 0; i < loads; i++)
+        {
+            var before = cylinder.CountSealLoaded();
             cylinder.TryLoadOrIncrementSeal();
+            loadedNewSeal |= cylinder.CountSealLoaded() > before;
+        }
+
+        if (loadedNewSeal)
+            await SealShotHelper.GrantTemporaryToHand(this);
 
         for (var i = 0; i < loads; i++)
             cylinder.TryLoadNext(CylinderPower.AmmoType.Tracer);
