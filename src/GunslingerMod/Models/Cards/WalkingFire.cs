@@ -28,7 +28,7 @@ public sealed class WalkingFire() : CardModel(1, CardType.Attack, CardRarity.Unc
 
         for (var i = 0; i < pulls; i++)
         {
-            if (!BulletResolver.HasAliveOpponents(Owner.Creature))
+            if (!BulletResolver.ShouldContinueFiring(Owner.Creature.CombatState))
                 break;
 
             var target = BulletResolver.ResolveAliveTarget(Owner.Creature, cardPlay.Target);
