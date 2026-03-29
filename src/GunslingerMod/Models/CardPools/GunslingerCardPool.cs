@@ -35,7 +35,11 @@ public sealed class GunslingerCardPool : CardPoolModel
             ModelDb.Card<Panning>(),
             ModelDb.Card<SprayFire>(),
             ModelDb.Card<SealLoad>(),
+            ModelDb.Card<SealPressure>(),
             ModelDb.Card<EtchedTracer>(),
+            ModelDb.Card<TracerBrand>(),
+            ModelDb.Card<SealBurstLoad>(),
+            ModelDb.Card<BrandedShot>(),
             ModelDb.Card<TracerStrike>(),
             ModelDb.Card<ReadTheMark>(),
             ModelDb.Card<RicochetFollowUp>(),
@@ -54,6 +58,7 @@ public sealed class GunslingerCardPool : CardPoolModel
             ModelDb.Card<BallisticCompiler>(),
             ModelDb.Card<ChainBurst>(),
             ModelDb.Card<WalkingFire>(),
+            ModelDb.Card<TracerStorm>(),
             ModelDb.Card<BlankFire>(),
             ModelDb.Card<HuntPrep>(),
             ModelDb.Card<CrossfireRhythm>(),
@@ -66,12 +71,16 @@ public sealed class GunslingerCardPool : CardPoolModel
             ModelDb.Card<OverclockDrum>(),
             ModelDb.Card<OverclockCharge>(),
             ModelDb.Card<ExecutionShot>(),
+            ModelDb.Card<SealedRicochet>(),
+            ModelDb.Card<ImprintSeal>(),
+            ModelDb.Card<RicochetBurst>(),
             ModelDb.Card<ImprintIgnition>(),
             ModelDb.Card<SealRite>(),
             ModelDb.Card<GrandRite>(),
             ModelDb.Card<SealReleaseKai>(),
             ModelDb.Card<FinalVolley>(),
-            ModelDb.Card<DeadAngle>()
+            ModelDb.Card<DeadAngle>(),
+            ModelDb.Card<EtchedResonance>()
         ];
     }
 

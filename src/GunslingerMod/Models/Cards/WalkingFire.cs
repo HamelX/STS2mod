@@ -48,7 +48,8 @@ public sealed class WalkingFire() : CardModel(1, CardType.Attack, CardRarity.Unc
 
         if (anyShotSucceeded)
         {
-            cylinder.TryLoadNext(CylinderPower.AmmoType.Tracer);
+            if (cylinder.TryLoadNext(CylinderPower.AmmoType.Tracer))
+                await BulletResolver.RegisterTracerShots(choiceContext, Owner.Creature, this, 1);
             await PowerCmd.SetAmount<CylinderPower>(Owner.Creature, cylinder.CountLoaded(), Owner.Creature, this);
         }
     }

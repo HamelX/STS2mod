@@ -57,6 +57,9 @@ public sealed class Shoot() : CardModel(1, CardType.Attack, CardRarity.Basic, Ta
             baseDamage += 3m;
 
         await BulletResolver.FireAtTarget(choiceContext, Owner.Creature, shotTarget, this, ammoType, sealLevel, baseDamage);
+
+        if ((Owner.Creature.GetPower<RicochetPower>()?.Amount ?? 0) > 0 || (Owner.Creature.GetPower<RicochetImprintPower>()?.Amount ?? 0) > 0)
+            await PowerCmd.Apply<ImprintPower>(Owner.Creature, 1, Owner.Creature, this);
     }
 
     private static decimal GetCurrentChamberDamage(CylinderPower.AmmoType ammoType, byte sealLevel, bool isUpgraded)

@@ -27,16 +27,30 @@ public sealed class SealRampage() : CardModel(0, CardType.Skill, CardRarity.Rare
         if (sealIndex < 0)
             return;
 
-        var reduction = IsUpgraded ? 1 : 2;
-        var currentLevel = cylinder.GetSealLevel(sealIndex);
-        var delta = Math.Min(currentLevel, reduction);
-        if (delta > 0)
-            cylinder.ReduceSealLevel(sealIndex, (byte)delta);
+        var removedSeals = RemoveLoadedSeals(cylinder);
+        if (removedSeals <= 0)
+            return;
 
-        await PlayerCmd.GainEnergy(1, Owner);
+        await PowerCmd.SetAmount<CylinderPower>(Owner.Creature, cylinder.CountLoaded(), Owner.Creature, this);
+        await PlayerCmd.GainEnergy(removedSeals, Owner);
 
         if (IsUpgraded)
             await CardPileCmd.Draw(choiceContext, 1, Owner);
+    }
+
+    private static int RemoveLoadedSeals(CylinderPower cylinder)
+    {
+        var removed = 0;
+        for (var i = 0; i < CylinderPower.MaxRounds; i++)
+        {
+            if (cylinder.GetAmmoType(i) != CylinderPower.AmmoType.Seal)
+                continue;
+
+            cylinder.ClearChamberAt(i);
+            removed++;
+        }
+
+        return removed;
     }
 
     private static int FindHighestLevelSealIndex(CylinderPower cylinder)

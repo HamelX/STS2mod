@@ -1,8 +1,11 @@
-﻿using MegaCrit.Sts2.Core.Commands;
+﻿using System;
+using System.Linq;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+using GunslingerMod.Models.Combat;
 using GunslingerMod.Models.DynamicVars;
 using GunslingerMod.Models.Powers;
 
@@ -41,6 +44,10 @@ public sealed class SealLoad() : CardModel(1, CardType.Skill, CardRarity.Common,
         // Immediate survivability while setting up seal play.
         await CreatureCmd.GainBlock(Owner.Creature, IsUpgraded ? 8m : 5m, MegaCrit.Sts2.Core.ValueProps.ValueProp.Move, cardPlay);
 
+        var rite = Owner.Creature.GetPower<SealRitePower>();
+        if (rite != null)
+            await TryAutoReleaseAtThreshold(choiceContext, cylinder);
+
 
         var count = cylinder.CountLoaded();
         if (count > MaxAmmo)
@@ -52,5 +59,54 @@ public sealed class SealLoad() : CardModel(1, CardType.Skill, CardRarity.Common,
     {
         // Behavior change handled in OnPlay.
     }
-}
 
+    private async Task TryAutoReleaseAtThreshold(PlayerChoiceContext choiceContext, CylinderPower cylinder)
+    {
+        var sealIndex = FindHighestLevelSealIndex(cylinder);
+        if (sealIndex < 0)
+            return;
+
+        var level = cylinder.GetSealLevel(sealIndex);
+        if (level < 3)
+            return;
+
+        if (!BulletResolver.HasAliveOpponents(Owner.Creature))
+            return;
+
+        if (sealIndex != cylinder.ChamberIndex)
+            cylinder.SwapChambers(sealIndex, cylinder.ChamberIndex);
+
+        var target = Owner.Creature.CombatState?.GetOpponentsOf(Owner.Creature).FirstOrDefault(c => c.IsAlive && c.CurrentHp > 0);
+        if (target == null)
+            return;
+
+        var didFire = BulletResolver.TryConsumeCurrentWithSealSkip(cylinder, this, out var ammoType, out var sealLevel);
+        await PowerCmd.SetAmount<CylinderPower>(Owner.Creature, cylinder.CountLoaded(), Owner.Creature, this);
+        if (!didFire)
+            return;
+
+        var damage = Math.Max(0m, BulletResolver.GetBaseDamage(ammoType, sealLevel));
+        await BulletResolver.FireAtTarget(choiceContext, Owner.Creature, target, this, ammoType, sealLevel, damage);
+    }
+
+    private static int FindHighestLevelSealIndex(CylinderPower cylinder)
+    {
+        var bestIdx = -1;
+        var bestLvl = -1;
+
+        for (var i = 0; i < CylinderPower.MaxRounds; i++)
+        {
+            if (cylinder.GetAmmoType(i) != CylinderPower.AmmoType.Seal)
+                continue;
+
+            var lvl = cylinder.GetSealLevel(i);
+            if (lvl > bestLvl)
+            {
+                bestLvl = lvl;
+                bestIdx = i;
+            }
+        }
+
+        return bestIdx;
+    }
+}

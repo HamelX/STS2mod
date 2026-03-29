@@ -110,6 +110,8 @@ internal static class BulletResolver
                 return;
 
             var finalDamage = damage + (source.GetPower<ImprintIgnitionPower>()?.Amount ?? 0);
+            if (ammoType == CylinderPower.AmmoType.Seal)
+                finalDamage += source.GetPower<SealRitePower>()?.ConsumeNextSealDamageBonus() ?? 0;
 
             // Seal Lv7+: keep a single hit, but double that hit's final damage.
             if (ammoType == CylinderPower.AmmoType.Seal && sealLevel >= CylinderPower.SealThresholdUnblockable)
@@ -141,6 +143,8 @@ internal static class BulletResolver
 
             if (ammoType == CylinderPower.AmmoType.Tracer && !suppressTracerTriggers)
             {
+                await RegisterTracerShots(choiceContext, source, cardSource, 1);
+
                 var tracerFlag = source.GetPower<TracerFiredThisTurnPower>();
                 var isFirstTracerShotThisTurn = tracerFlag == null || tracerFlag.Amount <= 0;
                 if (isFirstTracerShotThisTurn)
@@ -168,6 +172,31 @@ internal static class BulletResolver
         finally
         {
             BulletContext.Current = null;
+        }
+    }
+
+    public static async Task RegisterTracerShots(PlayerChoiceContext choiceContext, Creature source, CardModel cardSource, int tracerShotsAdded)
+    {
+        if (tracerShotsAdded <= 0)
+            return;
+
+        var drum = source.GetPower<OverclockDrumPower>();
+        if (drum == null || drum.Amount <= 0)
+            return;
+
+        var explosions = drum.AddTracerShots(tracerShotsAdded);
+        if (explosions <= 0)
+            return;
+
+        var opponents = source.CombatState?.GetOpponentsOf(source).Where(c => c.IsAlive && c.CurrentHp > 0).ToList();
+        if (opponents == null || opponents.Count == 0)
+            return;
+
+        const decimal explosionDamage = 8m;
+        for (var i = 0; i < explosions; i++)
+        {
+            foreach (var enemy in opponents.Where(e => e.IsAlive && e.CurrentHp > 0))
+                await CreatureCmd.Damage(choiceContext, enemy, explosionDamage, ValueProp.Move, source, cardSource);
         }
     }
 
