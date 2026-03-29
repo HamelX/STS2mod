@@ -43,7 +43,7 @@
 | `OverclockCharge` | `OVERCLOCK_CHARGE` | `3, Power, Rare, None` | 오버클록 장약 | {IfUpgraded:show:한 턴에 3번째 발사 성공 시 에너지 1 획득. 각인 1 획득. 선천성.\|한 턴에 3번째 발사 성공 시 에너지 1 획득. 각인 1 획득.} |
 | `ExecutionShot` | `EXECUTION_SHOT` | `2, Attack, Rare, AnyEnemy` | 처형 사격 | {IfUpgraded:show:격발 1회. 대상 체력이 절반 이하면 피해 3배.\|격발 1회. 대상 체력이 절반 이하면 피해 2배.} |
 | `ImprintIgnition` | `IMPRINT_IGNITION` | `2, Power, Rare, None` | 각인 점화 | {IfUpgraded:show:파워: 내 탄환 격발 피해 +2.\|파워: 내 탄환 격발 피해 +1.} |
-| `SealRite` | `SEAL_RITE` | `1, Power, Rare, None` | 봉인의식 | {IfUpgraded:show:파워: 턴 시작 시 봉인탄이 장전되어 있으면 장전된 봉인탄 레벨을 1 올립니다. 사용 시 봉인탄이 없다면 봉인탄 1발을 장전합니다. 선천성.\|파워: 턴 시작 시 봉인탄이 장전되어 있으면 장전된 봉인탄 레벨을 1 올립니다. 사용 시 봉인탄이 없다면 봉인탄 1발을 장전합니다.} |
+| `SealRite` | `SEAL_RITE` | `1, Power, Rare, None` | 봉인 장약 | {IfUpgraded:show:파워: 턴 시작 시 봉인탄이 장전되어 있으면 장전된 봉인탄 레벨을 1 올리고 다음 봉인 사격 피해 +3을 저장합니다. 사용 시 봉인탄이 없다면 봉인탄 1발을 장전하고 임시 카드 「봉인 사격」 1장을 손에 추가합니다. 선천성.\|파워: 턴 시작 시 봉인탄이 장전되어 있으면 장전된 봉인탄 레벨을 1 올리고 다음 봉인 사격 피해 +3을 저장합니다. 사용 시 봉인탄이 없다면 봉인탄 1발을 장전하고 임시 카드 「봉인 사격」 1장을 손에 추가합니다.} |
 | `GrandRite` | `GRAND_RITE` | `2, Skill, Rare, AnyEnemy` | 그랜드 라이트 | {IfUpgraded:show:가장 높은 레벨의 장전된 봉인탄 레벨을 3 올립니다. 그 봉인탄을 발사 칸으로 정렬합니다. 직접 격발 1회.\|가장 높은 레벨의 장전된 봉인탄 레벨을 2 올립니다. 그 봉인탄을 발사 칸으로 정렬합니다. 직접 격발 1회.} |
 | `SealReleaseKai` | `SEAL_RELEASE_KAI` | `3, Attack, Rare, AnyEnemy` | 봉인 해방: 개 | {IfUpgraded:show:가장 높은 레벨의 장전된 봉인탄을 발사 칸으로 정렬합니다. 2회 격발. 보존.\|가장 높은 레벨의 장전된 봉인탄을 발사 칸으로 정렬합니다. 2회 격발.} |
 
