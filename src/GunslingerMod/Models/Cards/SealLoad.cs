@@ -28,6 +28,7 @@ public sealed class SealLoad() : CardModel(1, CardType.Skill, CardRarity.Common,
             return;
 
         // If seal slots are already full, convert this into seal level growth instead.
+        var loadedNewSeal = false;
         if (cylinder.CountSealLoaded() >= CylinderPower.MaxSealRounds)
         {
             cylinder.IncrementSealLevels(1);
@@ -37,9 +38,12 @@ public sealed class SealLoad() : CardModel(1, CardType.Skill, CardRarity.Common,
             // Load 1 seal bullet (global seal cap remains 2)
             for (var i = 0; i < 1; i++)
             {
-                cylinder.TryLoadNext(CylinderPower.AmmoType.Seal);
+                loadedNewSeal |= cylinder.TryLoadNext(CylinderPower.AmmoType.Seal);
             }
         }
+
+        if (loadedNewSeal)
+            await SealShotHelper.GrantTemporaryToHand(this);
 
         // Immediate survivability while setting up seal play.
         await CreatureCmd.GainBlock(Owner.Creature, IsUpgraded ? 8m : 5m, MegaCrit.Sts2.Core.ValueProps.ValueProp.Move, cardPlay);
@@ -62,7 +66,7 @@ public sealed class SealLoad() : CardModel(1, CardType.Skill, CardRarity.Common,
 
     private async Task TryAutoReleaseAtThreshold(PlayerChoiceContext choiceContext, CylinderPower cylinder)
     {
-        var sealIndex = FindHighestLevelSealIndex(cylinder);
+        var sealIndex = SealShotHelper.FindHighestLevelSealIndex(cylinder);
         if (sealIndex < 0)
             return;
 
@@ -89,24 +93,4 @@ public sealed class SealLoad() : CardModel(1, CardType.Skill, CardRarity.Common,
         await BulletResolver.FireAtTarget(choiceContext, Owner.Creature, target, this, ammoType, sealLevel, damage);
     }
 
-    private static int FindHighestLevelSealIndex(CylinderPower cylinder)
-    {
-        var bestIdx = -1;
-        var bestLvl = -1;
-
-        for (var i = 0; i < CylinderPower.MaxRounds; i++)
-        {
-            if (cylinder.GetAmmoType(i) != CylinderPower.AmmoType.Seal)
-                continue;
-
-            var lvl = cylinder.GetSealLevel(i);
-            if (lvl > bestLvl)
-            {
-                bestLvl = lvl;
-                bestIdx = i;
-            }
-        }
-
-        return bestIdx;
-    }
 }

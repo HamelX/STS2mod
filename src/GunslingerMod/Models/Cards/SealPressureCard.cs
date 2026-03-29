@@ -17,8 +17,16 @@ public sealed class SealPressure() : CardModel(1, CardType.Skill, CardRarity.Com
             return;
 
         var loads = IsUpgraded ? 2 : 1;
+        var loadedNewSeal = false;
         for (var i = 0; i < loads; i++)
+        {
+            var before = cylinder.CountSealLoaded();
             cylinder.TryLoadOrIncrementSeal();
+            loadedNewSeal |= cylinder.CountSealLoaded() > before;
+        }
+
+        if (loadedNewSeal)
+            await SealShotHelper.GrantTemporaryToHand(this);
 
         var maxSealLevel = 0;
         for (var i = 0; i < CylinderPower.MaxRounds; i++)
