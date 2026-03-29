@@ -12,7 +12,7 @@
   "SEAL_SEARCH.title": "Seal Search",
   "SEAL_SEARCH.description": "{IfUpgraded:show:Draw 3 cards. If a Seal bullet is loaded, draw 1 additional card.|Draw 2 cards. If a Seal bullet is loaded, draw 1 additional card.}",
   "SEAL_RITE.title": "Seal Rite",
-  "SEAL_RITE.description": "{IfUpgraded:show:Power: At turn start, if a Seal round is loaded, increase loaded Seal rounds by 1 level and store +3 bonus damage for your next Seal shot. On play, if no Seal round is loaded, load 1 Seal round. Innate.|Power: At turn start, if a Seal round is loaded, increase loaded Seal rounds by 1 level and store +3 bonus damage for your next Seal shot. On play, if no Seal round is loaded, load 1 Seal round.}",
+  "SEAL_RITE.description": "{IfUpgraded:show:Power: At turn start, if a Seal round is loaded, increase loaded Seal rounds by 1 level and store +3 bonus damage for your next Seal shot. On play, load 1 Seal round if none is loaded; otherwise increase Seal Level by 1. Innate.|Power: At turn start, if a Seal round is loaded, increase loaded Seal rounds by 1 level and store +3 bonus damage for your next Seal shot. On play, load 1 Seal round if none is loaded; otherwise increase Seal Level by 1.}",
   "SEAL_AMPLIFY.title": "Seal Amplify",
   "SEAL_AMPLIFY.description": "{IfUpgraded:show:Increase the loaded Seal bullet's level by 5.|Increase the loaded Seal bullet's level by 3.}",
   "SEAL_IMPRINT.title": "Seal Imprint",
@@ -122,7 +122,7 @@
   "BARRAGE_COLLAPSE.title": "Barrage Collapse",
   "BARRAGE_COLLAPSE.description": "{IfUpgraded:show:Gain 5 Ricochet. This turn, for the first 5 Ricochet triggers, deal 3 damage to all other enemies.|Gain 4 Ricochet. This turn, for the first 4 Ricochet triggers, deal 3 damage to all other enemies.}",
   "SEAL_PRESSURE.title": "Seal Pressure",
-  "SEAL_PRESSURE.description": "{IfUpgraded:show:Load 2 Seal rounds. If Seal Level is 2+, gain Block equal to highest Seal Level.|Load 1 Seal round. If Seal Level is 2+, gain Block equal to highest Seal Level.}",
+  "SEAL_PRESSURE.description": "{IfUpgraded:show:Attempt to load Seal rounds 2 times (if already loaded, increase Seal Level by 1 instead). If Seal Level is 2+, gain Block equal to highest Seal Level.|Attempt to load Seal rounds 1 time (if already loaded, increase Seal Level by 1 instead). If Seal Level is 2+, gain Block equal to highest Seal Level.}",
   "BRANDED_SHOT.title": "Branded Shot",
   "BRANDED_SHOT.description": "{IfUpgraded:show:Trigger Pull 1 time. On successful shot, gain 1 Ricochet and 2 Imprint.|Trigger Pull 1 time. On successful shot, gain 1 Ricochet and 1 Imprint.}",
   "TRACER_STORM.title": "Tracer Storm",
@@ -136,7 +136,7 @@
   "RICOCHET_BURST.title": "Ricochet Burst",
   "RICOCHET_BURST.description": "{IfUpgraded:show:Trigger Pull 1 time. If the fired round is Tracer, gain 2 Ricochet.|Trigger Pull 1 time. If the fired round is Tracer, gain 1 Ricochet.}",
   "SEAL_BURST_LOAD.title": "Seal Burst Load",
-  "SEAL_BURST_LOAD.description": "{IfUpgraded:show:Load 2 Seal rounds and 2 Tracer rounds.|Load 1 Seal round and 1 Tracer round.}",
+  "SEAL_BURST_LOAD.description": "{IfUpgraded:show:Attempt to load Seal rounds 2 times (if already loaded, increase Seal Level by 1 instead), then load 2 Tracer rounds.|Attempt to load Seal rounds 1 time (if already loaded, increase Seal Level by 1 instead), then load 1 Tracer round.}",
   "ETCHED_RESONANCE.title": "Etched Resonance",
   "ETCHED_RESONANCE.description": "{IfUpgraded:show:Load Tracer rounds equal to highest Seal Level. Reduce all loaded Seal levels to 1.|Load Tracer rounds equal to highest Seal Level. Reduce all loaded Seal levels to 0.}"
 }

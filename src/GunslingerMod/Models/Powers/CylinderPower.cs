@@ -240,6 +240,26 @@ public sealed class CylinderPower : PowerModel
         return false;
     }
 
+    public bool TryLoadOrIncrementSeal(byte incrementAmount = 1)
+    {
+        if (TryLoadNext(AmmoType.Seal))
+            return true;
+
+        if (incrementAmount <= 0)
+            return false;
+
+        for (var i = 0; i < MaxRounds; i++)
+        {
+            if (GetAmmoType(i) != AmmoType.Seal)
+                continue;
+
+            IncrementSealLevel(i, incrementAmount);
+            return true;
+        }
+
+        return false;
+    }
+
     public bool TryLoadInto(int chamberIndex, AmmoType type)
     {
         if (chamberIndex < 0 || chamberIndex >= MaxRounds)
@@ -396,4 +416,3 @@ public sealed class CylinderPower : PowerModel
             ClearChamber(sealIndices[i]);
     }
 }
-
