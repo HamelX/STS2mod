@@ -40,7 +40,8 @@ public sealed class RicochetShot() : CardModel(2, CardType.Attack, CardRarity.Ra
             await BulletResolver.FireAtTarget(choiceContext, Owner.Creature, target, this, ammoType, sealLevel, damage);
         }
 
-        await PowerCmd.Apply<RicochetPower>(Owner.Creature, 2, Owner.Creature, this);
+        var bonusRicochet = ImprintCost / 2;
+        await PowerCmd.Apply<RicochetPower>(Owner.Creature, 2 + bonusRicochet, Owner.Creature, this);
         await PowerCmd.Apply<NextAttackFreePower>(Owner.Creature, 1, Owner.Creature, this);
     }
 

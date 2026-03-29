@@ -1,5 +1,4 @@
 using System;
-using System.Linq;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -23,13 +22,11 @@ public sealed class ChainBurst() : CardModel(1, CardType.Attack, CardRarity.Unco
 
         await PowerCmd.Apply<ImprintPower>(Owner.Creature, -2, Owner.Creature, this);
 
-        var totalPulls = 1;
-        var hasRhythm = (Owner.Creature.GetPower<TracerFiredThisTurnPower>()?.Amount ?? 0) > 0;
-        if (hasRhythm)
-            totalPulls += IsUpgraded ? 2 : 1;
-
-        for (var i = 0; i < totalPulls; i++)
+        var remainingPulls = 1;
+        var firstResolved = false;
+        while (remainingPulls > 0)
         {
+            remainingPulls--;
             if (!BulletResolver.HasAliveOpponents(Owner.Creature))
                 break;
 
@@ -45,6 +42,13 @@ public sealed class ChainBurst() : CardModel(1, CardType.Attack, CardRarity.Unco
 
             var damage = Math.Max(0m, BulletResolver.GetBaseDamage(ammoType, sealLevel));
             await BulletResolver.FireAtTarget(choiceContext, Owner.Creature, target, this, ammoType, sealLevel, damage);
+
+            if (!firstResolved)
+            {
+                firstResolved = true;
+                if (ammoType == CylinderPower.AmmoType.Tracer)
+                    remainingPulls += IsUpgraded ? 3 : 2;
+            }
         }
     }
 }
