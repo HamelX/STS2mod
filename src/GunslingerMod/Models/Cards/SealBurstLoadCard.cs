@@ -3,6 +3,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using GunslingerMod.Models.Powers;
+using Godot;
 
 namespace GunslingerMod.Models.Cards;
 
@@ -24,7 +25,10 @@ public sealed class SealBurstLoad() : CardModel(1, CardType.Skill, CardRarity.Co
         }
 
         if (loadedNewSeal)
-            await SealShotHelper.GrantTemporaryToHand(this);
+        {
+            GD.Print("[Gunslinger] SealBurstLoad loaded new Seal: granting SealShot");
+            await SealShotHelper.GrantTemporaryToHand(choiceContext, this);
+        }
 
         for (var i = 0; i < loads; i++)
             cylinder.TryLoadNext(CylinderPower.AmmoType.Tracer);

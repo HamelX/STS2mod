@@ -3,6 +3,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using GunslingerMod.Models.Powers;
+using Godot;
 
 namespace GunslingerMod.Models.Cards;
 
@@ -17,7 +18,10 @@ public sealed class SealRite() : CardModel(1, CardType.Power, CardRarity.Rare, T
             {
                 var loadedNewSeal = cylinder.TryLoadNext(CylinderPower.AmmoType.Seal);
                 if (loadedNewSeal)
-                    await SealShotHelper.GrantTemporaryToHand(this);
+                {
+                    GD.Print("[Gunslinger] SealRite loaded new Seal: granting SealShot");
+                    await SealShotHelper.GrantTemporaryToHand(choiceContext, this);
+                }
             }
             else
                 cylinder.IncrementSealLevels(1);

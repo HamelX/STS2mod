@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.Models;
 using GunslingerMod.Models.Combat;
 using GunslingerMod.Models.DynamicVars;
 using GunslingerMod.Models.Powers;
+using Godot;
 
 namespace GunslingerMod.Models.Cards;
 
@@ -43,7 +44,10 @@ public sealed class SealLoad() : CardModel(1, CardType.Skill, CardRarity.Common,
         }
 
         if (loadedNewSeal)
-            await SealShotHelper.GrantTemporaryToHand(this);
+        {
+            GD.Print("[Gunslinger] SealLoad loaded new Seal: granting SealShot");
+            await SealShotHelper.GrantTemporaryToHand(choiceContext, this);
+        }
 
         // Immediate survivability while setting up seal play.
         await CreatureCmd.GainBlock(Owner.Creature, IsUpgraded ? 8m : 5m, MegaCrit.Sts2.Core.ValueProps.ValueProp.Move, cardPlay);

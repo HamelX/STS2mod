@@ -4,6 +4,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 using GunslingerMod.Models.Powers;
+using Godot;
 
 namespace GunslingerMod.Models.Cards;
 
@@ -36,7 +37,10 @@ public sealed class SealTension() : CardModel(1, CardType.Skill, CardRarity.Unco
         {
             var loadedNewSeal = cylinder.TryLoadNext(CylinderPower.AmmoType.Seal);
             if (loadedNewSeal)
-                await SealShotHelper.GrantTemporaryToHand(this);
+            {
+                GD.Print("[Gunslinger] SealTension loaded new Seal: granting SealShot");
+                await SealShotHelper.GrantTemporaryToHand(choiceContext, this);
+            }
         }
 
         var count = cylinder.CountLoaded();
