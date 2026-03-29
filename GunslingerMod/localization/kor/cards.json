@@ -12,7 +12,7 @@
   "SEAL_SEARCH.title": "봉인 추적",
   "SEAL_SEARCH.description": "{IfUpgraded:show:카드 3장 뽑기. 봉인탄이 장전되어 있으면 카드 1장 추가로 뽑기.|카드 2장 뽑기. 봉인탄이 장전되어 있으면 카드 1장 추가로 뽑기.}",
   "SEAL_RITE.title": "봉인의식",
-  "SEAL_RITE.description": "{IfUpgraded:show:파워: 턴 시작 시 봉인탄이 있으면 봉인탄 레벨 +1, 다음 봉인탄 발사 피해 보너스 +3 저장. 사용 시 봉인탄이 없으면 1발 장전. 선천성.|파워: 턴 시작 시 봉인탄이 있으면 봉인탄 레벨 +1, 다음 봉인탄 발사 피해 보너스 +3 저장. 사용 시 봉인탄이 없으면 1발 장전.}",
+  "SEAL_RITE.description": "{IfUpgraded:show:파워: 턴 시작 시 봉인탄이 있으면 봉인탄 레벨 +1, 다음 봉인탄 발사 피해 보너스 +3 저장. 사용 시 봉인탄이 없으면 1발 장전, 있으면 봉인 레벨 +1. 선천성.|파워: 턴 시작 시 봉인탄이 있으면 봉인탄 레벨 +1, 다음 봉인탄 발사 피해 보너스 +3 저장. 사용 시 봉인탄이 없으면 1발 장전, 있으면 봉인 레벨 +1.}",
   "SEAL_AMPLIFY.title": "봉인 증폭",
   "SEAL_AMPLIFY.description": "{IfUpgraded:show:장전된 봉인탄의 레벨을 5 올립니다.|장전된 봉인탄의 레벨을 3 올립니다.}",
   "SEAL_IMPRINT.title": "봉인 각인",
@@ -122,7 +122,7 @@
   "BARRAGE_COLLAPSE.title": "탄막 붕괴",
   "BARRAGE_COLLAPSE.description": "{IfUpgraded:show:도탄 5 획득. 이번 턴 처음 5번의 도탄 발동 시, 다른 모든 적에게 피해 3.|도탄 4 획득. 이번 턴 처음 4번의 도탄 발동 시, 다른 모든 적에게 피해 3.}",
   "SEAL_PRESSURE.title": "봉인 압력",
-  "SEAL_PRESSURE.description": "{IfUpgraded:show:봉인탄 2발 장전. 봉인 레벨 2 이상이면 최고 봉인 레벨만큼 방어도 획득.|봉인탄 1발 장전. 봉인 레벨 2 이상이면 최고 봉인 레벨만큼 방어도 획득.}",
+  "SEAL_PRESSURE.description": "{IfUpgraded:show:봉인탄 2회 장전 시도(이미 장전되어 있으면 봉인 레벨 +1). 봉인 레벨 2 이상이면 최고 봉인 레벨만큼 방어도 획득.|봉인탄 1회 장전 시도(이미 장전되어 있으면 봉인 레벨 +1). 봉인 레벨 2 이상이면 최고 봉인 레벨만큼 방어도 획득.}",
   "BRANDED_SHOT.title": "각인 사격",
   "BRANDED_SHOT.description": "{IfUpgraded:show:방아쇠 1회. 발사 성공 시 도탄 1, 각인 2 획득.|방아쇠 1회. 발사 성공 시 도탄 1, 각인 1 획득.}",
   "TRACER_STORM.title": "추적탄 폭풍",
@@ -136,7 +136,7 @@
   "RICOCHET_BURST.title": "도탄 연발",
   "RICOCHET_BURST.description": "{IfUpgraded:show:방아쇠 1회. 발사한 탄환이 추적탄이면 도탄 2 획득.|방아쇠 1회. 발사한 탄환이 추적탄이면 도탄 1 획득.}",
   "SEAL_BURST_LOAD.title": "봉인 연계 장전",
-  "SEAL_BURST_LOAD.description": "{IfUpgraded:show:봉인탄 2발과 추적탄 2발 장전.|봉인탄 1발과 추적탄 1발 장전.}",
+  "SEAL_BURST_LOAD.description": "{IfUpgraded:show:봉인탄 2회 장전 시도(이미 장전되어 있으면 봉인 레벨 +1) 후, 추적탄 2발 장전.|봉인탄 1회 장전 시도(이미 장전되어 있으면 봉인 레벨 +1) 후, 추적탄 1발 장전.}",
   "ETCHED_RESONANCE.title": "각인 공명",
   "ETCHED_RESONANCE.description": "{IfUpgraded:show:최고 봉인 레벨만큼 추적탄 장전. 모든 봉인탄 레벨을 1로 낮춤.|최고 봉인 레벨만큼 추적탄 장전. 모든 봉인탄 레벨을 0으로 낮춤.}"
 }
