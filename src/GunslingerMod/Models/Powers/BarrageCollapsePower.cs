@@ -26,14 +26,27 @@ public sealed class BarrageCollapsePower : PowerModel
         if (combatState == null)
             return;
 
-        await PowerCmd.Decrement(this);
+        if (!BulletResolver.HasAliveOpponents(source))
+            return;
+
+        if (!ricochetTarget.IsAlive || ricochetTarget.IsDead || ricochetTarget.CurrentHp <= 0)
+            return;
 
         var splashTargets = combatState.HittableEnemies
-            .Where(e => !e.IsDead && e.Side == ricochetTarget.Side && e != ricochetTarget)
+            .Where(e => e.IsAlive && !e.IsDead && e.CurrentHp > 0 && e.Side == ricochetTarget.Side && e != ricochetTarget)
             .ToList();
+        if (splashTargets.Count == 0)
+            return;
+
+        await PowerCmd.Decrement(this);
 
         foreach (var splashTarget in splashTargets)
+        {
+            if (!BulletResolver.HasAliveOpponents(source))
+                return;
+
             await CreatureCmd.Damage(choiceContext, splashTarget, SplashDamage, ValueProp.Move, source, cardSource);
+        }
     }
 
     public override Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)

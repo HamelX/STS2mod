@@ -98,7 +98,7 @@ internal static class BulletResolver
         decimal damage,
         bool suppressTracerTriggers = false)
     {
-        if (target == null || !target.IsAlive)
+        if (target == null || !target.IsAlive || target.CurrentHp <= 0)
             return;
 
         var props = GetDamageProps(ammoType, sealLevel);
@@ -115,7 +115,14 @@ internal static class BulletResolver
             if (ammoType == CylinderPower.AmmoType.Seal && sealLevel >= CylinderPower.SealThresholdUnblockable)
                 finalDamage *= 2m;
 
+            if (!HasAliveOpponents(source))
+                return;
+
             await CreatureCmd.Damage(choiceContext, target, finalDamage, props, source, cardSource);
+
+            if (!HasAliveOpponents(source))
+                return;
+
             await PowerCmd.Apply<ImprintPower>(source, 1, source, cardSource);
 
             if (!HasAliveOpponents(source))
@@ -138,6 +145,9 @@ internal static class BulletResolver
 
             if (HotEjectorRelic.CanTriggerFor(source) && source.Player != null)
                 await HotEjectorRelic.TriggerFor(source.Player);
+
+            if (!HasAliveOpponents(source))
+                return;
 
             if (ammoType == CylinderPower.AmmoType.Tracer && !suppressTracerTriggers)
             {
@@ -188,6 +198,9 @@ internal static class BulletResolver
         await PowerCmd.SetAmount<CylinderPower>(source, cylinder.CountLoaded(), source, cardSource);
 
         if (!didFire)
+            return;
+
+        if (!HasAliveOpponents(source))
             return;
 
         var damage = Math.Max(0m, GetBaseDamage(ammoType, sealLevel));
