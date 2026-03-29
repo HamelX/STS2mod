@@ -20,10 +20,13 @@ public sealed class RicochetPower : PowerModel
     public override async Task AfterDamageReceived(PlayerChoiceContext choiceContext, Creature target, DamageResult result, ValueProp props, Creature? dealer, CardModel? cardSource)
     {
         // Trigger from owner's outgoing hits.
-        if (dealer != Owner)
+        if (Owner == null || dealer != Owner)
             return;
 
         if (target.IsDead || result.UnblockedDamage <= 0)
+            return;
+
+        if (!BulletResolver.HasAliveOpponents(Owner))
             return;
 
         // Ricochet should only trigger from the original bullet hit, never from ricochet damage.
@@ -55,17 +58,22 @@ public sealed class RicochetPower : PowerModel
         if (combatState == null)
             return;
 
-        var candidates = combatState.HittableEnemies.Where(e => !e.IsDead && e.Side == target.Side && e != target).ToList();
-        var bounceTarget = candidates.Count > 0
-            ? (Owner.Player?.RunState.Rng.CombatTargets.NextItem(candidates) ?? candidates[0])
-            : target;
+        var candidates = combatState.HittableEnemies
+            .Where(e => e.IsAlive && !e.IsDead && e.CurrentHp > 0 && e.Side == target.Side && e != target)
+            .ToList();
+        if (candidates.Count == 0)
+            return;
+
+        var bounceTarget = Owner.Player?.RunState.Rng.CombatTargets.NextItem(candidates) ?? candidates[0];
+        if (bounceTarget == null || !bounceTarget.IsAlive || bounceTarget.IsDead || bounceTarget.CurrentHp <= 0)
+            return;
 
         if (bulletInfo != null)
             bulletInfo.RicochetTriggered = true;
 
         await PowerCmd.Decrement(this);
         var barrageCollapse = Owner.GetPower<BarrageCollapsePower>();
-        if (barrageCollapse != null && barrageCollapse.Amount > 0)
+        if (barrageCollapse != null && barrageCollapse.Amount > 0 && BulletResolver.HasAliveOpponents(Owner))
             await barrageCollapse.OnRicochetTriggered(choiceContext, bounceTarget, Owner, cardSource);
 
         var oldContext = RicochetContext.Current;
