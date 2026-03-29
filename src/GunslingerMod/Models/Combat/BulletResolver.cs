@@ -128,8 +128,13 @@ internal static class BulletResolver
                 shotsThisTurn = await PowerCmd.SetAmount<ShotsFiredThisTurnPower>(source, shotsThisTurn.Amount + 1, source, cardSource);
 
             var overclockCharge = source.GetPower<OverclockChargePower>()?.Amount ?? 0;
-            if (overclockCharge > 0 && shotsThisTurn != null && shotsThisTurn.Amount > 0 && shotsThisTurn.Amount % 3 == 0 && source.Player != null)
-                await PlayerCmd.GainEnergy(overclockCharge, source.Player);
+            if (overclockCharge > 0 && shotsThisTurn != null && shotsThisTurn.Amount > 0 && shotsThisTurn.Amount % 3 == 0)
+            {
+                if (source.Player != null)
+                    await PlayerCmd.GainEnergy(overclockCharge, source.Player);
+
+                await PowerCmd.Apply<ImprintPower>(source, 1, source, cardSource);
+            }
 
             if (HotEjectorRelic.CanTriggerFor(source) && source.Player != null)
                 await HotEjectorRelic.TriggerFor(source.Player);

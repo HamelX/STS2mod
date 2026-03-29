@@ -46,6 +46,9 @@ public sealed class RicochetFollowUp() : CardModel(1, CardType.Attack, CardRarit
         }
 
         if (hasRicochet && !IsUpgraded)
+        {
             await CardPileCmd.Draw(choiceContext, 1, Owner);
+            await PowerCmd.Apply<ImprintPower>(Owner.Creature, 1, Owner.Creature, this);
+        }
     }
 }

@@ -26,8 +26,7 @@ public sealed class QuickRack() : CardModel(1, CardType.Attack, CardRarity.Commo
         var huntStartOn = (Owner.Creature.GetPower<TracerFiredThisTurnPower>()?.Amount ?? 0) > 0;
         if (!huntStartOn)
         {
-            if (IsUpgraded)
-                await CardPileCmd.Draw(choiceContext, 1, Owner);
+            await CardPileCmd.Draw(choiceContext, 1, Owner);
             return;
         }
 

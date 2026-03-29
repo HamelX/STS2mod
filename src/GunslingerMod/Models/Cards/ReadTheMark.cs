@@ -26,7 +26,10 @@ public sealed class ReadTheMark() : CardModel(1, CardType.Skill, CardRarity.Comm
             (Owner.Creature.GetPower<RicochetImprintPower>()?.Amount ?? 0) > 0;
 
         if (hasRicochetStack)
+        {
             await CardPileCmd.Draw(choiceContext, 1, Owner);
+            await PowerCmd.Apply<ImprintPower>(Owner.Creature, 1, Owner.Creature, this);
+        }
     }
 
     protected override void OnUpgrade()
