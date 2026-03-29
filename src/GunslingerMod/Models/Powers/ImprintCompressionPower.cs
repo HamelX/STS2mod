@@ -20,7 +20,7 @@ public sealed class ImprintCompressionPower : PowerModel
             return;
 
         var imprint = Owner.GetPower<ImprintPower>()?.Amount ?? 0;
-        var threshold = Math.Max(1, 5 - Amount);
+        var threshold = Math.Max(1, 6 - Amount);
         if (imprint < threshold)
             return;
 

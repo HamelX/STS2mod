@@ -13,17 +13,17 @@
 | `TakeCover` | `TAKE_COVER` | `1, Skill, Common, None` | 엄폐 | {IfUpgraded:show:{Block:diff()} 방어도 획득. 빈 약실 1개당 방어도 +1.\|{Block:diff()} 방어도 획득. 빈 약실 1개당 방어도 +1.} |
 | `Evasion` | `EVASION` | `1, Skill, Common, None` | 회피 | {IfUpgraded:show:이번 턴 다음에 받는 피해를 절반으로 만듭니다. (코스트 0).\|이번 턴 다음에 받는 피해를 절반으로 만듭니다.} |
 | `EchoNote` | `ECHO_NOTE` | `0, Skill, Common, None` | 에코 노트 | {IfUpgraded:show:각인 1소모. 카드 3장 뽑기.\|각인 1소모. 카드 2장 뽑기.} |
-| `QuickRack` | `QUICK_RACK` | `1, Attack, Common, AnyEnemy` | 퀵 랙 | {IfUpgraded:show:추적탄 2발 장전. 사냥개시 상태면 격발 2회. 사냥개시 상태가 아니면 카드 1장 뽑기.\|추적탄 2발 장전. 사냥개시 상태면 격발 1회.} |
+| `QuickRack` | `QUICK_RACK` | `1, Attack, Common, AnyEnemy` | 퀵 랙 | {IfUpgraded:show:추적탄 2발 장전. 사냥개시 상태면 격발 2회. 아니면 카드 1장 뽑기.\|추적탄 2발 장전. 사냥개시 상태면 격발 1회. 아니면 카드 1장 뽑기.} |
 | `HotChamber` | `HOT_CHAMBER` | `0, Skill, Common, None` | 핫 챔버 | {IfUpgraded:show:추적탄 3발 장전. 사냥개시 ON이면 카드 2장 뽑기. 아니면 카드 1장 뽑기.\|추적탄 2발 장전. 사냥개시 ON이면 카드 2장 뽑기. 아니면 카드 1장 뽑기.} |
 | `Panning` | `PANNING` | `3, Attack, Common, AnyEnemy` | 패닝 | {IfUpgraded:show:장전된 탄환을 순서대로 모두 격발. 격발마다 {Damage:diff()} 피해. 보존.\|장전된 탄환을 순서대로 모두 격발. 격발마다 {Damage:diff()} 피해.} |
 | `SprayFire` | `SPRAY_FIRE` | `2, Attack, Common, None` | 난사 | 장전된 탄환을 무작위 적에게 모두 격발합니다. 총 {Damage:diff()} 피해를 줍니다. |
 | `SealLoad` | `SEAL_LOAD` | `1, Skill, Common, None` | 봉인탄 장전 | {IfUpgraded:show:봉인탄 1발 장전(최대 1). 이미 장전되어 있으면 봉인 레벨 +1. 방어도 8 획득.\|봉인탄 1발 장전(최대 1). 이미 장전되어 있으면 봉인 레벨 +1. 방어도 5 획득.} |
 | `EtchedTracer` | `ETCHED_TRACER` | `0, Attack, Common, AnyEnemy` | 에칭 트레이서 | {IfUpgraded:show:대상을 지정해 격발 1회. 그 후 추적탄을 2발 장전합니다.\|대상을 지정해 격발 1회. 그 후 추적탄을 1발 장전합니다.} |
 | `TracerStrike` | `TRACER_STRIKE` | `1, Attack, Common, AnyEnemy` | 트레이서 스트라이크 | {IfUpgraded:show:추적탄 2발 장전. 격발 1회.\|추적탄 1발 장전. 격발 1회.} |
-| `ReadTheMark` | `READ_THE_MARK` | `1, Skill, Common, None` | 리드 더 마크 | {IfUpgraded:show:{Block:diff()} 방어도 획득. 도탄이 있으면 카드 1장 뽑기.\|{Block:diff()} 방어도 획득. 도탄이 있으면 카드 1장 뽑기.} |
-| `RicochetFollowUp` | `RICOCHET_FOLLOW_UP` | `1, Attack, Common, AnyEnemy` | 도탄 추격 | {IfUpgraded:show:격발 1회. 도탄이 있으면 격발 +1회.\|격발 1회. 도탄이 있으면 카드 1장 뽑기.} |
+| `ReadTheMark` | `READ_THE_MARK` | `1, Skill, Common, None` | 리드 더 마크 | {IfUpgraded:show:{Block:diff()} 방어도 획득. 도탄이 있으면 카드 1장 뽑기. 각인 1 획득.\|{Block:diff()} 방어도 획득. 도탄이 있으면 카드 1장 뽑기. 각인 1 획득.} |
+| `RicochetFollowUp` | `RICOCHET_FOLLOW_UP` | `1, Attack, Common, AnyEnemy` | 도탄 추격 | {IfUpgraded:show:격발 1회. 도탄이 있으면 +1회 격발.\|격발 1회. 도탄이 있으면 카드 1장 뽑기. 각인 1 획득.} |
 | `ImprintSqueeze` | `IMPRINT_SQUEEZE` | `0, Skill, Uncommon, None` | 각인 압착 | {IfUpgraded:show:카드 1장 버림. 각인 3획득.\|카드 1장 버림. 각인 2획득.} |
-| `ImprintCompression` | `IMPRINT_COMPRESSION` | `1, Power, Uncommon, None` | 각인 압축 | {IfUpgraded:show:턴 시작 시 각인이 3 이상이면 카드 1장 뽑기.\|턴 시작 시 각인이 4 이상이면 카드 1장 뽑기.} |
+| `ImprintCompression` | `IMPRINT_COMPRESSION` | `1, Power, Uncommon, None` | 각인 압축 | {IfUpgraded:show:턴 시작 시 각인이 2 이상이면 카드 1장 뽑기.\|턴 시작 시 각인이 3 이상이면 카드 1장 뽑기.} |
 | `FanTheBrand` | `FAN_THE_BRAND` | `1, Skill, Common, None` | 낙인 흩뿌리기 | {IfUpgraded:show:도탄 4 획득. 각인 1 획득.\|도탄 3 획득. 각인 1 획득.} |
 | `RicochetShot` | `RICOCHET_SHOT` | `2, Attack, Rare, AnyEnemy` | 도탄 사격 | {IfUpgraded:show:각인 3 소모. 격발 1회. 도탄 2 획득. 다음 공격 카드 비용 0. (코스트 1)\|각인 3 소모. 격발 1회. 도탄 2 획득. 다음 공격 카드 비용 0. (코스트 2)} |
 | `BankShot` | `BANK_SHOT` | `1, Attack, Uncommon, AnyEnemy` | 뱅크 샷 | {IfUpgraded:show:격발 1회. 도탄이 있으면 도탄 1 소모. 추가로 피해 {Damage:diff()}.\|격발 1회. 도탄이 있으면 도탄 1 소모. 추가로 피해 {Damage:diff()}.} |
@@ -40,7 +40,7 @@
 | `SealTension` | `SEAL_TENSION` | `1, Skill, Uncommon, None` | 봉인 긴장 | {IfUpgraded:show:봉인탄이 장전되어 있으면: 방어도 10 획득. 해당 봉인 레벨 3 상승. 없으면 봉인탄 1발 장전.\|봉인탄이 장전되어 있으면: 방어도 7 획득. 해당 봉인 레벨 2 상승. 없으면 봉인탄 1발 장전.} |
 | `EmptyTheMagazine` | `EMPTY_THE_MAGAZINE` | `1, Skill, Uncommon, None` | 탄창 비우기 | 장전된 탄환을 모두 제거합니다. 제거한 수만큼 카드를 뽑습니다. 그 후, 이번 턴에는 더 이상 카드를 뽑을 수 없습니다. |
 | `OverclockDrum` | `OVERCLOCK_DRUM` | `2, Power, Rare, None` | 오버클록 드럼 | 매 턴 첫 Tracer 발사 시 방아쇠 1회 추가로 당깁니다. 이 효과는 중첩되지 않습니다. |
-| `OverclockCharge` | `OVERCLOCK_CHARGE` | `3, Power, Rare, None` | 오버클록 장약 | {IfUpgraded:show:한 턴에 3번째 발사 성공 시 에너지를 1 획득. 선천성.\|한 턴에 3번째 발사 성공 시 에너지를 1 획득.} |
+| `OverclockCharge` | `OVERCLOCK_CHARGE` | `3, Power, Rare, None` | 오버클록 장약 | {IfUpgraded:show:한 턴에 3번째 발사 성공 시 에너지 1 획득. 각인 1 획득. 선천성.\|한 턴에 3번째 발사 성공 시 에너지 1 획득. 각인 1 획득.} |
 | `ExecutionShot` | `EXECUTION_SHOT` | `2, Attack, Rare, AnyEnemy` | 처형 사격 | {IfUpgraded:show:격발 1회. 대상 체력이 절반 이하면 피해 3배.\|격발 1회. 대상 체력이 절반 이하면 피해 2배.} |
 | `ImprintIgnition` | `IMPRINT_IGNITION` | `2, Power, Rare, None` | 각인 점화 | {IfUpgraded:show:파워: 내 탄환 격발 피해 +2.\|파워: 내 탄환 격발 피해 +1.} |
 | `SealRite` | `SEAL_RITE` | `1, Power, Rare, None` | 봉인의식 | {IfUpgraded:show:파워: 턴 시작 시 봉인탄이 장전되어 있으면 장전된 봉인탄 레벨을 1 올립니다. 사용 시 봉인탄이 없다면 봉인탄 1발을 장전합니다. 선천성.\|파워: 턴 시작 시 봉인탄이 장전되어 있으면 장전된 봉인탄 레벨을 1 올립니다. 사용 시 봉인탄이 없다면 봉인탄 1발을 장전합니다.} |
@@ -70,8 +70,8 @@
 - 시작 덱을 `Shoot x4 / Defend x3 / Reload x2 / EtchedTracer x1`로 조정.
 - `CylinderRelic`은 전투 1라운드 시작 시 일반탄을 2발 자동 장전(이후에는 완전 빈 실린더일 때만 1발 자동 장전).
 - `TagBurst` 설명을 수치형 문구로 명확화:
-  - `TagBurst` 설명(기본): 격발 1회, 발사 성공 시 추가 {Damage:diff()} + 각인당 1 피해, 도탄 1 획득.
-  - `TagBurst` 설명(업그레이드): 격발 1회, 발사 성공 시 추가 {Damage:diff()} + 각인당 2 피해, 도탄 2 획득.
+  - `TagBurst` 설명(기본): 격발 1회, 발사 성공 시 추가 {Damage:diff()} 피해 + 각인당 피해 1, 도탄 2 획득.
+  - `TagBurst` 설명(업그레이드): 격발 1회, 발사 성공 시 추가 {Damage:diff()} 피해 + 각인당 피해 2, 도탄 3 획득.
 - `OverclockDrum`은 효과를 비중첩(single)로 고정해 오해 소지가 있는 가짜 중첩을 제거.
 - `SteadyAim` 상향: 기본 도탄 2, 업그레이드 도탄 3.
 - `FanTheBrand` 상향: 기본 도탄 3 + 각인 1, 업그레이드 도탄 4 + 각인 1.
@@ -109,8 +109,8 @@
 ### 이번 패스 텍스트/동작 동기화 상세
 
 - `READ_THE_MARK`
-  - 설명: `{IfUpgraded:show:{Block:diff()} 방어도를 획득. 도탄이 있으면 카드 1장 뽑기.|{Block:diff()} 방어도를 획득. 도탄이 있으면 카드 1장 뽑기.}`
-  - 동작: 방어도 획득 후, `RicochetPower` 또는 `RicochetImprintPower`가 1 이상이면 카드 1장 뽑기.
+  - 설명: `{IfUpgraded:show:{Block:diff()} 방어도를 획득. 도탄이 있으면 카드 1장 뽑기. 각인 1 획득.|{Block:diff()} 방어도를 획득. 도탄이 있으면 카드 1장 뽑기. 각인 1 획득.}`
+  - 동작: 방어도 획득 후, `RicochetPower` 또는 `RicochetImprintPower`가 1 이상이면 카드 1장을 뽑고 각인 1을 획득.
 - `HOT_CHAMBER`
   - 설명: `{IfUpgraded:show:추적탄 3발 장전. 사냥개시 ON이면 카드 2장 뽑기. 아니면 카드 1장 뽑기.|추적탄 2발 장전. 사냥개시 ON이면 카드 2장 뽑기. 아니면 카드 1장 뽑기.}`
   - 동작: 코스트 0. 각인 소모 없음. 장전 후 사냥개시 상태 여부에 따라 2/1 드로우.
@@ -146,7 +146,7 @@
   - `RicochetShot`: 코스트 2(강화 1), 타입 Attack으로 전투 템포 개선.
   - `RicochetSeal` → `SealBreak`로 개명 및 역할 고정(Seal 해방 브리지).
 - 신규 카드 2장 추가:
-  - `RicochetFollowUp`(Common Attack): 도탄 보유 시 기본은 1드로우, 강화 시 +1회 격발.
+  - `RicochetFollowUp`(Common Attack): 도탄 보유 시 기본은 1드로우 + 각인 1, 강화 시 +1회 격발.
   - `HuntPrep`(Uncommon Skill): Hunt-start 상태 부여 + 추적탄 2발 장전 + 1/2드로우.
 - 활성 풀 제외:
   - `HuntReload`

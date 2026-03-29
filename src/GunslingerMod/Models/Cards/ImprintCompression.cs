@@ -10,8 +10,8 @@ public sealed class ImprintCompression() : CardModel(1, CardType.Power, CardRari
 {
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        // Threshold formula lives in the power: threshold = max(1, 5 - Amount).
-        // Base applies 1 stack (threshold 4+), upgraded applies 2 stacks (threshold 3+).
-        await PowerCmd.Apply<ImprintCompressionPower>(Owner.Creature, IsUpgraded ? 2 : 1, Owner.Creature, this);
+        // Threshold formula lives in the power: threshold = max(1, 6 - Amount).
+        // Base applies 3 stacks (threshold 3+), upgraded applies 4 stacks (threshold 2+).
+        await PowerCmd.Apply<ImprintCompressionPower>(Owner.Creature, IsUpgraded ? 4 : 3, Owner.Creature, this);
     }
 }
