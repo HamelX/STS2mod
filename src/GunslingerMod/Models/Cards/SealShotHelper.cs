@@ -41,7 +41,8 @@ internal static class SealShotHelper
 
         var generated = owner.RunState.CreateCard(ModelDb.Card<SealShot>(), owner);
         GD.Print($"[Gunslinger] SealShot grant attempt: source={source.Id.Entry}, card={generated.Id.Entry}");
-        await CardPileCmd.Add(choiceContext, generated, PileType.Hand);
+        _ = choiceContext;
+        await CardPileCmd.Add(generated, PileType.Hand, (CardPilePosition)0);
         GD.Print("[Gunslinger] SealShot grant queued to hand");
     }
 }
