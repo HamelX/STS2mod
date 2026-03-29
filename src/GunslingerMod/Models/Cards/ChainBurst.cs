@@ -27,7 +27,7 @@ public sealed class ChainBurst() : CardModel(1, CardType.Attack, CardRarity.Unco
         while (remainingPulls > 0)
         {
             remainingPulls--;
-            if (!BulletResolver.HasAliveOpponents(Owner.Creature))
+            if (!BulletResolver.ShouldContinueFiring(Owner.Creature.CombatState))
                 break;
 
             var target = BulletResolver.ResolveAliveTarget(Owner.Creature, cardPlay.Target);

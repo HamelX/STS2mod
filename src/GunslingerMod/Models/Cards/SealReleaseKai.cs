@@ -49,7 +49,7 @@ public sealed class SealReleaseKai() : CardModel(3, CardType.Attack, CardRarity.
         Creature? target = cardPlay.Target;
         for (var i = 0; i < 2; i++)
         {
-            if (!BulletResolver.HasAliveOpponents(Owner.Creature))
+            if (!BulletResolver.ShouldContinueFiring(combatState))
                 return;
 
             target = GetNextAliveTarget(combatState, Owner.Creature, target);
@@ -59,7 +59,7 @@ public sealed class SealReleaseKai() : CardModel(3, CardType.Attack, CardRarity.
             var baseDamage = BulletResolver.GetBaseDamage(ammoType, sealLevel);
             await BulletResolver.FireAtTarget(choiceContext, Owner.Creature, target, this, ammoType, sealLevel, baseDamage);
 
-            if (!BulletResolver.HasAliveOpponents(Owner.Creature))
+            if (!BulletResolver.ShouldContinueFiring(combatState))
                 return;
         }
     }

@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -14,6 +15,31 @@ namespace GunslingerMod.Models.Combat;
 
 internal static class BulletResolver
 {
+    public static bool ShouldContinueFiring(CombatState? combat)
+        => combat?.HittableEnemies.Any(e => e.IsAlive && e.CurrentHp > 0) == true;
+
+    public static BulletTag GetBulletTag(CylinderPower.AmmoType ammoType)
+        => ammoType switch
+        {
+            CylinderPower.AmmoType.Seal => BulletTag.Seal,
+            CylinderPower.AmmoType.Tracer => BulletTag.Tracer,
+            _ => BulletTag.None
+        };
+
+    public static BulletType GetBulletType(CylinderPower.AmmoType ammoType)
+        => GetBulletTag(ammoType) == BulletTag.None ? BulletType.Standard : BulletType.Enhanced;
+
+    public static decimal ResolveBulletEffect(Creature source, CylinderPower.AmmoType ammoType, byte sealLevel, decimal baseDamage)
+    {
+        var finalDamage = baseDamage;
+        var bulletTag = GetBulletTag(ammoType);
+
+        if (bulletTag == BulletTag.Seal)
+            finalDamage += source.GetPower<SealRitePower>()?.ConsumeNextSealDamageBonus() ?? 0;
+
+        return finalDamage;
+    }
+
     public static bool TryConsumeCurrentWithSealSkip(
         CylinderPower cylinder,
         CardModel cardSource,
@@ -109,9 +135,8 @@ internal static class BulletResolver
             if (!HasAliveOpponents(source))
                 return;
 
-            var finalDamage = damage + (source.GetPower<ImprintIgnitionPower>()?.Amount ?? 0);
-            if (ammoType == CylinderPower.AmmoType.Seal)
-                finalDamage += source.GetPower<SealRitePower>()?.ConsumeNextSealDamageBonus() ?? 0;
+            var finalDamage = ResolveBulletEffect(source, ammoType, sealLevel, damage);
+            finalDamage += source.GetPower<ImprintIgnitionPower>()?.Amount ?? 0;
 
             // Seal Lv7+: keep a single hit, but double that hit's final damage.
             if (ammoType == CylinderPower.AmmoType.Seal && sealLevel >= CylinderPower.SealThresholdUnblockable)

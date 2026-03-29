@@ -27,7 +27,7 @@ public sealed class Panning() : CardModel(3, CardType.Attack, CardRarity.Common,
 
         for (var i = 0; i < 6; i++)
         {
-            if (!HasAliveOpponents())
+            if (!BulletResolver.ShouldContinueFiring(Owner.Creature.CombatState))
                 break;
 
             var didFire = BulletResolver.TryConsumeCurrentWithSealSkip(cylinder, this, out var ammoType, out var sealLevel);
@@ -46,12 +46,9 @@ public sealed class Panning() : CardModel(3, CardType.Attack, CardRarity.Common,
             // fire once -> apply damage -> re-check combat end before continuing.
             await BulletResolver.FireAtTarget(choiceContext, Owner.Creature, shotTarget, this, ammoType, sealLevel, shotDamage);
 
-            if (!HasAliveOpponents())
+            if (!BulletResolver.ShouldContinueFiring(Owner.Creature.CombatState))
                 break;
         }
-
-        bool HasAliveOpponents()
-            => BulletResolver.HasAliveOpponents(Owner.Creature);
 
         MegaCrit.Sts2.Core.Entities.Creatures.Creature? ResolveAliveTarget(MegaCrit.Sts2.Core.Entities.Creatures.Creature? preferred)
         {

@@ -30,7 +30,7 @@ public sealed class SprayFire() : CardModel(2, CardType.Attack, CardRarity.Commo
 
         for (var i = 0; i < CylinderPower.MaxRounds; i++)
         {
-            if (!HasAliveOpponents())
+            if (!BulletResolver.ShouldContinueFiring(Owner.Creature.CombatState))
                 break;
 
             var didFire = BulletResolver.TryConsumeCurrentWithSealSkip(cylinder, this, out var ammoType, out var sealLevel);
@@ -50,12 +50,9 @@ public sealed class SprayFire() : CardModel(2, CardType.Attack, CardRarity.Commo
             await BulletResolver.FireAtTarget(choiceContext, Owner.Creature, randomTarget, this, ammoType, sealLevel, shotDamage);
             shotsFired++;
 
-            if (!HasAliveOpponents())
+            if (!BulletResolver.ShouldContinueFiring(Owner.Creature.CombatState))
                 break;
         }
-
-        bool HasAliveOpponents()
-            => BulletResolver.HasAliveOpponents(Owner.Creature);
 
         Creature? GetDeterministicOpponent(int seed)
         {

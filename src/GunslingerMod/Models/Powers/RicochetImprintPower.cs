@@ -71,6 +71,9 @@ public sealed class RicochetImprintPower : PowerModel
         RicochetContext.Current = new RicochetContext.RicochetInfo(ricochetDamage);
         try
         {
+            if (!BulletResolver.ShouldContinueFiring(Owner.CombatState) || !bounceTarget.IsAlive || bounceTarget.CurrentHp <= 0)
+                return;
+
             await CreatureCmd.Damage(choiceContext, bounceTarget, ricochetDamage, props, dealer, cardSource);
         }
         finally
