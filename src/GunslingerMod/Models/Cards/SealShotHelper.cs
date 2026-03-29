@@ -42,7 +42,9 @@ internal static class SealShotHelper
         var generated = owner.RunState.CreateCard(ModelDb.Card<SealShot>(), owner);
         GD.Print($"[Gunslinger] SealShot grant attempt: source={source.Id.Entry}, card={generated.Id.Entry}");
         _ = choiceContext;
-        await CardPileCmd.Add(generated, PileType.Hand, (CardPilePosition)0);
+        // Use default insert behavior for Hand.
+        // Casting an arbitrary numeric value to CardPilePosition can stall resolution on some game states.
+        await CardPileCmd.Add(generated, PileType.Hand);
         GD.Print("[Gunslinger] SealShot grant queued to hand");
     }
 }
