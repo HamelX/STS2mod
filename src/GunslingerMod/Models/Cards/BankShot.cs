@@ -15,7 +15,7 @@ public sealed class BankShot() : CardModel(1, CardType.Attack, CardRarity.Uncomm
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(6m, ValueProp.Move)
+        new DamageVar(8m, ValueProp.Move)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -58,7 +58,7 @@ public sealed class BankShot() : CardModel(1, CardType.Attack, CardRarity.Uncomm
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(3m);
+        DynamicVars.Damage.UpgradeValueBy(4m);
     }
 
     private bool TryGetRicochetToConsume(out PowerModel power)

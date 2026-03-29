@@ -44,6 +44,9 @@ public sealed class HuntTrigger() : CardModel(1, CardType.Attack, CardRarity.Unc
         {
             cylinder.TryLoadNext(CylinderPower.AmmoType.Tracer);
             await PowerCmd.SetAmount<CylinderPower>(Owner.Creature, cylinder.CountLoaded(), Owner.Creature, this);
+
+            if (IsUpgraded)
+                await CardPileCmd.Draw(choiceContext, 1, Owner);
         }
     }
 }
