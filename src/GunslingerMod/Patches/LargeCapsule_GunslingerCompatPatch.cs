@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Characters;
 using MegaCrit.Sts2.Core.Models.Relics;
 using GunslingerMod.Models.Characters;
+using GunslingerMod.Framework.Compatibility;
 
 namespace GunslingerMod.Patches;
 
@@ -20,6 +21,7 @@ namespace GunslingerMod.Patches;
 /// For Gunslinger only, mirror core behavior but resolve fallback cards safely.
 /// </summary>
 [HarmonyPatch(typeof(LargeCapsule), nameof(LargeCapsule.AfterObtained))]
+[HarmonyPatchCategory(GunslingerPatchCategories.CompatibilityProduction)]
 public static class LargeCapsule_GunslingerCompatPatch
 {
     [HarmonyPrefix]

@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Characters;
 using MegaCrit.Sts2.Core.Nodes.Combat;
 using Godot;
+using GunslingerMod.Framework.Compatibility;
 
 namespace GunslingerMod.Patches;
 
@@ -13,6 +14,7 @@ namespace GunslingerMod.Patches;
 /// missing-resource/null risks until dedicated Gunslinger visuals are finalized.
 /// </summary>
 [HarmonyPatch(typeof(CharacterModel))]
+[HarmonyPatchCategory(GunslingerPatchCategories.CompatibilityVisual)]
 public static class CharacterModel_GunslingerSilentVisualFallbackPatch
 {
     private const string GunslingerCharacterSelectIconPath = "res://images/packed/character_select/char_select_gunslinger.png";

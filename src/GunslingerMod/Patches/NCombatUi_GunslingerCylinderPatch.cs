@@ -8,10 +8,12 @@ using MegaCrit.Sts2.Core.Nodes.Combat;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 using GunslingerMod.Models.Characters;
 using GunslingerMod.Nodes;
+using GunslingerMod.Framework.Compatibility;
 
 namespace GunslingerMod.Patches;
 
 [HarmonyPatch(typeof(NCombatUi), "Activate")]
+[HarmonyPatchCategory(GunslingerPatchCategories.CompatibilityUi)]
 public static class NCombatUi_GunslingerCylinderPatch
 {
     private const string CylinderUiScenePath = "res://scenes/ui/gunslinger_cylinder.tscn";

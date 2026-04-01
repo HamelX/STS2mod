@@ -9,6 +9,7 @@ using MegaCrit.Sts2.Core.Hooks;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Runs;
 using GunslingerMod.Models.Characters;
+using GunslingerMod.Framework.Compatibility;
 
 namespace GunslingerMod.Patches;
 
@@ -18,6 +19,7 @@ namespace GunslingerMod.Patches;
 /// </summary>
 [HarmonyPatch(typeof(CardFactory), nameof(CardFactory.CreateForMerchant),
     new Type[] { typeof(Player), typeof(IEnumerable<CardModel>), typeof(CardType) })]
+[HarmonyPatchCategory(GunslingerPatchCategories.CompatibilityProduction)]
 public static class CardFactory_CreateForMerchantPatch
 {
     public static bool Prefix(Player player, IEnumerable<CardModel> options, CardType type, ref CardCreationResult __result)

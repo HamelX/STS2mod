@@ -1,5 +1,6 @@
 ﻿using Godot;
 using HarmonyLib;
+using GunslingerMod.Framework.Compatibility;
 using MegaCrit.Sts2.Core.Nodes.Combat;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 
@@ -7,6 +8,7 @@ namespace GunslingerMod.Patches;
 
 // Ensure cylinder UI only exists during combat.
 [HarmonyPatch(typeof(NCombatUi), "Deactivate")]
+[HarmonyPatchCategory(GunslingerPatchCategories.CompatibilityUi)]
 public static class NCombatUi_GunslingerCylinderCleanupPatch
 {
     public static void Postfix()

@@ -6,11 +6,13 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MegaCrit.Sts2.Core.Runs;
 using GunslingerMod.Models.Characters;
+using GunslingerMod.Framework.Compatibility;
 
 namespace GunslingerMod.Patches;
 
 // Temporary diagnostic patch: when entering a rest site, log which cards are considered upgradable.
 [HarmonyPatch(typeof(NRestSiteRoom), "_Ready")]
+[HarmonyPatchCategory(GunslingerPatchCategories.Debug)]
 public static class NRestSiteRoom_UpgradeDebugPatch
 {
     public static void Postfix(NRestSiteRoom __instance)
