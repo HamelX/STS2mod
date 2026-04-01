@@ -140,5 +140,21 @@
   "ETCHED_RESONANCE.title": "Etched Resonance",
   "ETCHED_RESONANCE.description": "{IfUpgraded:show:Load Tracer rounds equal to highest Seal Level. Reduce all loaded Seal levels to 1.|Load Tracer rounds equal to highest Seal Level. Reduce all loaded Seal levels to 0.}",
   "SEAL_SHOT.title": "Seal Shot",
-  "SEAL_SHOT.description": "Align the highest-level loaded Seal round to the firing chamber. Directly fire 1 loaded Seal round. Exhaust."
+  "SEAL_SHOT.description": "Align the highest-level loaded Seal round to the firing chamber. Directly fire 1 loaded Seal round. Exhaust.",
+  "SEAL_OVERLOAD.title": "Seal Overload",
+  "SEAL_OVERLOAD.description": "{IfUpgraded:show:Gain 10 Block. If a Seal round is loaded, increase that Seal Level by 2 and gain 1 Imprint.|Gain 8 Block. If a Seal round is loaded, increase that Seal Level by 1 and gain 1 Imprint.}",
+  "SEAL_PROTECTION.title": "Seal Protection",
+  "SEAL_PROTECTION.description": "{IfUpgraded:show:If a Seal round is loaded, gain Block equal to highest Seal Level + 7. Otherwise gain 7 Block and load 1 Seal round.|If a Seal round is loaded, gain Block equal to highest Seal Level + 5. Otherwise gain 5 Block and load 1 Seal round.}",
+  "HUNT_RELOAD.title": "Hunt Reload",
+  "HUNT_RELOAD.description": "{IfUpgraded:show:Enter Hunt-start. Load 2 Tracer rounds. Gain 1 [gold]Energy[/gold].|Enter Hunt-start. Load 2 Tracer rounds.}",
+  "SEAL_PRIMER.title": "Seal Primer",
+  "SEAL_PRIMER.description": "{IfUpgraded:show:Load 1 Seal round. If already loaded, increase its level by 2 instead.|Load 1 Seal round. If already loaded, increase its level by 1 instead.}",
+  "SEAL_ASSIMILATION.title": "Seal Assimilation",
+  "SEAL_ASSIMILATION.description": "{IfUpgraded:show:Spend 2 Imprint. Increase all loaded Seal levels by 1. Draw 1 card.|Spend 2 Imprint. Increase all loaded Seal levels by 1.}",
+  "SEAL_TRANSFER.title": "Seal Transfer",
+  "SEAL_TRANSFER.description": "{IfUpgraded:show:Move the highest-level loaded Seal to the firing chamber. Gain Block equal to that Seal Level + 3.|Move the highest-level loaded Seal to the firing chamber. Gain Block equal to that Seal Level.}",
+  "SEAL_CHECK.title": "Seal Check",
+  "SEAL_CHECK.description": "{IfUpgraded:show:If a Seal round is loaded, draw 2 cards. Otherwise, load 1 Seal round.|If a Seal round is loaded, draw 1 card. Otherwise, load 1 Seal round.}",
+  "PRECISION_SHOT.title": "Precision Shot",
+  "PRECISION_SHOT.description": "{IfUpgraded:show:Trigger Pull 1 time. If the shot succeeds, deal 4 additional damage and gain 1 Imprint.|Trigger Pull 1 time. If the shot succeeds, deal 3 additional damage.}"
 }
