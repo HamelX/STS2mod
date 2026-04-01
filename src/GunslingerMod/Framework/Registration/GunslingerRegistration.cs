@@ -7,15 +7,21 @@ namespace GunslingerMod.Framework.Registration;
 /// <summary>
 /// Registration phase entrypoint.
 ///
-/// Phase 2A keeps the existing character registration patch behavior alive,
-/// but moves activation ownership into the framework layer.
+/// Phase 2B introduces a deterministic registration prewarm path in
+/// <see cref="GunslingerContentRegistrar"/>. The transitional
+/// AllCharacters compatibility patch remains available and is only used as a
+/// fallback when deterministic registration cannot be verified at startup.
 /// </summary>
 public static class GunslingerRegistration
 {
     public static void Apply(Harmony harmony)
     {
         harmony.PatchCategory(typeof(GunslingerRegistration).Assembly, GunslingerPatchCategories.Registration);
-        GunslingerContentRegistrar.Register();
-        GD.Print("[Gunslinger] Registration patch group applied");
+
+        var deterministicVerified = GunslingerContentRegistrar.Register();
+        GunslingerRegistrationState.UseTransitionalCharacterRegistrationPatch = !deterministicVerified;
+
+        var mode = deterministicVerified ? "deterministic" : "fallback-patch";
+        GD.Print($"[Gunslinger] Registration phase ready (mode={mode})");
     }
 }
