@@ -4,15 +4,21 @@ using Godot;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Models;
 using GunslingerMod.Framework.Compatibility;
+using GunslingerMod.Models.Characters;
 
 namespace GunslingerMod.Framework.Registration;
 
 /// <summary>
 /// Transitional character registration compatibility patch.
 ///
-/// Kept intentionally in Phase 2A to preserve current runtime behavior until
-/// deterministic BaseLib-first character registration replacement is implemented
-/// and verified in a later phase.
+/// Phase 2B behavior:
+/// - deterministic registration runs first via GunslingerContentRegistrar
+/// - this patch remains as a guarded fallback only when deterministic
+///   AllCharacters verification fails in the same startup session
+///
+/// TODO(phase-2c-removal-boundary): delete this patch only after runtime
+/// verification confirms character select + reward pools + merchant +
+/// compendium/library all function without this fallback.
 /// </summary>
 [HarmonyPatch(typeof(ModelDb), "AllCharacters", MethodType.Getter)]
 [HarmonyPatchCategory(GunslingerPatchCategories.Registration)]
@@ -21,11 +27,17 @@ public static class GunslingerCharacterRegistrationPatch
 {
     private static void Postfix(ref IEnumerable<CharacterModel> __result)
     {
+        if (!GunslingerRegistrationState.UseTransitionalCharacterRegistrationPatch)
+            return;
+
         var charactersList = __result.ToList();
+        if (charactersList.Any(c => c.GetType() == typeof(Gunslinger)))
+            return;
+
         var gunslingerType = Type.GetType("GunslingerMod.Models.Characters.Gunslinger");
         if (gunslingerType == null)
         {
-            GD.PrintErr("[Gunslinger] Gunslinger type not found. Skipping character registration.");
+            GD.PrintErr("[Gunslinger] Gunslinger type not found. Skipping character registration fallback.");
             return;
         }
 
@@ -39,7 +51,7 @@ public static class GunslingerCharacterRegistrationPatch
 
         if (characterMethod == null)
         {
-            GD.PrintErr("[Gunslinger] ModelDb.Character<T>() method not found. Skipping character registration.");
+            GD.PrintErr("[Gunslinger] ModelDb.Character<T>() method not found. Skipping character registration fallback.");
             return;
         }
 
@@ -47,12 +59,13 @@ public static class GunslingerCharacterRegistrationPatch
             charactersList.Add(gunslingerCharacter);
         else
         {
-            GD.PrintErr("[Gunslinger] Failed to instantiate Gunslinger character model.");
+            GD.PrintErr("[Gunslinger] Failed to instantiate Gunslinger character model fallback.");
             return;
         }
 
         __result = charactersList;
 
+        // Transitional cache invalidation retained only for fallback mode.
         typeof(ModelDb).GetField("_allCharacterCardPools", BindingFlags.Static | BindingFlags.NonPublic)
             ?.SetValue(null, null);
         typeof(ModelDb).GetField("_allCards", BindingFlags.Static | BindingFlags.NonPublic)?.SetValue(null, null);
