@@ -140,5 +140,21 @@
   "RICOCHET_BURST.description": "{IfUpgraded:show:トリガープル1回。発射した弾がトレーサー弾なら、跳弾を2得る。|トリガープル1回。発射した弾がトレーサー弾なら、跳弾を1得る。}",
   "SEAL_BURST_LOAD.title": "封印バースト装填",
   "ETCHED_RESONANCE.title": "刻印共鳴",
-  "ETCHED_RESONANCE.description": "{IfUpgraded:show:最高封印レベルに等しい数のトレーサー弾を装填する。装填中の封印弾レベルをすべて1にする。|最高封印レベルに等しい数のトレーサー弾を装填する。装填中の封印弾レベルをすべて0にする。}"
+  "ETCHED_RESONANCE.description": "{IfUpgraded:show:最高封印レベルに等しい数のトレーサー弾を装填する。装填中の封印弾レベルをすべて1にする。|最高封印レベルに等しい数のトレーサー弾を装填する。装填中の封印弾レベルをすべて0にする。}",
+  "SEAL_OVERLOAD.title": "封印オーバーロード",
+  "SEAL_OVERLOAD.description": "{IfUpgraded:show:ブロック10を得る。封印弾が装填されているなら、その封印レベル+2し刻印1を得る。|ブロック8を得る。封印弾が装填されているなら、その封印レベル+1し刻印1を得る。}",
+  "SEAL_PROTECTION.title": "封印防護",
+  "SEAL_PROTECTION.description": "{IfUpgraded:show:封印弾が装填されているなら、最高封印レベル+7のブロックを得る。なければブロック7を得て封印弾を1発装填。|封印弾が装填されているなら、最高封印レベル+5のブロックを得る。なければブロック5を得て封印弾を1発装填。}",
+  "HUNT_RELOAD.title": "ハント再装填",
+  "HUNT_RELOAD.description": "{IfUpgraded:show:ハント開始状態になる。トレーサー弾を2発装填。 [gold]エナジー[/gold]を1得る。|ハント開始状態になる。トレーサー弾を2発装填。}",
+  "SEAL_PRIMER.title": "封印プライマー",
+  "SEAL_PRIMER.description": "{IfUpgraded:show:封印弾を1発装填。既に装填済みならそのレベルを+2。|封印弾を1発装填。既に装填済みならそのレベルを+1。}",
+  "SEAL_ASSIMILATION.title": "封印同化",
+  "SEAL_ASSIMILATION.description": "{IfUpgraded:show:刻印を2消費。装填中の封印弾すべてのレベルを+1。カードを1枚引く。|刻印を2消費。装填中の封印弾すべてのレベルを+1。}",
+  "SEAL_TRANSFER.title": "封印転写",
+  "SEAL_TRANSFER.description": "{IfUpgraded:show:最も高レベルの封印弾を発射薬室に移動。対象封印レベル+3のブロックを得る。|最も高レベルの封印弾を発射薬室に移動。対象封印レベル分のブロックを得る。}",
+  "SEAL_CHECK.title": "封印チェック",
+  "SEAL_CHECK.description": "{IfUpgraded:show:封印弾が装填されているならカードを2枚引く。なければ封印弾を1発装填。|封印弾が装填されているならカードを1枚引く。なければ封印弾を1発装填。}",
+  "PRECISION_SHOT.title": "精密射撃",
+  "PRECISION_SHOT.description": "{IfUpgraded:show:トリガープル1回。発射成功時、追加4ダメージを与え刻印1を得る。|トリガープル1回。発射成功時、追加3ダメージを与える。}"
 }

@@ -140,5 +140,21 @@
   "ETCHED_RESONANCE.title": "각인 공명",
   "ETCHED_RESONANCE.description": "{IfUpgraded:show:최고 봉인 레벨만큼 추적탄 장전. 모든 봉인탄 레벨을 1로 낮춤.|최고 봉인 레벨만큼 추적탄 장전. 모든 봉인탄 레벨을 0으로 낮춤.}",
   "SEAL_SHOT.title": "봉인 사격",
-  "SEAL_SHOT.description": "가장 높은 레벨의 장전된 봉인탄을 발사 칸으로 정렬합니다. 장전된 봉인탄 1발을 직접 격발합니다. 소멸."
+  "SEAL_SHOT.description": "가장 높은 레벨의 장전된 봉인탄을 발사 칸으로 정렬합니다. 장전된 봉인탄 1발을 직접 격발합니다. 소멸.",
+  "SEAL_OVERLOAD.title": "봉인 과부하",
+  "SEAL_OVERLOAD.description": "{IfUpgraded:show:방어도 10 획득. 봉인탄이 장전되어 있으면 해당 봉인 레벨 +2 및 각인 1 획득.|방어도 8 획득. 봉인탄이 장전되어 있으면 해당 봉인 레벨 +1 및 각인 1 획득.}",
+  "SEAL_PROTECTION.title": "봉인 방호",
+  "SEAL_PROTECTION.description": "{IfUpgraded:show:봉인탄이 장전되어 있으면 최고 봉인 레벨 +7만큼 방어도 획득. 없으면 방어도 7 획득 후 봉인탄 1발 장전.|봉인탄이 장전되어 있으면 최고 봉인 레벨 +5만큼 방어도 획득. 없으면 방어도 5 획득 후 봉인탄 1발 장전.}",
+  "HUNT_RELOAD.title": "사냥개시 재장전",
+  "HUNT_RELOAD.description": "{IfUpgraded:show:사냥개시 상태가 됩니다. 추적탄 2발 장전. [gold]에너지[/gold] 1 획득.|사냥개시 상태가 됩니다. 추적탄 2발 장전.}",
+  "SEAL_PRIMER.title": "봉인 기동",
+  "SEAL_PRIMER.description": "{IfUpgraded:show:봉인탄 1발 장전. 이미 장전되어 있으면 해당 레벨 +2.|봉인탄 1발 장전. 이미 장전되어 있으면 해당 레벨 +1.}",
+  "SEAL_ASSIMILATION.title": "봉인 동화",
+  "SEAL_ASSIMILATION.description": "{IfUpgraded:show:각인 2 소모. 장전된 모든 봉인탄 레벨 +1. 카드 1장 뽑기.|각인 2 소모. 장전된 모든 봉인탄 레벨 +1.}",
+  "SEAL_TRANSFER.title": "봉인 전이",
+  "SEAL_TRANSFER.description": "{IfUpgraded:show:가장 높은 봉인탄을 발사 칸으로 이동. 해당 봉인 레벨 +3만큼 방어도 획득.|가장 높은 봉인탄을 발사 칸으로 이동. 해당 봉인 레벨만큼 방어도 획득.}",
+  "SEAL_CHECK.title": "봉인 점검",
+  "SEAL_CHECK.description": "{IfUpgraded:show:봉인탄이 장전되어 있으면 카드 2장 뽑기. 아니면 봉인탄 1발 장전.|봉인탄이 장전되어 있으면 카드 1장 뽑기. 아니면 봉인탄 1발 장전.}",
+  "PRECISION_SHOT.title": "정밀 사격",
+  "PRECISION_SHOT.description": "{IfUpgraded:show:방아쇠 1회. 발사 성공 시 추가 피해 4 및 각인 1 획득.|방아쇠 1회. 발사 성공 시 추가 피해 3.}"
 }
