@@ -1,5 +1,6 @@
 ﻿using Godot;
 using HarmonyLib;
+using GunslingerMod.Framework.Compatibility;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Nodes.Screens.CharacterSelect;
 using GunslingerMod.Models.Characters;
@@ -7,6 +8,7 @@ using GunslingerMod.Models.Characters;
 namespace GunslingerMod.Patches;
 
 [HarmonyPatch(typeof(NCharacterSelectButton), nameof(NCharacterSelectButton.Init))]
+[HarmonyPatchCategory(GunslingerPatchCategories.CompatibilityProduction)]
 public static class NCharacterSelectButtonPatch
 {
     private static void Postfix(NCharacterSelectButton __instance, CharacterModel character)

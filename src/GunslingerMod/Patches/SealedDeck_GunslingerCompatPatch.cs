@@ -12,6 +12,7 @@ using MegaCrit.Sts2.Core.Models.Modifiers;
 using MegaCrit.Sts2.Core.Models.Relics;
 using MegaCrit.Sts2.Core.Runs;
 using GunslingerMod.Models.Characters;
+using GunslingerMod.Framework.Compatibility;
 
 namespace GunslingerMod.Patches;
 
@@ -26,6 +27,7 @@ namespace GunslingerMod.Patches;
 /// and clamp the pick count as well.
 /// </summary>
 [HarmonyPatch]
+[HarmonyPatchCategory(GunslingerPatchCategories.CompatibilityProduction)]
 public static class SealedDeck_GunslingerCompatPatch
 {
     [HarmonyTargetMethod]

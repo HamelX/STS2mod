@@ -3,12 +3,14 @@ using HarmonyLib;
 using MegaCrit.Sts2.Core.Assets;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Models;
+using GunslingerMod.Framework.Compatibility;
 
 namespace GunslingerMod.Patches;
 
 // Multiplayer relic-select hand images are loaded from character-specific paths.
 // Gunslinger currently has no dedicated hand sprites, so fall back to Silent hands.
 [HarmonyPatch(typeof(CharacterModel))]
+[HarmonyPatchCategory(GunslingerPatchCategories.CompatibilityVisual)]
 public static class CharacterModel_GunslingerHandFallbackPatch
 {
     [HarmonyPatch("get_ArmPointingTexture")]
