@@ -117,15 +117,27 @@ public static class GunslingerContentRegistrar
 
     private static bool VerifyCharacterEnumeration()
     {
-        var hasGunslinger = ModelDb.AllCharacters.Any(c => c.GetType() == typeof(Gunslinger));
-        if (!hasGunslinger)
-        {
-            GD.PrintErr("[Gunslinger] Deterministic registration verification failed: Gunslinger not in ModelDb.AllCharacters");
-            return false;
-        }
+        // Safety guard: never allow transitional fallback patch to participate in
+        // deterministic verification itself.
+        var previousFallbackMode = GunslingerRegistrationState.UseTransitionalCharacterRegistrationPatch;
+        GunslingerRegistrationState.UseTransitionalCharacterRegistrationPatch = false;
 
-        GD.Print("[Gunslinger] Deterministic registration verification passed: Gunslinger appears in ModelDb.AllCharacters");
-        return true;
+        try
+        {
+            var hasGunslinger = ModelDb.AllCharacters.Any(c => c.GetType() == typeof(Gunslinger));
+            if (!hasGunslinger)
+            {
+                GD.PrintErr("[Gunslinger] Deterministic registration verification failed: Gunslinger not in ModelDb.AllCharacters");
+                return false;
+            }
+
+            GD.Print("[Gunslinger] Deterministic registration verification passed: Gunslinger appears in ModelDb.AllCharacters");
+            return true;
+        }
+        finally
+        {
+            GunslingerRegistrationState.UseTransitionalCharacterRegistrationPatch = previousFallbackMode;
+        }
     }
 
     private static List<Type> GetConcreteTypes<TBase>()

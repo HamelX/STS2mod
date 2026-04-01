@@ -6,5 +6,5 @@ namespace GunslingerMod.Framework.Registration;
 /// </summary>
 public static class GunslingerRegistrationState
 {
-    public static bool UseTransitionalCharacterRegistrationPatch { get; set; } = true;
+    public static bool UseTransitionalCharacterRegistrationPatch { get; set; } = false;
 }

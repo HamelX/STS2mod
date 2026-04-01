@@ -18,6 +18,8 @@ public static class GunslingerRegistration
     {
         harmony.PatchCategory(typeof(GunslingerRegistration).Assembly, GunslingerPatchCategories.Registration);
 
+        // Prevent fallback-patch participation while deterministic verification runs.
+        GunslingerRegistrationState.UseTransitionalCharacterRegistrationPatch = false;
         var deterministicVerified = GunslingerContentRegistrar.Register();
         GunslingerRegistrationState.UseTransitionalCharacterRegistrationPatch = !deterministicVerified;
 
